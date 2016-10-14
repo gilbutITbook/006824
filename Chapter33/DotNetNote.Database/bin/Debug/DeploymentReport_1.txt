@@ -1,0 +1,58 @@
+﻿** 강조
+     다시 빌드될 테이블
+       없음
+     삭제될 클러스터형 인덱스
+       없음
+     생성될 클러스터형 인덱스
+       없음
+     데이터 문제가 있는 것 같습니다.
+       없음
+
+** 사용자 작업
+     만들기
+       [dbo].[CommunityCampJoinMembers] (테이블)
+       [dbo].[Maxims] (테이블)
+       [dbo].[Memos] (테이블)
+       [dbo].[NoteComments] (테이블)
+       [dbo].[Notes] (테이블)
+       [dbo].[Tasks] (테이블)
+       [dbo].[Teches] (테이블)
+       [dbo].[Users] (테이블)
+       DEFAULT 제약 조건: [dbo].[CommunityCampJoinMembers]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[CommunityCampJoinMembers]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Maxims]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Memos]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[NoteComments]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Tasks]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       [dbo].[DeleteMemo] (프로시저)
+       [dbo].[DeleteNote] (프로시저)
+       [dbo].[DeleteUsers] (프로시저)
+       [dbo].[GetCountNotes] (프로시저)
+       [dbo].[ListMemo] (프로시저)
+       [dbo].[ListNotes] (프로시저)
+       [dbo].[ListUsers] (프로시저)
+       [dbo].[ModifyMemo] (프로시저)
+       [dbo].[ModifyNote] (프로시저)
+       [dbo].[ModifyUsers] (프로시저)
+       [dbo].[ReplyNote] (프로시저)
+       [dbo].[SearchMemo] (프로시저)
+       [dbo].[SearchNoteCount] (프로시저)
+       [dbo].[SearchNotes] (프로시저)
+       [dbo].[SearchUsers] (프로시저)
+       [dbo].[ViewMemo] (프로시저)
+       [dbo].[ViewNote] (프로시저)
+       [dbo].[ViewUsers] (프로시저)
+       [dbo].[WriteMemo] (프로시저)
+       [dbo].[WriteNote] (프로시저)
+       [dbo].[WriteUsers] (프로시저)
+
+** 지원 동작

@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{50FFBAA8-1411-4DFD-B077-6004C36D175A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DevStandardControl</RootNamespace>
+    <AssemblyName>DevStandardControl</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="files\ASP-NET-Banners-01.png" />
+    <Content Include="FrmAdRotator.aspx" />
+    <Content Include="FrmAdRotator.xml" />
+    <Content Include="FrmBulletedList.aspx" />
+    <Content Include="FrmButton.aspx" />
+    <Content Include="FrmCalendar.aspx" />
+    <Content Include="FrmCalendarQueryString.aspx" />
+    <Content Include="FrmCheckBox.aspx" />
+    <Content Include="FrmCheckBoxList.aspx" />
+    <Content Include="FrmCommandControl.aspx" />
+    <Content Include="FrmDropDownList.aspx" />
+    <Content Include="FrmFileUpload.aspx" />
+    <Content Include="FrmHiddenField.aspx" />
+    <Content Include="FrmHtml.aspx" />
+    <Content Include="FrmHyperLink.aspx" />
+    <Content Include="FrmImageButton.aspx" />
+    <Content Include="FrmImageMap.aspx" />
+    <Content Include="FrmInputControl.aspx" />
+    <Content Include="FrmLinkButton.aspx" />
+    <Content Include="FrmListBox.aspx" />
+    <Content Include="FrmLiteral.aspx" />
+    <Content Include="FrmLocalize.aspx" />
+    <Content Include="FrmMultiView.aspx" />
+    <Content Include="FrmPanel.aspx" />
+    <Content Include="FrmPlaceHolder.aspx" />
+    <Content Include="FrmRadioButton.aspx" />
+    <Content Include="FrmRadioButtonList.aspx" />
+    <Content Include="FrmSubstitution.aspx" />
+    <Content Include="FrmTable.aspx" />
+    <Content Include="FrmWizard.aspx" />
+    <Content Include="FrmXml.aspx" />
+    <Content Include="FrmXml.xml" />
+    <Content Include="FrmXml.xsl">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="images\ASP-NET-Banners-01.png" />
+    <Content Include="images\ASP-NET-Banners-02.png" />
+    <Content Include="images\Banner-01-Azure.png" />
+    <Content Include="images\Banner-02-VS.png" />
+    <Content Include="images\btn_home.gif" />
+    <Content Include="FrmImage.aspx" />
+    <Content Include="images\btn_list.gif" />
+    <Content Include="images\btn_post.gif" />
+    <Content Include="images\img_imagemap.jpg" />
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\devstandardcontrol.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FrmLabel.aspx" />
+    <Content Include="FrmStandardControl.aspx" />
+    <Content Include="FrmTextBox.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmAdRotator.aspx.cs">
+      <DependentUpon>FrmAdRotator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmAdRotator.aspx.designer.cs">
+      <DependentUpon>FrmAdRotator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBulletedList.aspx.cs">
+      <DependentUpon>FrmBulletedList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmBulletedList.aspx.designer.cs">
+      <DependentUpon>FrmBulletedList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmButton.aspx.cs">
+      <DependentUpon>FrmButton.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmButton.aspx.designer.cs">
+      <DependentUpon>FrmButton.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCalendar.aspx.cs">
+      <DependentUpon>FrmCalendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmCalendar.aspx.designer.cs">
+      <DependentUpon>FrmCalendar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCalendarQueryString.aspx.cs">
+      <DependentUpon>FrmCalendarQueryString.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmCalendarQueryString.aspx.designer.cs">
+      <DependentUpon>FrmCalendarQueryString.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCheckBox.aspx.cs">
+      <DependentUpon>FrmCheckBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmCheckBox.aspx.designer.cs">
+      <DependentUpon>FrmCheckBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCheckBoxList.aspx.cs">
+      <DependentUpon>FrmCheckBoxList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmCheckBoxList.aspx.designer.cs">
+      <DependentUpon>FrmCheckBoxList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCommandControl.aspx.cs">
+      <DependentUpon>FrmCommandControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmCommandControl.aspx.designer.cs">
+      <DependentUpon>FrmCommandControl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDropDownList.aspx.cs">
+      <DependentUpon>FrmDropDownList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmDropDownList.aspx.designer.cs">
+      <DependentUpon>FrmDropDownList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFileUpload.aspx.cs">
+      <DependentUpon>FrmFileUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmFileUpload.aspx.designer.cs">
+      <DependentUpon>FrmFileUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHiddenField.aspx.cs">
+      <DependentUpon>FrmHiddenField.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmHiddenField.aspx.designer.cs">
+      <DependentUpon>FrmHiddenField.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHtml.aspx.cs">
+      <DependentUpon>FrmHtml.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmHtml.aspx.designer.cs">
+      <DependentUpon>FrmHtml.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHyperLink.aspx.cs">
+      <DependentUpon>FrmHyperLink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmHyperLink.aspx.designer.cs">
+      <DependentUpon>FrmHyperLink.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmImageButton.aspx.cs">
+      <DependentUpon>FrmImageButton.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmImageButton.aspx.designer.cs">
+      <DependentUpon>FrmImageButton.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmImageMap.aspx.cs">
+      <DependentUpon>FrmImageMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmImageMap.aspx.designer.cs">
+      <DependentUpon>FrmImageMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInputControl.aspx.cs">
+      <DependentUpon>FrmInputControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmInputControl.aspx.designer.cs">
+      <DependentUpon>FrmInputControl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLabel.aspx.cs">
+      <DependentUpon>FrmLabel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmLabel.aspx.designer.cs">
+      <DependentUpon>FrmLabel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLinkButton.aspx.cs">
+      <DependentUpon>FrmLinkButton.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmLinkButton.aspx.designer.cs">
+      <DependentUpon>FrmLinkButton.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListBox.aspx.cs">
+      <DependentUpon>FrmListBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmListBox.aspx.designer.cs">
+      <DependentUpon>FrmListBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLiteral.aspx.cs">
+      <DependentUpon>FrmLiteral.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmLiteral.aspx.designer.cs">
+      <DependentUpon>FrmLiteral.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLocalize.aspx.cs">
+      <DependentUpon>FrmLocalize.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmLocalize.aspx.designer.cs">
+      <DependentUpon>FrmLocalize.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMultiView.aspx.cs">
+      <DependentUpon>FrmMultiView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmMultiView.aspx.designer.cs">
+      <DependentUpon>FrmMultiView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPanel.aspx.cs">
+      <DependentUpon>FrmPanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmPanel.aspx.designer.cs">
+      <DependentUpon>FrmPanel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPlaceHolder.aspx.cs">
+      <DependentUpon>FrmPlaceHolder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmPlaceHolder.aspx.designer.cs">
+      <DependentUpon>FrmPlaceHolder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRadioButton.aspx.cs">
+      <DependentUpon>FrmRadioButton.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmRadioButton.aspx.designer.cs">
+      <DependentUpon>FrmRadioButton.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRadioButtonList.aspx.cs">
+      <DependentUpon>FrmRadioButtonList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmRadioButtonList.aspx.designer.cs">
+      <DependentUpon>FrmRadioButtonList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStandardControl.aspx.cs">
+      <DependentUpon>FrmStandardControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmStandardControl.aspx.designer.cs">
+      <DependentUpon>FrmStandardControl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSubstitution.aspx.cs">
+      <DependentUpon>FrmSubstitution.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmSubstitution.aspx.designer.cs">
+      <DependentUpon>FrmSubstitution.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTable.aspx.cs">
+      <DependentUpon>FrmTable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmTable.aspx.designer.cs">
+      <DependentUpon>FrmTable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTextBox.aspx.cs">
+      <DependentUpon>FrmTextBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmTextBox.aspx.designer.cs">
+      <DependentUpon>FrmTextBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWizard.aspx.cs">
+      <DependentUpon>FrmWizard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmWizard.aspx.designer.cs">
+      <DependentUpon>FrmWizard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmXml.aspx.cs">
+      <DependentUpon>FrmXml.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmXml.aspx.designer.cs">
+      <DependentUpon>FrmXml.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="FrmImage.aspx.cs">
+      <DependentUpon>FrmImage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmImage.aspx.designer.cs">
+      <DependentUpon>FrmImage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>10570</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:10570/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

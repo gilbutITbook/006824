@@ -1,0 +1,8 @@
+﻿<asp:Button runat="server" BackColor="Yellow" BorderColor="Blue" 
+    BorderStyle="Dashed" BorderWidth="1px" ForeColor="Blue" 
+/>
+
+<asp:Button runat="server" BackColor="Yellow" BorderColor="Blue" 
+    BorderStyle="Dashed" BorderWidth="1px" ForeColor="Blue"
+    Font-Bold="True" SkinID="BlueSkinBold"
+ />

@@ -1,0 +1,17 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "angular": "1.5.8",
+    "angular-animate": "1.5.8",
+    "angular-route": "1.5.8",
+    "bootbox.js": "4.4.0",
+    "bootstrap": "3.3.6",
+    "font-awesome": "4.6.1",
+    "jquery": "2.2.0",
+    "jquery-validation": "1.14.0",
+    "jquery-validation-unobtrusive": "3.2.6",
+    "moment": "2.13.0",
+    "toastr": "2.1.3"
+  }
+}

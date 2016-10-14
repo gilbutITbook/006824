@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Company>
+	<CompanyName>비주얼아카데미</CompanyName>
+	<CompanyNumber>1234-5678</CompanyNumber>
+	<CompanyAddress>세종시</CompanyAddress>
+	<CompanyAddressDetail>우리동네</CompanyAddressDetail>
+	<Name>홍길동</Name>
+	<CompanyType>서비스</CompanyType>
+	<CompanyStyle>온라인교육</CompanyStyle>
+	<Operator>임꺽정</Operator>
+	<Phone>114</Phone>
+	<Fax>114</Fax>
+	<Email>ceo@visualacademy.com</Email>
+</Company>

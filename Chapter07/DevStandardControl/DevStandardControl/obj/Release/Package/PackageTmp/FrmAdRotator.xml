@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+	<Ad>
+		<ImageUrl>~/images/ASP-NET-Banners-01.png</ImageUrl>
+		<NavigateUrl>http://www.devlec.com/</NavigateUrl>
+		<AlternateText>데브렉</AlternateText>
+		<Keyword>데브렉</Keyword>
+		<Impressions>25</Impressions>
+	</Ad>
+	<Ad>
+		<ImageUrl>~/images/ASP-NET-Banners-02.png</ImageUrl>
+		<NavigateUrl>http://www.VisualAcademy.com/</NavigateUrl>
+		<AlternateText>비주얼아카데미</AlternateText>
+		<Keyword>비주얼아카데미</Keyword>
+		<Impressions>25</Impressions>
+	</Ad>
+	<Ad>
+		<ImageUrl>~/images/Banner-01-Azure.png</ImageUrl>
+		<NavigateUrl>http://www.dotnetkorea.com/</NavigateUrl>
+		<AlternateText>닷넷코리아</AlternateText>
+		<Keyword>닷넷코리아</Keyword>
+		<Impressions>25</Impressions>
+	</Ad>
+	<Ad>
+		<ImageUrl>~/images/Banner-02-VS.png</ImageUrl>
+		<NavigateUrl>http://www.LicenseLand.com/</NavigateUrl>
+		<AlternateText>라이센스랜드</AlternateText>
+		<Keyword>라이센스랜드</Keyword>
+		<Impressions>25</Impressions>
+	</Ad>
+</Advertisements>

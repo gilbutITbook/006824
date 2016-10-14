@@ -1,0 +1,26 @@
+﻿ADO.NET : 데이터베이스 관련된 클래스들의 집합
+
+Memos.sql
+
+1. Connection : 데이터베이스 연결
+2. Command : 데이터베이스 명령어 실행
+3. DataReader : Select 결과값 받기(읽기전용)
+4. DataAdapter : 명령어 전달(중개자), Command와 DataSet의 중간
+5. DataSet : 데이터베이스 실행 결과(메모리 상의 데이터베이스)
+
+입력: Connection+Command
+출력: Connection+Command+DataAdapter+DataSet
+상세: Connection+Command+DataReader
+수정: 상세+입력
+삭제: 상세+입력
+검색: 출력
+
+Memo.cs
+
+입력: FrmMemoWrite.aspx
+출력: FrmMemoList.aspx
+상세: FrmMemoView.aspx
+수정: FrmMemoModify.aspx
+삭제: FrmMemoDelete.aspx
+검색: FrmMemoSearch.aspx
+

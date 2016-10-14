@@ -1,0 +1,7 @@
+[실습] Visual Studio Community 2015 설치하기
+
+http://www.visualstudio.com/
+
+Visual Studio Community 2015를 내려받고 설치하는 과정을 동영상 강좌로도 마련하였으니 참고하기 바란다.
+
+https://youtu.be/mXcjBNgTzzU

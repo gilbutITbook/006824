@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.Owin.Security</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.Owin.Security.AppBuilderSecurityExtensions">
+      <summary>인증 미들웨어 구현에만 필요한 app.Property 값에 대한 확장 메서드를 제공합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.AppBuilderSecurityExtensions.GetDefaultSignInAsAuthenticationType(Owin.IAppBuilder)">
+      <summary>브라우저가 해당 반환 URL로 다시 이동할 때 외부 로그인 미들웨어에서 사용해야 하는 이전에 설정된 AuthenticationType을 반환합니다.</summary>
+      <param name="app">응용 프로그램 시작 코드에 전달된 응용 프로그램 작성기입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.AppBuilderSecurityExtensions.SetDefaultSignInAsAuthenticationType(Owin.IAppBuilder,System.String)">
+      <summary>브라우저가 해당 반환 URL로 다시 이동할 때 외부 미들웨어에서 사용해야 하는 AuthenticationType의 이름을 변경하는 미들웨어에서 호출됩니다.</summary>
+      <param name="app">응용 프로그램 시작 코드에 전달된 응용 프로그램 작성기입니다.</param>
+      <param name="authenticationType">외부 미들웨어가 로그인해야 하는 AuthenticationType입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.AuthenticationMode">
+      <summary>인증 미들웨어의 동작을 제어합니다.</summary>
+    </member>
+    <member name="F:Microsoft.Owin.Security.AuthenticationMode.Active">
+      <summary>활성 모드에서는 인증 미들웨어가 요청이 도착하면 사용자 ID를 변경하고 응답이 나가면 일반 401을 변경합니다.</summary>
+    </member>
+    <member name="F:Microsoft.Owin.Security.AuthenticationMode.Passive">
+      <summary>수동 모드에서는 인증 미들웨어가 요청을 받는 경우에만 사용자 ID를 제공하고 추가 챌린지 데이터에 인증 유형이 이름 지정된 위치에서만 401 응답을 변경합니다.</summary>
+    </member>
+    <member name="T:Microsoft.Owin.Security.AuthenticationOptions">
+      <summary>모든 인증 미들웨어의 기본 옵션입니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.AuthenticationOptions.#ctor(System.String)">
+      <summary>AuthenticationOptions 기본 클래스의 속성을 초기화합니다.</summary>
+      <param name="authenticationType">AuthenticationType 속성에 할당됩니다.</param>
+    </member>
+    <member name="P:Microsoft.Owin.Security.AuthenticationOptions.AuthenticationMode">
+      <summary>활성인 경우 인증 미들웨어가 들어오는 요청 사용자를 변경하고 나가는 401 권한 없음 응답을 변경합니다.수동인 경우 AuthenticationType에 의해 명시적으로 표시된 경우에만 인증 미들웨어가 ID를 제공하고 응답을 변경합니다.</summary>
+    </member>
+    <member name="P:Microsoft.Owin.Security.AuthenticationOptions.AuthenticationType">
+      <summary>옵션의 AuthenticationType은 IIdentity AuthenticationType 속성에 해당합니다.파이프라인에서 동일한 인증 미들웨어 유형을 두 번 이상 사용하기 위해 다른 값이 할당될 수 있습니다.</summary>
+    </member>
+    <member name="P:Microsoft.Owin.Security.AuthenticationOptions.Description">
+      <summary>응용 프로그램에 사용할 수 있게 된 인증 유형에 대한 추가 정보입니다.</summary>
+    </member>
+    <member name="T:Microsoft.Owin.Security.AuthenticationTicket">
+      <summary>추가 인증 상태 및 사용자 ID 정보를 포함합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.AuthenticationTicket.#ctor(System.Security.Claims.ClaimsIdentity,Microsoft.Owin.Security.AuthenticationProperties)">
+      <summary>
+        <see cref="T:Microsoft.Owin.Security.AuthenticationTicket" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="P:Microsoft.Owin.Security.AuthenticationTicket.Identity">
+      <summary>인증된 사용자 ID를 가져옵니다.</summary>
+    </member>
+    <member name="P:Microsoft.Owin.Security.AuthenticationTicket.Properties">
+      <summary>인증 세션의 추가 상태 값입니다.</summary>
+    </member>
+    <member name="T:Microsoft.Owin.Security.CertificateSubjectKeyIdentifierValidator">
+      <summary>인증서의 주체 키 식별자에 따라 고정 인증서 유효성 검사를 제공합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.CertificateSubjectKeyIdentifierValidator.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+      <summary>
+        <see cref="T:Microsoft.Owin.Security.CertificateSubjectKeyIdentifierValidator" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="validSubjectKeyIdentifiers">HTTPS 요청에 유효한 주체 키 식별자 집합입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.CertificateSubjectKeyIdentifierValidator.Validate(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
+      <summary>인증에 사용되는 원격 SSL(Secure Sockets Layer) 인증서를 확인합니다.</summary>
+      <returns>지정된 인증서를 인증에 수락할지 여부를 결정하는 부울 값입니다.</returns>
+      <param name="sender">이 유효성 검사의 상태 정보가 포함된 개체입니다.</param>
+      <param name="certificate">원격 당사자를 인증하는 데 사용되는 인증서입니다.</param>
+      <param name="chain">원격 인증서와 연결된 인증 기관 체인입니다.</param>
+      <param name="sslPolicyErrors">원격 인증서와 연결된 하나 이상의 오류입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.CertificateSubjectPublicKeyInfoValidator">
+      <summary>http://datatracker.ietf.org/doc/draft-ietf-websec-key-pinning/?include_text=1에서 전달된 인증서 고정 유효성 검사기를 구현합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.CertificateSubjectPublicKeyInfoValidator.#ctor(System.Collections.Generic.IEnumerable{System.String},Microsoft.Owin.Security.SubjectPublicKeyInfoAlgorithm)">
+      <summary>
+        <see cref="T:Microsoft.Owin.Security.CertificateSubjectPublicKeyInfoValidator" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="validBase64EncodedSubjectPublicKeyInfoHashes">인증서 공개 키 정보 blob의 base64로 인코딩된 유효한 해시 컬렉션입니다.</param>
+      <param name="algorithm">해시를 생성하는 데 사용되는 알고리즘입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.CertificateSubjectPublicKeyInfoValidator.Validate(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
+      <summary>SPKI 해시가 하나 이상 알려져 있는지 확인합니다.</summary>
+      <returns>지정된 인증서를 인증에 수락할지 여부를 결정하는 부울 값입니다.</returns>
+      <param name="sender">이 유효성 검사의 상태 정보가 포함된 개체입니다.</param>
+      <param name="certificate">원격 당사자를 인증하는 데 사용되는 인증서입니다.</param>
+      <param name="chain">원격 인증서와 연결된 인증 기관 체인입니다.</param>
+      <param name="sslPolicyErrors">원격 인증서와 연결된 하나 이상의 오류입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.CertificateThumbprintValidator">
+      <summary>인증서 지문에 따라 고정 인증서 유효성 검사를 제공합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.CertificateThumbprintValidator.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+      <summary>
+        <see cref="T:Microsoft.Owin.Security.CertificateThumbprintValidator" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="validThumbprints">HTTPS 요청에 유효한 지문 집합입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.CertificateThumbprintValidator.Validate(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
+      <summary>서명 체인의 인증서 지문이 하나 이상의 허용 목록 지문과 일치하는지 확인합니다.</summary>
+      <returns>지정된 인증서를 인증에 수락할지 여부를 결정하는 부울 값입니다.</returns>
+      <param name="sender">이 유효성 검사의 상태 정보가 포함된 개체입니다.</param>
+      <param name="certificate">원격 당사자를 인증하는 데 사용되는 인증서입니다.</param>
+      <param name="chain">원격 인증서와 연결된 인증 기관 체인입니다.</param>
+      <param name="sslPolicyErrors">원격 인증서와 연결된 하나 이상의 오류입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.ICertificateValidator">
+      <summary>호스트 소유자 모르게 호스트에 대해 해킹되었거나 허위인 CA 발급 인증서가 발생하지 않도록 보호하기 위해 알려진 양호한 인증서 목록에 대해 HTTPS 통신을 확인하는 고정 인증서 유효성 검사를 제공하는 인터페이스입니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.ICertificateValidator.Validate(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
+      <summary>인증에 사용되는 원격 SSL(Secure Sockets Layer) 인증서를 확인합니다.</summary>
+      <returns>지정된 인증서를 인증에 수락할지 여부를 결정하는 부울 값입니다.</returns>
+      <param name="sender">이 유효성 검사의 상태 정보가 포함된 개체입니다.</param>
+      <param name="certificate">원격 당사자를 인증하는 데 사용되는 인증서입니다.</param>
+      <param name="chain">원격 인증서와 연결된 인증 기관 체인입니다.</param>
+      <param name="sslPolicyErrors">원격 인증서와 연결된 하나 이상의 오류입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.ISecureDataFormat`1">
+      <summary>보안을 설정할 데이터를 나타냅니다.</summary>
+      <typeparam name="TData">제네릭 형식 데이터입니다.</typeparam>
+    </member>
+    <member name="M:Microsoft.Owin.Security.ISecureDataFormat`1.Protect(`0)">
+      <summary>형식을 지정할 수 없도록 데이터를 보호합니다.</summary>
+      <returns>보호할 데이터입니다.</returns>
+      <param name="data">데이터입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.ISecureDataFormat`1.Unprotect(System.String)">
+      <summary>지정된 텍스트에서 데이터의 암호를 해독합니다.</summary>
+      <returns>암호를 해독할 데이터입니다.</returns>
+      <param name="protectedText">보호된 텍스트입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.SubjectPublicKeyInfoAlgorithm">
+      <summary>주체 공개 키 정보 Blob 해시를 생성하는 데 사용되는 알고리즘입니다.</summary>
+    </member>
+    <member name="F:Microsoft.Owin.Security.SubjectPublicKeyInfoAlgorithm.Sha1">
+      <summary />
+    </member>
+    <member name="F:Microsoft.Owin.Security.SubjectPublicKeyInfoAlgorithm.Sha256">
+      <summary />
+    </member>
+    <member name="T:Microsoft.Owin.Security.DataHandler.PropertiesDataFormat"></member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.PropertiesDataFormat.#ctor(Microsoft.Owin.Security.DataProtection.IDataProtector)"></member>
+    <member name="T:Microsoft.Owin.Security.DataHandler.SecureDataFormat`1">
+      <typeparam name="TData"></typeparam>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.SecureDataFormat`1.#ctor(Microsoft.Owin.Security.DataHandler.Serializer.IDataSerializer{`0},Microsoft.Owin.Security.DataProtection.IDataProtector,Microsoft.Owin.Security.DataHandler.Encoder.ITextEncoder)"></member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.SecureDataFormat`1.Protect(`0)"></member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.SecureDataFormat`1.Unprotect(System.String)"></member>
+    <member name="T:Microsoft.Owin.Security.DataHandler.TicketDataFormat"></member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.TicketDataFormat.#ctor(Microsoft.Owin.Security.DataProtection.IDataProtector)"></member>
+    <member name="T:Microsoft.Owin.Security.DataHandler.Encoder.Base64TextEncoder">
+      <summary>텍스트 base64 형식 인코더를 나타냅니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Encoder.Base64TextEncoder.#ctor">
+      <summary>
+        <see cref="T:Microsoft.Owin.Security.DataHandler.Encoder.Base64TextEncoder" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Encoder.Base64TextEncoder.Decode(System.String)">
+      <summary>지정된 텍스트를 디코딩합니다.</summary>
+      <returns>디코딩된 데이터를 나타내는 <see cref="T:System.Byte" />입니다.</returns>
+      <param name="text">디코딩할 텍스트입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Encoder.Base64TextEncoder.Encode(System.Byte[])">
+      <summary>데이터를 base64 형식 문자열로 변환합니다.</summary>
+      <returns>base64 형식으로 변환된 데이터의 문자열입니다.</returns>
+      <param name="data">변환할 데이터입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.DataHandler.Encoder.Base64UrlTextEncoder">
+      <summary>텍스트 Base64Url 형식 인코더를 나타냅니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Encoder.Base64UrlTextEncoder.#ctor">
+      <summary>
+        <see cref="T:Microsoft.Owin.Security.DataHandler.Encoder.Base64UrlTextEncoder" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Encoder.Base64UrlTextEncoder.Decode(System.String)">
+      <summary>지정된 텍스트를 디코딩합니다.</summary>
+      <returns>디코딩된 데이터를 나타내는 <see cref="T:System.Byte" />입니다.</returns>
+      <param name="text">디코딩할 텍스트입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Encoder.Base64UrlTextEncoder.Encode(System.Byte[])">
+      <summary>데이터를 Base64Url 형식 문자열로 변환합니다.</summary>
+      <returns>Base64Url 형식으로 변환된 데이터의 문자열입니다.</returns>
+      <param name="data">변환할 데이터입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.DataHandler.Encoder.ITextEncoder">
+      <summary>텍스트 인코더에 대한 인터페이스를 나타냅니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Encoder.ITextEncoder.Decode(System.String)">
+      <summary>지정된 텍스트를 디코딩합니다.</summary>
+      <returns>디코딩된 데이터를 나타내는 <see cref="T:System.Byte" />입니다.</returns>
+      <param name="text">디코딩할 텍스트입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Encoder.ITextEncoder.Encode(System.Byte[])">
+      <summary>데이터를 문자열로 변환합니다.</summary>
+      <returns>변환된 데이터 문자열입니다.</returns>
+      <param name="data">변환할 데이터입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.DataHandler.Encoder.TextEncodings">
+      <summary>텍스트 인코딩을 나타냅니다.</summary>
+    </member>
+    <member name="P:Microsoft.Owin.Security.DataHandler.Encoder.TextEncodings.Base64">
+      <summary>Base64 텍스트 인코더를 가져옵니다.</summary>
+      <returns>Base64 텍스트 인코더입니다.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.DataHandler.Encoder.TextEncodings.Base64Url">
+      <summary>Base64Url 텍스트 인코더를 가져옵니다.</summary>
+      <returns>Base64Url 텍스트 인코더입니다.</returns>
+    </member>
+    <member name="T:Microsoft.Owin.Security.DataHandler.Serializer.DataSerializers">
+      <summary>데이터 직렬 변환기를 제공합니다.</summary>
+    </member>
+    <member name="P:Microsoft.Owin.Security.DataHandler.Serializer.DataSerializers.Properties"></member>
+    <member name="P:Microsoft.Owin.Security.DataHandler.Serializer.DataSerializers.Ticket">
+      <summary>티켓 데이터 직렬 변환기를 가져오거나 설정합니다.</summary>
+      <returns>티켓 데이터 직렬 변환기입니다.</returns>
+    </member>
+    <member name="T:Microsoft.Owin.Security.DataHandler.Serializer.IDataSerializer`1">
+      <summary>데이터 직렬 변환기에 대한 인터페이스를 나타냅니다.</summary>
+      <typeparam name="TModel">데이터의 모델 유형입니다.</typeparam>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Serializer.IDataSerializer`1.Deserialize(System.Byte[])">
+      <summary>지정된 데이터를 역직렬화합니다.</summary>
+      <param name="data">역직렬화할 데이터입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Serializer.IDataSerializer`1.Serialize(`0)">
+      <summary>지정된 모델을 사용하여 데이터를 직렬화합니다.</summary>
+      <param name="model">데이터 모델입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.DataHandler.Serializer.PropertiesSerializer"></member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Serializer.PropertiesSerializer.#ctor"></member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Serializer.PropertiesSerializer.Deserialize(System.Byte[])"></member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Serializer.PropertiesSerializer.Read(System.IO.BinaryReader)"></member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Serializer.PropertiesSerializer.Serialize(Microsoft.Owin.Security.AuthenticationProperties)"></member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Serializer.PropertiesSerializer.Write(System.IO.BinaryWriter,Microsoft.Owin.Security.AuthenticationProperties)"></member>
+    <member name="T:Microsoft.Owin.Security.DataHandler.Serializer.TicketSerializer">
+      <summary>티켓 직렬 변환기를 나타냅니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Serializer.TicketSerializer.#ctor">
+      <summary>
+        <see cref="T:Microsoft.Owin.Security.DataHandler.Serializer.TicketSerializer" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Serializer.TicketSerializer.Deserialize(System.Byte[])">
+      <summary>티켓 데이터를 역직렬화합니다.</summary>
+      <returns>역직렬화되는 데이터입니다.</returns>
+      <param name="data">역직렬화할 데이터입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Serializer.TicketSerializer.Read(System.IO.BinaryReader)">
+      <summary>판독기에서 지정된 데이터를 읽습니다.</summary>
+      <returns>읽을 데이터입니다.</returns>
+      <param name="reader">읽을 판독기입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Serializer.TicketSerializer.Serialize(Microsoft.Owin.Security.AuthenticationTicket)">
+      <summary>지정된 모델을 사용하여 데이터를 직렬화합니다.</summary>
+      <param name="model">데이터 모델입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataHandler.Serializer.TicketSerializer.Write(System.IO.BinaryWriter,Microsoft.Owin.Security.AuthenticationTicket)">
+      <summary>지정된 기록기에서 데이터를 씁니다.</summary>
+      <param name="writer">기록기입니다.</param>
+      <param name="model">데이터 모델입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.DataProtection.AppBuilderExtensions">
+      <summary>응용 프로그램 작성기 확장입니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataProtection.AppBuilderExtensions.CreateDataProtector(Owin.IAppBuilder,System.String[])">
+      <summary>데이터 보호자를 만듭니다.</summary>
+      <returns>만든 <see cref="T:Microsoft.Owin.Security.DataProtection.IDataProtector" />입니다.</returns>
+      <param name="app">응용 프로그램 작성기입니다.</param>
+      <param name="purposes">데이터 보호자를 만드는 목적에 대한 목록입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataProtection.AppBuilderExtensions.GetDataProtectionProvider(Owin.IAppBuilder)">
+      <summary>응용 프로그램에 대한 데이터 보호 공급자를 검색합니다.</summary>
+      <returns>가져올 <see cref="T:Microsoft.Owin.Security.DataProtection.IDataProtectionProvider" /> 개체입니다.</returns>
+      <param name="app">응용 프로그램 작성기입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataProtection.AppBuilderExtensions.SetDataProtectionProvider(Owin.IAppBuilder,Microsoft.Owin.Security.DataProtection.IDataProtectionProvider)">
+      <summary>데이터 보호 공급자를 설정합니다.</summary>
+      <param name="app">응용 프로그램 작성기입니다.</param>
+      <param name="dataProtectionProvider">설정할 데이터 보호 공급자입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider">
+      <summary>데이터 보호 API에서 파생되는 데이터 보호 서비스를 제공하는 데 사용됩니다.응용 프로그램을 ASP.NET에서 호스트하지 않고 모든 프로세스가 동일한 도메인 ID로 실행되고 있는 경우 선택하기에 가장 적합한 데이터 보호입니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider.#ctor">
+      <summary>임의 응용 프로그램 이름을 사용하여 새 DpapiDataProtectionProvider를 초기화합니다.현재 응용 프로그램이 실행되는 동안에 데이터를 보호하는 데만 유용합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider.#ctor(System.String)">
+      <summary>지정된 appName을 보호 알고리즘의 일부로 사용하는 새 DpapiDataProtectionProvider를 초기화합니다.</summary>
+      <param name="appName">보안 데이터를 왕복하는 데 필요한 사용자 제공 값입니다.자체 호스트된 경우 IAppBuilder.Properties["owin.AppName"]에서 기본값을 가져옵니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider.Create(System.String[])">
+      <summary>공급자에 대해 IDataProtection의 새 인스턴스를 반환합니다.</summary>
+      <returns>데이터 보호 서비스 인스턴스입니다.</returns>
+      <param name="purposes">보호되는 데이터가 올바른 용도로만 보호 해제될 수 있도록 하는 데 사용되는 추가 엔트로피입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.DataProtection.IDataProtectionProvider">
+      <summary> IDataProtection 인스턴스를 만드는 데 사용되는 팩터리입니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataProtection.IDataProtectionProvider.Create(System.String[])">
+      <summary> 공급자에 대해 IDataProtection의 새 인스턴스를 반환합니다. </summary>
+      <returns>데이터 보호 서비스 인스턴스입니다.</returns>
+      <param name="purposes">보호되는 데이터가 올바른 용도로만 보호 해제될 수 있도록 하는 데 사용되는 추가 엔트로피입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.DataProtection.IDataProtector">
+      <summary> 데이터를 보호하고 보호 해제하는 데 사용되는 서비스입니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataProtection.IDataProtector.Protect(System.Byte[])">
+      <summary> 사용자 데이터를 보호하도록 호출됩니다.</summary>
+      <param name="userData">보호되어야 하는 원본 데이터입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.DataProtection.IDataProtector.Unprotect(System.Byte[])">
+      <summary> 사용자 데이터를 보호 해제하도록 호출됩니다.</summary>
+      <param name="protectedData">동일한 IDataProtection 서비스의 Protect에 대한 호출에서 반환되는 바이트 배열입니다.</param>
+    </member>
+    <member name="T:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler">
+      <summary> 대부분의 인증 미들웨어에서 수행되는 요청별 작업의 기본 클래스입니다. </summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.#ctor">
+      <summary>
+        <see cref="T:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.ApplyResponseChallengeAsync">
+      <summary>해당 인증 체계에서 요청 흐름의 일부로 인증 상호 작용을 처리하는 경우 401 챌린지 문제를 처리하도록 이 메서드를 재정의합니다.즉, 응답 헤더를 추가하거나 401 결과를 로그인 페이지 또는 외부 로그인 위치의 302로 변경합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.ApplyResponseCoreAsync">
+      <summary>처리기에서 재정의할 수 있는 핵심 메서드입니다.기본 동작은 두 개의 공통 응답 작업을 호출하는 것입니다. 여기서 하나는 로그인/로그아웃 문제를 처리하고 나머지는 401 챌린지를 처리합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.ApplyResponseGrantAsync">
+      <summary>해당 인증 체계에서 요청 흐름의 일부로 부여/취소를 처리하는 경우 로그인/로그아웃 문제를 처리하도록 이 메서드를 재정의합니다.즉, 쿠키를 설정하거나 삭제합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.AuthenticateAsync">
+      <summary>현재 요청에서 AuthenticateCore의 인증 논리를 한 번만 수행하도록 하며 해당 결과를 반환합니다.인증을 두 번 이상 호출하면 항상 원래 값이 반환됩니다.AuthenticateCore를 직접 호출하는 대신 항상 이 메서드를 호출해야 합니다.</summary>
+      <returns>인증 논리에서 제공된 티켓 데이터입니다.</returns>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.AuthenticateCoreAsync">
+      <summary>처리기에서 제공되는 핵심 인증 논리입니다.요청당 한 번만 호출됩니다.직접 호출하지 않고 대신 래핑된 Authenticate 메서드를 호출합니다.</summary>
+      <returns>인증 논리에서 제공된 티켓 데이터입니다.</returns>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.BaseInitializeAsync(Microsoft.Owin.Security.AuthenticationOptions,Microsoft.Owin.IOwinContext)"></member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.Context"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.GenerateCorrelationId(Microsoft.Owin.Security.AuthenticationProperties)"></member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.Helper"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.InitializeCoreAsync"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.InvokeAsync">
+      <summary>초기화 후 공용 코드별로 한 번 호출됩니다.인증 미들웨어가 특별히 알려진 경로에 직접 응답하면 이 가상 경로를 재정의하고 요청 경로와 알려진 해당 경로를 비교한 후 모든 응답 정보를 적절하게 제공해야 합니다. 이후 처리를 중지하려면 true입니다.</summary>
+      <returns>false를 반환하면 공용 코드가 라인의 다음 미들웨어를 호출합니다.true를 반환하면 공용 코드가 나머지 미들웨어 파이프라인을 호출하지 않고 비동기 완료 작업을 시작합니다.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.Request"></member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.RequestPathBase"></member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.Response"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.TeardownCoreAsync"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler.ValidateCorrelationId(Microsoft.Owin.Security.AuthenticationProperties,Microsoft.Owin.Logging.ILogger)"></member>
+    <member name="T:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler`1">
+      <summary>대부분의 인증 미들웨어에서 수행되는 요청별 작업의 기본 클래스입니다.</summary>
+      <typeparam name="TOptions">AuthenticationOptions 속성에 사용할 유형을 지정합니다.</typeparam>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler`1.#ctor">
+      <summary>
+        <see cref="T:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler`1" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler`1.Options"></member>
+    <member name="T:Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1">
+      <summary>인증 미들웨어를 나타냅니다.</summary>
+      <typeparam name="TOptions">인증 옵션 유형입니다.</typeparam>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.#ctor(Microsoft.Owin.OwinMiddleware,`0)">
+      <summary>
+        <see cref="T:Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="next">다음 OWIN 미들웨어입니다.</param>
+      <param name="options">인증 옵션입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.CreateHandler">
+      <summary>인증 처리기를 만듭니다.</summary>
+      <returns>만든 <see cref="T:Microsoft.Owin.Security.Infrastructure.AuthenticationHandler`1" />입니다.</returns>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.Invoke(Microsoft.Owin.IOwinContext)"></member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.Options">
+      <summary>인증 옵션을 가져오거나 설정합니다.</summary>
+      <returns>인증을 완료하는 작업입니다.</returns>
+    </member>
+    <member name="T:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenCreateContext"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenCreateContext.#ctor(Microsoft.Owin.IOwinContext,Microsoft.Owin.Security.ISecureDataFormat{Microsoft.Owin.Security.AuthenticationTicket},Microsoft.Owin.Security.AuthenticationTicket)"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenCreateContext.SerializeTicket"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenCreateContext.SetToken(System.String)"></member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenCreateContext.Ticket"></member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenCreateContext.Token"></member>
+    <member name="T:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenProvider"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenProvider.#ctor"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenProvider.Create(Microsoft.Owin.Security.Infrastructure.AuthenticationTokenCreateContext)"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenProvider.CreateAsync(Microsoft.Owin.Security.Infrastructure.AuthenticationTokenCreateContext)"></member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenProvider.OnCreate"></member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenProvider.OnCreateAsync"></member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenProvider.OnReceive"></member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenProvider.OnReceiveAsync"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenProvider.Receive(Microsoft.Owin.Security.Infrastructure.AuthenticationTokenReceiveContext)"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenProvider.ReceiveAsync(Microsoft.Owin.Security.Infrastructure.AuthenticationTokenReceiveContext)"></member>
+    <member name="T:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenReceiveContext"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenReceiveContext.#ctor(Microsoft.Owin.IOwinContext,Microsoft.Owin.Security.ISecureDataFormat{Microsoft.Owin.Security.AuthenticationTicket},System.String)"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenReceiveContext.DeserializeTicket(System.String)"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenReceiveContext.SetTicket(Microsoft.Owin.Security.AuthenticationTicket)"></member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenReceiveContext.Ticket"></member>
+    <member name="P:Microsoft.Owin.Security.Infrastructure.AuthenticationTokenReceiveContext.Token"></member>
+    <member name="T:Microsoft.Owin.Security.Infrastructure.IAuthenticationTokenProvider"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.IAuthenticationTokenProvider.Create(Microsoft.Owin.Security.Infrastructure.AuthenticationTokenCreateContext)"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.IAuthenticationTokenProvider.CreateAsync(Microsoft.Owin.Security.Infrastructure.AuthenticationTokenCreateContext)"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.IAuthenticationTokenProvider.Receive(Microsoft.Owin.Security.Infrastructure.AuthenticationTokenReceiveContext)"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.IAuthenticationTokenProvider.ReceiveAsync(Microsoft.Owin.Security.Infrastructure.AuthenticationTokenReceiveContext)"></member>
+    <member name="T:Microsoft.Owin.Security.Infrastructure.SecurityHelper">
+      <summary>인증 미들웨어를 구현할 때 사용되는 도우미 코드입니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.SecurityHelper.#ctor(Microsoft.Owin.IOwinContext)">
+      <summary>인증 미들웨어를 구현할 때 사용되는 도우미 코드입니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.SecurityHelper.AddUserIdentity(System.Security.Principal.IIdentity)">
+      <summary>"server.User" 환경 키의 ClaimsPrincipal에 다른 ClaimsIdentity를 추가합니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.SecurityHelper.Equals(Microsoft.Owin.Security.Infrastructure.SecurityHelper)"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.SecurityHelper.Equals(System.Object)"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.SecurityHelper.GetHashCode"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.SecurityHelper.LookupChallenge(System.String,Microsoft.Owin.Security.AuthenticationMode)">
+      <summary>특정 인증 미들웨어의 응답 챌린지 세부 정보를 찾습니다.</summary>
+      <returns>미들웨어가 작동하는 방식을 지정하는 정보입니다.</returns>
+      <param name="authenticationType">검색할 인증 유형입니다.</param>
+      <param name="authenticationMode">미들웨어가 실행되는 인증 모드입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.SecurityHelper.LookupSignIn(System.String)">
+      <summary>특정 인증 미들웨어의 응답 로그인 세부 정보를 찾습니다.</summary>
+      <returns>미들웨어가 작동하는 방식을 지정하는 정보입니다.</returns>
+      <param name="authenticationType">검색할 인증 유형입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.SecurityHelper.LookupSignOut(System.String,Microsoft.Owin.Security.AuthenticationMode)">
+      <summary>특정 인증 미들웨어의 응답 로그아웃 세부 정보를 찾습니다.</summary>
+      <returns>미들웨어가 작동하는 방식을 지정하는 정보입니다.</returns>
+      <param name="authenticationType">검색할 인증 유형입니다.</param>
+      <param name="authenticationMode">미들웨어가 실행되는 인증 모드입니다.</param>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.SecurityHelper.op_Equality(Microsoft.Owin.Security.Infrastructure.SecurityHelper,Microsoft.Owin.Security.Infrastructure.SecurityHelper)"></member>
+    <member name="M:Microsoft.Owin.Security.Infrastructure.SecurityHelper.op_Inequality(Microsoft.Owin.Security.Infrastructure.SecurityHelper,Microsoft.Owin.Security.Infrastructure.SecurityHelper)"></member>
+    <member name="T:Microsoft.Owin.Security.Notifications.AuthenticationFailedNotification`2">
+      <typeparam name="TMessage"></typeparam>
+      <typeparam name="TOptions"></typeparam>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Notifications.AuthenticationFailedNotification`2.#ctor(Microsoft.Owin.IOwinContext,`1)"></member>
+    <member name="P:Microsoft.Owin.Security.Notifications.AuthenticationFailedNotification`2.Exception"></member>
+    <member name="P:Microsoft.Owin.Security.Notifications.AuthenticationFailedNotification`2.ProtocolMessage"></member>
+    <member name="T:Microsoft.Owin.Security.Notifications.BaseNotification`1">
+      <typeparam name="TOptions"></typeparam>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Notifications.BaseNotification`1.#ctor(Microsoft.Owin.IOwinContext,`0)"></member>
+    <member name="P:Microsoft.Owin.Security.Notifications.BaseNotification`1.HandledResponse"></member>
+    <member name="M:Microsoft.Owin.Security.Notifications.BaseNotification`1.HandleResponse">
+      <summary>이 요청에 대한 모든 처리를 중단하고 클라이언트에 반환합니다.호출자가 전체 응답을 생성합니다.</summary>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Notifications.BaseNotification`1.Skipped"></member>
+    <member name="M:Microsoft.Owin.Security.Notifications.BaseNotification`1.SkipToNextMiddleware">
+      <summary>현재 미들웨어에서 요청 처리를 중단하고 제어를 다음 항목에 전달합니다.</summary>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Notifications.BaseNotification`1.State"></member>
+    <member name="T:Microsoft.Owin.Security.Notifications.MessageReceivedNotification`2">
+      <typeparam name="TMessage"></typeparam>
+      <typeparam name="TOptions"></typeparam>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Notifications.MessageReceivedNotification`2.#ctor(Microsoft.Owin.IOwinContext,`1)"></member>
+    <member name="P:Microsoft.Owin.Security.Notifications.MessageReceivedNotification`2.ProtocolMessage"></member>
+    <member name="T:Microsoft.Owin.Security.Notifications.NotificationResultState"></member>
+    <member name="F:Microsoft.Owin.Security.Notifications.NotificationResultState.Continue">
+      <summary>정상적인 처리를 계속합니다.</summary>
+    </member>
+    <member name="F:Microsoft.Owin.Security.Notifications.NotificationResultState.HandledResponse">
+      <summary>이 요청에 대한 모든 처리를 중단합니다.</summary>
+    </member>
+    <member name="F:Microsoft.Owin.Security.Notifications.NotificationResultState.Skipped">
+      <summary>현재 미들웨어에서 요청 처리를 중단하고 제어를 다음 항목에 전달합니다.</summary>
+    </member>
+    <member name="T:Microsoft.Owin.Security.Notifications.RedirectToIdentityProviderNotification`2">
+      <typeparam name="TMessage"></typeparam>
+      <typeparam name="TOptions"></typeparam>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Notifications.RedirectToIdentityProviderNotification`2.#ctor(Microsoft.Owin.IOwinContext,`1)"></member>
+    <member name="P:Microsoft.Owin.Security.Notifications.RedirectToIdentityProviderNotification`2.HandledResponse"></member>
+    <member name="M:Microsoft.Owin.Security.Notifications.RedirectToIdentityProviderNotification`2.HandleResponse">
+      <summary>이 요청에 대한 모든 처리를 중단하고 클라이언트에 반환합니다.호출자가 전체 응답을 생성합니다.</summary>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Notifications.RedirectToIdentityProviderNotification`2.ProtocolMessage"></member>
+    <member name="P:Microsoft.Owin.Security.Notifications.RedirectToIdentityProviderNotification`2.State"></member>
+    <member name="T:Microsoft.Owin.Security.Notifications.SecurityTokenReceivedNotification`2">
+      <typeparam name="TMessage"></typeparam>
+      <typeparam name="TOptions"></typeparam>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Notifications.SecurityTokenReceivedNotification`2.#ctor(Microsoft.Owin.IOwinContext,`1)"></member>
+    <member name="P:Microsoft.Owin.Security.Notifications.SecurityTokenReceivedNotification`2.ProtocolMessage"></member>
+    <member name="T:Microsoft.Owin.Security.Notifications.SecurityTokenValidatedNotification`2">
+      <typeparam name="TMessage"></typeparam>
+      <typeparam name="TOptions"></typeparam>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Notifications.SecurityTokenValidatedNotification`2.#ctor(Microsoft.Owin.IOwinContext,`1)"></member>
+    <member name="P:Microsoft.Owin.Security.Notifications.SecurityTokenValidatedNotification`2.AuthenticationTicket">
+      <summary>
+        <see cref="P:Microsoft.Owin.Security.Notifications.SecurityTokenValidatedNotification`2.AuthenticationTicket" />을 가져오거나 설정합니다.</summary>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Notifications.SecurityTokenValidatedNotification`2.ProtocolMessage">
+      <summary>프로토콜 메시지를 가져오거나 설정합니다.</summary>
+    </member>
+    <member name="T:Microsoft.Owin.Security.Provider.BaseContext">
+      <summary>기본 컨텍스트를 나타냅니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Provider.BaseContext.#ctor(Microsoft.Owin.IOwinContext)"></member>
+    <member name="P:Microsoft.Owin.Security.Provider.BaseContext.OwinContext"></member>
+    <member name="P:Microsoft.Owin.Security.Provider.BaseContext.Request"></member>
+    <member name="P:Microsoft.Owin.Security.Provider.BaseContext.Response"></member>
+    <member name="T:Microsoft.Owin.Security.Provider.BaseContext`1">
+      <summary>특정 이벤트 컨텍스트에 사용되는 기본 클래스입니다.</summary>
+      <typeparam name="TOptions"></typeparam>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Provider.BaseContext`1.#ctor(Microsoft.Owin.IOwinContext,`0)"></member>
+    <member name="P:Microsoft.Owin.Security.Provider.BaseContext`1.Options"></member>
+    <member name="P:Microsoft.Owin.Security.Provider.BaseContext`1.OwinContext"></member>
+    <member name="P:Microsoft.Owin.Security.Provider.BaseContext`1.Request"></member>
+    <member name="P:Microsoft.Owin.Security.Provider.BaseContext`1.Response"></member>
+    <member name="T:Microsoft.Owin.Security.Provider.EndpointContext">
+      <summary>끝점 컨텍스트를 나타냅니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Provider.EndpointContext.#ctor(Microsoft.Owin.IOwinContext)"></member>
+    <member name="P:Microsoft.Owin.Security.Provider.EndpointContext.IsRequestCompleted">
+      <summary>이 컨텍스트의 요청이 완료되었는지 여부를 나타내는 값을 가져오거나 설정합니다.</summary>
+      <returns>이 컨텍스트의 요청이 완료되었으면 true이고, 그렇지 않으면 false입니다.</returns>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Provider.EndpointContext.RequestCompleted">
+      <summary>컨텍스트의 완료된 요청을 나타냅니다.</summary>
+    </member>
+    <member name="T:Microsoft.Owin.Security.Provider.EndpointContext`1">
+      <summary>특정 이벤트 컨텍스트에 사용되는 기본 클래스입니다.</summary>
+      <typeparam name="TOptions"></typeparam>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Provider.EndpointContext`1.#ctor(Microsoft.Owin.IOwinContext,`0)">
+      <summary>이 컨텍스트의 인스턴스를 만듭니다.</summary>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Provider.EndpointContext`1.IsRequestCompleted">
+      <summary>요청이 다른 구성 요소에서 추가로 처리되지 않아야 하면 true입니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Provider.EndpointContext`1.RequestCompleted">
+      <summary>요청이 다른 구성 요소에서 추가로 처리되지 않도록 합니다.IsRequestCompleted는 호출 후에 true가 됩니다.</summary>
+    </member>
+    <member name="T:Microsoft.Owin.Security.Provider.ReturnEndpointContext">
+      <summary>반환 끝점 컨텍스트를 나타냅니다.</summary>
+    </member>
+    <member name="M:Microsoft.Owin.Security.Provider.ReturnEndpointContext.#ctor(Microsoft.Owin.IOwinContext,Microsoft.Owin.Security.AuthenticationTicket)"></member>
+    <member name="P:Microsoft.Owin.Security.Provider.ReturnEndpointContext.Identity">
+      <summary>이 컨텍스트의 ID를 가져오거나 설정합니다.</summary>
+      <returns>이 컨텍스트의 ID입니다.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Provider.ReturnEndpointContext.Properties"></member>
+    <member name="P:Microsoft.Owin.Security.Provider.ReturnEndpointContext.RedirectUri">
+      <summary>이 컨텍스트를 반환할 때 사용되는 URI를 가져오거나 설정합니다.</summary>
+      <returns>이 컨텍스트를 반환할 때 사용되는 URI입니다.</returns>
+    </member>
+    <member name="P:Microsoft.Owin.Security.Provider.ReturnEndpointContext.SignInAsAuthenticationType">
+      <summary>인증 유형으로 로그인하는 컨텍스트를 가져오거나 설정합니다.</summary>
+      <returns>인증 유형으로 로그인하는 컨텍스트입니다.</returns>
+    </member>
+  </members>
+</doc>

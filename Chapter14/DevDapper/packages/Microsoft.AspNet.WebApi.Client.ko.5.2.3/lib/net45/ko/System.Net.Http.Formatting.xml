@@ -1,0 +1,2238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Net.Http.Formatting</name>
+  </assembly>
+  <members>
+    <member name="T:System.Net.Http.ByteRangeStreamContent">
+      <summary>HTTP 206(부분 콘텐츠) 바이트 범위 응답을 생성하는 데 사용되는 스트림을 통해 바이트 범위 뷰를 제공하는 <see cref="T:System.Net.Http.HttpContent" /> 구현입니다.<see cref="T:System.Net.Http.ByteRangeStreamContent" />는 범위가 연속적인지 여부에 상관없이 하나 이상의 바이트 범위를 지원합니다.범위가 하나만 있으면 Content-Range 헤더가 포함된 단일 부분 응답 본문이 생성됩니다.범위가 두 개 이상인 경우 각 본문 부분에 연관된 Content-Range 헤더 필드로 지정된 범위가 포함되어 있으면 multipart/byterange 응답이 생성됩니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.#ctor(System.IO.Stream,System.Net.Http.Headers.RangeHeaderValue,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>HTTP 206(부분 콘텐츠) 바이트 범위 응답을 생성하는 데 사용되는 스트림을 통해 바이트 범위 뷰를 제공하는 <see cref="T:System.Net.Http.HttpContent" /> 구현입니다.요청된 모든 범위가 content 매개 변수로 표시되는 선택된 리소스의 현재 범위와 겹치지 않으면 콘텐츠의 유효한 Content-Range를 나타내는 <see cref="T:System.Net.Http.InvalidByteRangeException" />이 발생합니다.</summary>
+      <param name="content">바이트 범위 뷰를 생성할 스트림입니다.</param>
+      <param name="range">일반적으로 Range HTTP 요청 헤더 필드에서 가져온 범위입니다.</param>
+      <param name="mediaType">콘텐츠 스트림의 미디어 유형입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.#ctor(System.IO.Stream,System.Net.Http.Headers.RangeHeaderValue,System.Net.Http.Headers.MediaTypeHeaderValue,System.Int32)">
+      <summary>HTTP 206(부분 콘텐츠) 바이트 범위 응답을 생성하는 데 사용되는 스트림을 통해 바이트 범위 뷰를 제공하는 <see cref="T:System.Net.Http.HttpContent" /> 구현입니다.요청된 모든 범위가 content 매개 변수로 표시되는 선택된 리소스의 현재 범위와 겹치지 않으면 콘텐츠의 유효한 Content-Range를 나타내는 <see cref="T:System.Net.Http.InvalidByteRangeException" />이 발생합니다.</summary>
+      <param name="content">바이트 범위 뷰를 생성할 스트림입니다.</param>
+      <param name="range">일반적으로 Range HTTP 요청 헤더 필드에서 가져온 범위입니다.</param>
+      <param name="mediaType">콘텐츠 스트림의 미디어 유형입니다.</param>
+      <param name="bufferSize">콘텐츠 스트림을 복사할 때 사용되는 버퍼 크기입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.#ctor(System.IO.Stream,System.Net.Http.Headers.RangeHeaderValue,System.String)">
+      <summary>HTTP 206(부분 콘텐츠) 바이트 범위 응답을 생성하는 데 사용되는 스트림을 통해 바이트 범위 뷰를 제공하는 <see cref="T:System.Net.Http.HttpContent" /> 구현입니다.요청된 모든 범위가 content 매개 변수로 표시되는 선택된 리소스의 현재 범위와 겹치지 않으면 콘텐츠의 유효한 Content-Range를 나타내는 <see cref="T:System.Net.Http.InvalidByteRangeException" />이 발생합니다.</summary>
+      <param name="content">바이트 범위 뷰를 생성할 스트림입니다.</param>
+      <param name="range">일반적으로 Range HTTP 요청 헤더 필드에서 가져온 범위입니다.</param>
+      <param name="mediaType">콘텐츠 스트림의 미디어 유형입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.#ctor(System.IO.Stream,System.Net.Http.Headers.RangeHeaderValue,System.String,System.Int32)">
+      <summary>HTTP 206(부분 콘텐츠) 바이트 범위 응답을 생성하는 데 사용되는 스트림을 통해 바이트 범위 뷰를 제공하는 <see cref="T:System.Net.Http.HttpContent" /> 구현입니다.요청된 모든 범위가 content 매개 변수로 표시되는 선택된 리소스의 현재 범위와 겹치지 않으면 콘텐츠의 유효한 Content-Range를 나타내는 <see cref="T:System.Net.Http.InvalidByteRangeException" />이 발생합니다.</summary>
+      <param name="content">바이트 범위 뷰를 생성할 스트림입니다.</param>
+      <param name="range">일반적으로 Range HTTP 요청 헤더 필드에서 가져온 범위입니다.</param>
+      <param name="mediaType">콘텐츠 스트림의 미디어 유형입니다.</param>
+      <param name="bufferSize">콘텐츠 스트림을 복사할 때 사용되는 버퍼 크기입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.Dispose(System.Boolean)">
+      <summary>
+        <see cref="T:System.Net.Http.ByteRangeStreamContent" /> 클래스의 현재 인스턴스에서 사용된 리소스를 해제합니다.</summary>
+      <param name="disposing">관리된 리소스와 관리되지 않은 리소스를 해제하려면 true이고, 관리되지 않은 리소스만 해제하려면 false입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.SerializeToStreamAsync(System.IO.Stream,System.Net.TransportContext)">
+      <summary>바이트 범위를 비동기적으로 직렬화하고 HTTP 콘텐츠 스트림에 이 범위를 씁니다.</summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="stream">대상 스트림입니다.</param>
+      <param name="context">전송 정보입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.ByteRangeStreamContent.TryComputeLength(System.Int64@)">
+      <summary>바이트 배열의 길이(바이트)가 올바른지 여부를 확인합니다.</summary>
+      <returns>길이가 올바르면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="length">바이트 배열의 길이(바이트)입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.HttpClientExtensions">
+      <summary>
+        <see cref="T:System.Net.Http.HttpClient" />를 사용하여 형식이 지정된 요청을 보내도록 도와주는 확장 메서드를 제공합니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsJsonAsync``1(System.Net.Http.HttpClient,System.String,``0)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsJsonAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsJsonAsync``1(System.Net.Http.HttpClient,System.Uri,``0)">
+      <summary> 지정된 값이 JSON으로 직렬화된 지정된 URI에 POST 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsJsonAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Threading.CancellationToken)">
+      <summary> 지정된 값이 JSON으로 직렬화된 지정된 URI에 POST 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="cancellationToken">취소 알림을 수신하기 위해 다른 개체나 스레드에서 사용할 수 있는 취소 토큰입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsXmlAsync``1(System.Net.Http.HttpClient,System.String,``0)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsXmlAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsXmlAsync``1(System.Net.Http.HttpClient,System.Uri,``0)">
+      <summary> 지정된 값이 XML로 직렬화된 지정된 URI에 POST 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsXmlAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Threading.CancellationToken)">
+      <summary> 지정된 값이 XML로 직렬화된 지정된 URI에 POST 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="cancellationToken">취소 알림을 수신하기 위해 다른 개체나 스레드에서 사용할 수 있는 취소 토큰입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary> 지정된 포맷터를 사용하여 값이 직렬화된 지정된 URI에 POST 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="formatter">값을 serialize하는 데 사용되는 포맷터입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,System.Threading.CancellationToken)">
+      <summary> 지정된 포맷터를 사용하여 값이 직렬화된 지정된 URI에 POST 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="formatter">값을 serialize하는 데 사용되는 포맷터입니다.</param>
+      <param name="mediaType">요청 콘텐츠의 Content-Type 헤더에 대해 신뢰할 수 있는 값입니다. <paramref name="formatter" />의 기본 콘텐츠 형식이 사용된 경우 null이 될 수 있습니다.</param>
+      <param name="cancellationToken">취소 알림을 수신하기 위해 다른 개체나 스레드에서 사용할 수 있는 취소 토큰입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String)">
+      <summary> 지정된 포맷터를 사용하여 값이 직렬화된 지정된 URI에 POST 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="formatter">값을 serialize하는 데 사용되는 포맷터입니다.</param>
+      <param name="mediaType">요청 콘텐츠의 Content-Type 헤더에 대해 신뢰할 수 있는 값입니다. <paramref name="formatter" />의 기본 콘텐츠 형식이 사용된 경우 null이 될 수 있습니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.Threading.CancellationToken)">
+      <summary> 지정된 포맷터를 사용하여 값이 직렬화된 지정된 URI에 POST 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="formatter">값을 serialize하는 데 사용되는 포맷터입니다.</param>
+      <param name="mediaType">요청 콘텐츠의 Content-Type 헤더에 대해 신뢰할 수 있는 값입니다. <paramref name="formatter" />의 기본 콘텐츠 형식이 사용된 경우 null이 될 수 있습니다.</param>
+      <param name="cancellationToken">취소 알림을 수신하기 위해 다른 개체나 스레드에서 사용할 수 있는 취소 토큰입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PostAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Threading.CancellationToken)">
+      <summary> 지정된 포맷터를 사용하여 값이 직렬화된 지정된 URI에 POST 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="formatter">값을 serialize하는 데 사용되는 포맷터입니다.</param>
+      <param name="cancellationToken">취소 알림을 수신하기 위해 다른 개체나 스레드에서 사용할 수 있는 취소 토큰입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsJsonAsync``1(System.Net.Http.HttpClient,System.String,``0)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsJsonAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsJsonAsync``1(System.Net.Http.HttpClient,System.Uri,``0)">
+      <summary> 지정된 값이 JSON으로 직렬화된 지정된 URI에 PUT 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsJsonAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Threading.CancellationToken)">
+      <summary> 지정된 값이 JSON으로 직렬화된 지정된 URI에 PUT 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="cancellationToken">취소 알림을 수신하기 위해 다른 개체나 스레드에서 사용할 수 있는 취소 토큰입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsXmlAsync``1(System.Net.Http.HttpClient,System.String,``0)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsXmlAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsXmlAsync``1(System.Net.Http.HttpClient,System.Uri,``0)">
+      <summary> 지정된 값이 XML로 직렬화된 지정된 URI에 PUT 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsXmlAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Threading.CancellationToken)">
+      <summary> 지정된 값이 XML로 직렬화된 지정된 URI에 PUT 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="cancellationToken">취소 알림을 수신하기 위해 다른 개체나 스레드에서 사용할 수 있는 취소 토큰입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.String,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Threading.CancellationToken)">
+      <typeparam name="T"></typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary> 지정된 포맷터를 사용하여 값이 직렬화된 지정된 URI에 PUT 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="formatter">값을 serialize하는 데 사용되는 포맷터입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,System.Threading.CancellationToken)">
+      <summary> 지정된 포맷터를 사용하여 값이 직렬화된 지정된 URI에 PUT 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="formatter">값을 serialize하는 데 사용되는 포맷터입니다.</param>
+      <param name="mediaType">요청 콘텐츠의 Content-Type 헤더에 대해 신뢰할 수 있는 값입니다. <paramref name="formatter" />의 기본 콘텐츠 형식이 사용된 경우 null이 될 수 있습니다.</param>
+      <param name="cancellationToken">취소 알림을 수신하기 위해 다른 개체나 스레드에서 사용할 수 있는 취소 토큰입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String)">
+      <summary> 지정된 포맷터를 사용하여 값이 직렬화된 지정된 URI에 PUT 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="formatter">값을 serialize하는 데 사용되는 포맷터입니다.</param>
+      <param name="mediaType">요청 콘텐츠의 Content-Type 헤더에 대해 신뢰할 수 있는 값입니다. <paramref name="formatter" />의 기본 콘텐츠 형식이 사용된 경우 null이 될 수 있습니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.Threading.CancellationToken)">
+      <summary> 지정된 포맷터를 사용하여 값이 직렬화된 지정된 URI에 PUT 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="formatter">값을 serialize하는 데 사용되는 포맷터입니다.</param>
+      <param name="mediaType">요청 콘텐츠의 Content-Type 헤더에 대해 신뢰할 수 있는 값입니다. <paramref name="formatter" />의 기본 콘텐츠 형식이 사용된 경우 null이 될 수 있습니다.</param>
+      <param name="cancellationToken">취소 알림을 수신하기 위해 다른 개체나 스레드에서 사용할 수 있는 취소 토큰입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpClientExtensions.PutAsync``1(System.Net.Http.HttpClient,System.Uri,``0,System.Net.Http.Formatting.MediaTypeFormatter,System.Threading.CancellationToken)">
+      <summary> 지정된 포맷터를 사용하여 값이 직렬화된 지정된 URI에 PUT 요청을 비동기 작업으로 보냅니다. </summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="client">요청을 보내는 데 사용되는 클라이언트입니다.</param>
+      <param name="requestUri">요청이 전송되는 URI입니다.</param>
+      <param name="value">요청의 엔터티 본문에 배치되는 값입니다.</param>
+      <param name="formatter">값을 serialize하는 데 사용되는 포맷터입니다.</param>
+      <param name="cancellationToken">취소 알림을 수신하기 위해 다른 개체나 스레드에서 사용할 수 있는 취소 토큰입니다.</param>
+      <typeparam name="T">값의 형식입니다.</typeparam>
+    </member>
+    <member name="T:System.Net.Http.HttpClientFactory">
+      <summary>
+        <see cref="T:System.Net.Http.HttpClient" />의 새 인스턴스를 만들기 위한 팩터리를 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpClientFactory.Create(System.Net.Http.DelegatingHandler[])">
+      <summary>
+        <see cref="T:System.Net.Http.HttpClient" />의 새 인스턴스를 만듭니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.HttpClient" />의 새 인스턴스입니다.</returns>
+      <param name="handlers">HTTP 응답 메시지의 처리를 다른 처리기에 위임하는 HTTP 처리기의 목록입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpClientFactory.Create(System.Net.Http.HttpMessageHandler,System.Net.Http.DelegatingHandler[])">
+      <summary>
+        <see cref="T:System.Net.Http.HttpClient" />의 새 인스턴스를 만듭니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.HttpClient" />의 새 인스턴스입니다.</returns>
+      <param name="innerHandler">HTTP 응답 메시지의 처리를 담당하는 내부 처리기입니다.</param>
+      <param name="handlers">HTTP 응답 메시지의 처리를 다른 처리기에 위임하는 HTTP 처리기의 목록입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpClientFactory.CreatePipeline(System.Net.Http.HttpMessageHandler,System.Collections.Generic.IEnumerable{System.Net.Http.DelegatingHandler})">
+      <summary>파이프라인되어야 하는 <see cref="T:System.Net.Http.HttpClient" />의 새 인스턴스를 만듭니다.</summary>
+      <returns>파이프라인되어야 하는 <see cref="T:System.Net.Http.HttpClient" />의 새 인스턴스입니다.</returns>
+      <param name="innerHandler">HTTP 응답 메시지의 처리를 담당하는 내부 처리기입니다.</param>
+      <param name="handlers">HTTP 응답 메시지의 처리를 다른 처리기에 위임하는 HTTP 처리기의 목록입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.HttpContentExtensions">
+      <summary>HttpContent 인스턴스에서 강력한 형식의 개체를 읽을 수 있는 확장 메서드를 지정합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync``1(System.Net.Http.HttpContent)">
+      <summary>콘텐츠 인스턴스에서 지정된 형식 &lt;typeparamref name="T" /&gt;의 개체를 생성하는 작업을 반환합니다. </summary>
+      <returns>지정된 형식의 개체 인스턴스입니다.</returns>
+      <param name="content">읽을 HttpContent 인스턴스입니다.</param>
+      <typeparam name="T">읽을 개체의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync``1(System.Net.Http.HttpContent,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary>콘텐츠 인스턴스에서 지정된 형식 &lt;typeparamref name="T" /&gt;의 개체를 생성하는 작업을 반환합니다. </summary>
+      <returns>지정된 형식의 개체 인스턴스입니다.</returns>
+      <param name="content">읽을 HttpContent 인스턴스입니다.</param>
+      <param name="formatters">사용할 MediaTyepFormatter 인스턴스의 컬렉션입니다.</param>
+      <typeparam name="T">읽을 개체의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync``1(System.Net.Http.HttpContent,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter},System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>콘텐츠 인스턴스에서 지정된 형식 &lt;typeparamref name="T" /&gt;의 개체를 생성하는 작업을 반환합니다. </summary>
+      <returns>지정된 형식의 개체 인스턴스입니다.</returns>
+      <param name="content">읽을 HttpContent 인스턴스입니다.</param>
+      <param name="formatters">사용할 MediaTypeFormatter 인스턴스의 컬렉션입니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 IFormatterLogger입니다.</param>
+      <typeparam name="T">읽을 개체의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync``1(System.Net.Http.HttpContent,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter},System.Net.Http.Formatting.IFormatterLogger,System.Threading.CancellationToken)">
+      <summary>콘텐츠 인스턴스에서 지정된 형식의 개체를 생성하는 작업을 반환합니다.</summary>
+      <returns>지정된 형식의 개체 인스턴스입니다.</returns>
+      <param name="content">읽을 HttpContent 인스턴스입니다.</param>
+      <param name="formatters">사용할 MediaTypeFormatter 인스턴스의 컬렉션입니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 IFormatterLogger입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+      <typeparam name="T">읽을 개체의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync``1(System.Net.Http.HttpContent,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter},System.Threading.CancellationToken)">
+      <summary>콘텐츠 인스턴스에서 지정된 형식의 개체를 생성하는 작업을 반환합니다.</summary>
+      <returns>지정된 형식의 개체 인스턴스입니다.</returns>
+      <param name="content">읽을 HttpContent 인스턴스입니다.</param>
+      <param name="formatters">사용할 MediaTypeFormatter 인스턴스의 컬렉션입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+      <typeparam name="T">읽을 개체의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync``1(System.Net.Http.HttpContent,System.Threading.CancellationToken)">
+      <summary>콘텐츠 인스턴스에서 지정된 형식의 개체를 생성하는 작업을 반환합니다.</summary>
+      <returns>지정된 형식의 개체 인스턴스입니다.</returns>
+      <param name="content">읽을 HttpContent 인스턴스입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+      <typeparam name="T">읽을 개체의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync(System.Net.Http.HttpContent,System.Type)">
+      <summary>콘텐츠 인스턴스에서 지정된 형식의 개체를 생성하는 작업을 반환합니다. </summary>
+      <returns>지정된 형식의 개체 인스턴스를 생성하는 작업입니다.</returns>
+      <param name="content">읽을 HttpContent 인스턴스입니다.</param>
+      <param name="type">읽을 개체의 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync(System.Net.Http.HttpContent,System.Type,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary> 콘텐츠를 deserialize하기 위해 제공된 포맷터 중 하나를 사용하여 콘텐츠 인스턴스에서 지정된 형식의 개체를 생성하는 작업을 반환합니다. </summary>
+      <returns>지정된 형식의 개체 인스턴스입니다.</returns>
+      <param name="content">읽을 HttpContent 인스턴스입니다.</param>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="formatters">사용할 MediaTypeFormatter 인스턴스의 컬렉션입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync(System.Net.Http.HttpContent,System.Type,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter},System.Net.Http.Formatting.IFormatterLogger)">
+      <summary> 콘텐츠를 deserialize하기 위해 제공된 포맷터 중 하나를 사용하여 콘텐츠 인스턴스에서 지정된 형식의 개체를 생성하는 작업을 반환합니다. </summary>
+      <returns>지정된 형식의 개체 인스턴스입니다.</returns>
+      <param name="content">읽을 HttpContent 인스턴스입니다.</param>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="formatters">사용할 MediaTypeFormatter 인스턴스의 컬렉션입니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 IFormatterLogger입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync(System.Net.Http.HttpContent,System.Type,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter},System.Net.Http.Formatting.IFormatterLogger,System.Threading.CancellationToken)">
+      <summary>콘텐츠를 역직렬화하기 위해 제공된 포맷터 중 하나를 사용하여 콘텐츠 인스턴스에서 지정된 형식의 개체를 생성하는 작업을 반환합니다.</summary>
+      <returns>지정된 형식의 개체 인스턴스입니다.</returns>
+      <param name="content">읽을 HttpContent 인스턴스입니다.</param>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="formatters">사용할 MediaTypeFormatter 인스턴스의 컬렉션입니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 IFormatterLogger입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync(System.Net.Http.HttpContent,System.Type,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter},System.Threading.CancellationToken)">
+      <summary>콘텐츠를 역직렬화하기 위해 제공된 포맷터 중 하나를 사용하여 콘텐츠 인스턴스에서 지정된 형식의 개체를 생성하는 작업을 반환합니다.</summary>
+      <returns>지정된 형식의 개체 인스턴스입니다.</returns>
+      <param name="content">읽을 HttpContent 인스턴스입니다.</param>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="formatters">사용할 MediaTypeFormatter 인스턴스의 컬렉션입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentExtensions.ReadAsAsync(System.Net.Http.HttpContent,System.Type,System.Threading.CancellationToken)">
+      <summary>콘텐츠를 역직렬화하기 위해 제공된 포맷터 중 하나를 사용하여 콘텐츠 인스턴스에서 지정된 형식의 개체를 생성하는 작업을 반환합니다.</summary>
+      <returns>지정된 형식의 개체 인스턴스입니다.</returns>
+      <param name="content">읽을 HttpContent 인스턴스입니다.</param>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.HttpContentFormDataExtensions">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> 인스턴스에서 HTML 양식 URL로 인코딩된 데이터를 읽을 수 있는 확장 메서드입니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpContentFormDataExtensions.IsFormData(System.Net.Http.HttpContent)">
+      <summary>지정된 콘텐츠가 HTML 양식 URL로 인코딩된 데이터인지를 확인합니다.</summary>
+      <returns>지정된 콘텐츠가 HTML 양식 URL로 인코딩된 데이터이면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="content">콘텐츠입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentFormDataExtensions.ReadAsFormDataAsync(System.Net.Http.HttpContent)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> 인스턴스에서 HTML 양식 URL로 인코딩된 데이터를 비동기적으로 읽어 결과를 <see cref="T:System.Collections.Specialized.NameValueCollection" /> 개체에 저장합니다.</summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="content">콘텐츠입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentFormDataExtensions.ReadAsFormDataAsync(System.Net.Http.HttpContent,System.Threading.CancellationToken)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> 인스턴스에서 HTML 양식 URL로 인코딩된 데이터를 비동기적으로 읽어 결과를 <see cref="T:System.Collections.Specialized.NameValueCollection" /> 개체에 저장합니다.</summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="content">콘텐츠입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.HttpContentMessageExtensions">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> 인스턴스에서 <see cref="T:System.Net.Http.HttpRequestMessage" /> 및 <see cref="T:System.Net.Http.HttpResponseMessage" /> 엔터티를 읽을 수 있는 확장 메서드를 제공합니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.IsHttpRequestMessageContent(System.Net.Http.HttpContent)">
+      <summary>지정된 콘텐츠가 HTTP 요청 메시지 콘텐츠인지 여부를 확인합니다.</summary>
+      <returns>지정된 콘텐츠가 HTTP 메시지 콘텐츠이면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="content">확인할 콘텐츠입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.IsHttpResponseMessageContent(System.Net.Http.HttpContent)">
+      <summary>지정된 콘텐츠가 HTTP 응답 메시지 콘텐츠인지 여부를 확인합니다.</summary>
+      <returns>지정된 콘텐츠가 HTTP 메시지 콘텐츠이면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="content">확인할 콘텐츠입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" />를 <see cref="T:System.Net.Http.HttpRequestMessage" />로 읽습니다. </summary>
+      <returns>구분 분석된 <see cref="T:System.Net.Http.HttpRequestMessage" /> 인스턴스입니다.</returns>
+      <param name="content">읽을 콘텐츠입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" />를 <see cref="T:System.Net.Http.HttpRequestMessage" />로 읽습니다. </summary>
+      <returns>구분 분석된 <see cref="T:System.Net.Http.HttpRequestMessage" /> 인스턴스입니다.</returns>
+      <param name="content">읽을 콘텐츠입니다.</param>
+      <param name="uriScheme">요청 URI에 사용할 URI 구성표입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.String,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" />를 <see cref="T:System.Net.Http.HttpRequestMessage" />로 읽습니다. </summary>
+      <returns>구분 분석된 <see cref="T:System.Net.Http.HttpRequestMessage" /> 인스턴스입니다.</returns>
+      <param name="content">읽을 콘텐츠입니다.</param>
+      <param name="uriScheme">요청 URI에 사용할 URI 구성표입니다.</param>
+      <param name="bufferSize">버퍼의 크기입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.String,System.Int32,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" />를 <see cref="T:System.Net.Http.HttpRequestMessage" />로 읽습니다.</summary>
+      <returns>구분 분석된 <see cref="T:System.Net.Http.HttpRequestMessage" /> 인스턴스입니다.</returns>
+      <param name="content">읽을 콘텐츠입니다.</param>
+      <param name="uriScheme">요청 URI에 사용할 URI 구성표입니다.</param>
+      <param name="bufferSize">버퍼의 크기입니다.</param>
+      <param name="maxHeaderSize">HTTP 헤더의 최대 길이입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.String,System.Int32,System.Int32,System.Threading.CancellationToken)"></member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.String,System.Int32,System.Threading.CancellationToken)"></member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.String,System.Threading.CancellationToken)"></member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpRequestMessageAsync(System.Net.Http.HttpContent,System.Threading.CancellationToken)"></member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpResponseMessageAsync(System.Net.Http.HttpContent)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" />를 <see cref="T:System.Net.Http.HttpResponseMessage" />로 읽습니다. </summary>
+      <returns>구분 분석된 <see cref="T:System.Net.Http.HttpResponseMessage" /> 인스턴스입니다.</returns>
+      <param name="content">읽을 콘텐츠입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpResponseMessageAsync(System.Net.Http.HttpContent,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" />를 <see cref="T:System.Net.Http.HttpResponseMessage" />로 읽습니다. </summary>
+      <returns>구분 분석된 <see cref="T:System.Net.Http.HttpResponseMessage" /> 인스턴스입니다.</returns>
+      <param name="content">읽을 콘텐츠입니다.</param>
+      <param name="bufferSize">버퍼의 크기입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpResponseMessageAsync(System.Net.Http.HttpContent,System.Int32,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" />를 <see cref="T:System.Net.Http.HttpResponseMessage" />로 읽습니다.</summary>
+      <returns>구분 분석된 <see cref="T:System.Net.Http.HttpResponseMessage" /> 인스턴스입니다.</returns>
+      <param name="content">읽을 콘텐츠입니다.</param>
+      <param name="bufferSize">버퍼의 크기입니다.</param>
+      <param name="maxHeaderSize">HTTP 헤더의 최대 길이입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpResponseMessageAsync(System.Net.Http.HttpContent,System.Int32,System.Int32,System.Threading.CancellationToken)"></member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpResponseMessageAsync(System.Net.Http.HttpContent,System.Int32,System.Threading.CancellationToken)"></member>
+    <member name="M:System.Net.Http.HttpContentMessageExtensions.ReadAsHttpResponseMessageAsync(System.Net.Http.HttpContent,System.Threading.CancellationToken)"></member>
+    <member name="T:System.Net.Http.HttpContentMultipartExtensions">
+      <summary>
+        <see cref="T:System.Net.Http.HttpContent" /> 인스턴스에서 MIME 다중 파트 엔터티를 읽을 수 있는 확장 메서드입니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.IsMimeMultipartContent(System.Net.Http.HttpContent)">
+      <summary>지정된 콘텐츠가 MIME 다중 파트 콘텐츠인지 여부를 확인합니다.</summary>
+      <returns>지정된 콘텐츠가 MIME 다중 파트 콘텐츠이면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="content">콘텐츠입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.IsMimeMultipartContent(System.Net.Http.HttpContent,System.String)">
+      <summary>지정된 콘텐츠가 지정된 하위 형식이 있는 MIME 다중 파트 콘텐츠인지 여부를 확인합니다.</summary>
+      <returns>지정된 콘텐츠가 지정된 하위 형식이 있는 MIME 다중 파트 콘텐츠이면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="content">콘텐츠입니다.</param>
+      <param name="subtype">일치하는 MIME 다중 파트 하위 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.ReadAsMultipartAsync(System.Net.Http.HttpContent)">
+      <summary>MIME 다중 파트 메시지 내 모든 본문을 읽고 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스 집합을 결과로 생성합니다.</summary>
+      <returns>각 인스턴스가 본문을 나타내는 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스의 컬렉션을 가져오는 작업을 나타내는 <see cref="T:System.Threading.Tasks.Task`1" />입니다.</returns>
+      <param name="content">개체 콘텐츠에 사용할 기존의 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.ReadAsMultipartAsync(System.Net.Http.HttpContent,System.Threading.CancellationToken)">
+      <summary>MIME 다중 파트 메시지 내 모든 본문을 읽고 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스 집합을 결과로 생성합니다.</summary>
+      <returns>각 인스턴스가 본문을 나타내는 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스의 컬렉션을 가져오는 작업을 나타내는 <see cref="T:System.Threading.Tasks.Task`1" />입니다.</returns>
+      <param name="content">개체 콘텐츠에 사용할 기존의 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.ReadAsMultipartAsync``1(System.Net.Http.HttpContent,``0)">
+      <summary>MIME 다중 파트 메시지 내 모든 본문을 읽고 각 본문 콘텐츠를 쓸 위치를 결정하기 위해 streamProvider 인스턴스를 사용하여 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스 집합을 결과로 생성합니다.</summary>
+      <returns>각 인스턴스가 본문을 나타내는 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스의 컬렉션을 가져오는 작업을 나타내는 <see cref="T:System.Threading.Tasks.Task`1" />입니다.</returns>
+      <param name="content">개체 콘텐츠에 사용할 기존의 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스입니다.</param>
+      <param name="streamProvider">본문이 구분 분석될 때 본문을 쓸 위치에 대한 출력 스트림을 제공하는 스트림 제공자입니다.</param>
+      <typeparam name="T">MIME 다중 파트의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.ReadAsMultipartAsync``1(System.Net.Http.HttpContent,``0,System.Int32)">
+      <summary>MIME 다중 파트 메시지 내 모든 본문을 읽고 각 본문 콘텐츠를 쓸 위치를 결정하기 위한 streamProvider 인스턴스 및 읽기 버퍼 크기인 bufferSize를 사용하여 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스 집합을 결과로 생성합니다.</summary>
+      <returns>각 인스턴스가 본문을 나타내는 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스의 컬렉션을 가져오는 작업을 나타내는 <see cref="T:System.Threading.Tasks.Task`1" />입니다.</returns>
+      <param name="content">개체 콘텐츠에 사용할 기존의 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스입니다.</param>
+      <param name="streamProvider">본문이 구분 분석될 때 본문을 쓸 위치에 대한 출력 스트림을 제공하는 스트림 제공자입니다.</param>
+      <param name="bufferSize">콘텐츠를 읽는 데 사용되는 버퍼 크기입니다.</param>
+      <typeparam name="T">MIME 다중 파트의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.ReadAsMultipartAsync``1(System.Net.Http.HttpContent,``0,System.Int32,System.Threading.CancellationToken)">
+      <summary>MIME 다중 파트 메시지 내 모든 본문을 읽고 각 본문 콘텐츠를 쓸 위치를 결정하기 위한 streamProvider 인스턴스 및 읽기 버퍼 크기인 bufferSize를 사용하여 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스 집합을 결과로 생성합니다.</summary>
+      <returns>각 인스턴스가 본문을 나타내는 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스의 컬렉션을 가져오는 작업을 나타내는 <see cref="T:System.Threading.Tasks.Task`1" />입니다.</returns>
+      <param name="content">개체 콘텐츠에 사용할 기존의 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스입니다.</param>
+      <param name="streamProvider">본문이 구분 분석될 때 본문을 쓸 위치에 대한 출력 스트림을 제공하는 스트림 제공자입니다.</param>
+      <param name="bufferSize">콘텐츠를 읽는 데 사용되는 버퍼 크기입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+      <typeparam name="T">MIME 다중 파트의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.HttpContentMultipartExtensions.ReadAsMultipartAsync``1(System.Net.Http.HttpContent,``0,System.Threading.CancellationToken)">
+      <summary>MIME 다중 파트 메시지 내 모든 본문을 읽고 각 본문 콘텐츠를 쓸 위치를 결정하기 위해 streamProvider 인스턴스를 사용하여 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스 집합을 결과로 생성합니다.</summary>
+      <returns>각 인스턴스가 본문을 나타내는 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스의 컬렉션을 가져오는 작업을 나타내는 <see cref="T:System.Threading.Tasks.Task`1" />입니다.</returns>
+      <param name="content">개체 콘텐츠에 사용할 기존의 <see cref="T:System.Net.Http.HttpContent" /> 인스턴스입니다.</param>
+      <param name="streamProvider">본문이 구분 분석될 때 본문을 쓸 위치에 대한 출력 스트림을 제공하는 스트림 제공자입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+      <typeparam name="T">MIME 다중 파트의 형식입니다.</typeparam>
+    </member>
+    <member name="T:System.Net.Http.HttpMessageContent">
+      <summary>
+        <see cref="P:System.Net.Http.HttpMessageContent.HttpResponseMessage" /> 또는 <see cref="P:System.Net.Http.HttpMessageContent.HttpRequestMessage" />를 미디어 유형이 "application/http"인 엔터티로 캡슐화할 수 있는 파생된 <see cref="T:System.Net.Http.HttpContent" /> 클래스입니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageContent.#ctor(System.Net.Http.HttpRequestMessage)">
+      <summary>
+        <see cref="P:System.Net.Http.HttpMessageContent.HttpRequestMessage" />를 캡슐화하는 <see cref="T:System.Net.Http.HttpMessageContent" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+      <param name="httpRequest">캡슐화할 <see cref="P:System.Net.Http.HttpMessageContent.HttpResponseMessage" /> 인스턴스입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageContent.#ctor(System.Net.Http.HttpResponseMessage)">
+      <summary>
+        <see cref="P:System.Net.Http.HttpMessageContent.HttpResponseMessage" />를 캡슐화하는 <see cref="T:System.Net.Http.HttpMessageContent" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+      <param name="httpResponse">캡슐화할 <see cref="P:System.Net.Http.HttpMessageContent.HttpResponseMessage" /> 인스턴스입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageContent.Dispose(System.Boolean)">
+      <summary> 관리되지 않는 리소스를 해제하고, 필요한 경우 관리되는 리소스도 해제합니다. </summary>
+      <param name="disposing">관리되는 리소스와 관리되지 않는 리소스를 모두 해제하려면 true이고, 관리되지 않는 리소스만 해제하려면 false입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.HttpMessageContent.HttpRequestMessage">
+      <summary> HTTP 요청 메시지를 가져옵니다. </summary>
+    </member>
+    <member name="P:System.Net.Http.HttpMessageContent.HttpResponseMessage">
+      <summary> HTTP 응답 메시지를 가져옵니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageContent.SerializeToStreamAsync(System.IO.Stream,System.Net.TransportContext)">
+      <summary> 개체의 콘텐츠를 지정된 스트림으로 비동기적으로 serialize합니다. </summary>
+      <returns>개체의 콘텐츠를 비동기적으로 serialize하는 <see cref="T:System.Threading.Tasks.Task" /> 인스턴스입니다.</returns>
+      <param name="stream">쓸 <see cref="T:System.IO.Stream" />입니다.</param>
+      <param name="context">연관된 <see cref="T:System.Net.TransportContext" />입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpMessageContent.TryComputeLength(System.Int64@)">
+      <summary> 가능한 경우 스트림의 길이를 계산합니다. </summary>
+      <returns>길이가 계산되었으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="length">계산된 스트림 길이입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.HttpRequestHeadersExtensions">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.HttpRequestHeaders" /> 클래스에 대한 확장 메서드를 제공합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestHeadersExtensions.GetCookies(System.Net.Http.Headers.HttpRequestHeaders)">
+      <summary>요청에 있는 모든 쿠키 헤더를 가져옵니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.CookieHeaderValue" /> 인스턴스의 컬렉션입니다.</returns>
+      <param name="headers">요청 헤더입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestHeadersExtensions.GetCookies(System.Net.Http.Headers.HttpRequestHeaders,System.String)">
+      <summary>지정된 값과 일치하는 이름의 쿠키 상태가 포함된 요청에 있는 모든 쿠키 헤더를 가져옵니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.CookieHeaderValue" /> 인스턴스의 컬렉션입니다.</returns>
+      <param name="headers">요청 헤더입니다.</param>
+      <param name="name">일치시킬 쿠키 상태 이름입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.HttpRequestMessageExtensions.CreateResponse(System.Net.Http.HttpRequestMessage)"></member>
+    <member name="M:System.Net.Http.HttpRequestMessageExtensions.CreateResponse(System.Net.Http.HttpRequestMessage,System.Net.HttpStatusCode)"></member>
+    <member name="T:System.Net.Http.HttpResponseHeadersExtensions">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.HttpResponseHeaders" /> 클래스에 대한 확장 메서드를 제공합니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.HttpResponseHeadersExtensions.AddCookies(System.Net.Http.Headers.HttpResponseHeaders,System.Collections.Generic.IEnumerable{System.Net.Http.Headers.CookieHeaderValue})">
+      <summary> 응답에 쿠키를 추가합니다. 각 Set-Cookie 헤더는 하나의 <see cref="T:System.Net.Http.Headers.CookieHeaderValue" /> 인스턴스로 나타납니다. <see cref="T:System.Net.Http.Headers.CookieHeaderValue" />에는 도메인, 경로, 기타 쿠키에 대한 정보 및 하나 이상의 <see cref="T:System.Net.Http.Headers.CookieState" /> 인스턴스가 포함되어 있으며, 각 <see cref="T:System.Net.Http.Headers.CookieState" /> 인스턴스에는 쿠키 이름, 해당 이름과 연관된 쿠키 상태가 포함되어 있습니다. 이 상태는 HTML 폼 URL로 인코딩된 데이터로 인코딩된 <see cref="T:System.Collections.Specialized.NameValueCollection" /> 형식입니다.  이 표현을 통해 각 쿠키 상태를 구분하면서 동일한 Cookie 헤더 내에서 관련된 여러 "쿠키"를 전송할 수 있습니다. 아래에 샘플 Cookie 헤더가 나와 있습니다. 이 예에서는 각각 state1 및 state2라는 이름을 가진 두 개의 <see cref="T:System.Net.Http.Headers.CookieState" />가 있습니다. 또한 각 쿠키 상태에는 두 개의 이름/값 쌍(name1/value1 및 name2/value2) 및 (name3/value3 및 name4/value4)이 있습니다. &lt;code&gt; Set-Cookie: state1:name1=value1&amp;amp;name2=value2; state2:name3=value3&amp;amp;name4=value4; domain=domain1; path=path1; &lt;/code&gt;</summary>
+      <param name="headers">응답 헤더</param>
+      <param name="cookies">응답에 추가할 쿠키 값입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.InvalidByteRangeException">
+      <summary>요청된 모든 범위가 선택된 리소스의 현재 범위와 겹치지 않는 경우 <see cref="T:System.Net.Http.ByteRangeStreamContent" />에서 발생되는 예외입니다.리소스의 현재 범위는 ContentRange 속성에 지정되어 있습니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.InvalidByteRangeException.#ctor(System.Net.Http.Headers.ContentRangeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.InvalidByteRangeException" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.InvalidByteRangeException.#ctor(System.Net.Http.Headers.ContentRangeHeaderValue,System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+        <see cref="T:System.Net.Http.InvalidByteRangeException" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.InvalidByteRangeException.#ctor(System.Net.Http.Headers.ContentRangeHeaderValue,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.InvalidByteRangeException" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.InvalidByteRangeException.#ctor(System.Net.Http.Headers.ContentRangeHeaderValue,System.String,System.Exception)">
+      <summary>
+        <see cref="T:System.Net.Http.InvalidByteRangeException" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="P:System.Net.Http.InvalidByteRangeException.ContentRange">
+      <summary> ContentRange 헤더 필드에 지정된 리소스의 현재 범위입니다. </summary>
+    </member>
+    <member name="T:System.Net.Http.MultipartFileData">
+      <summary>다중 파트 파일 데이터를 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFileData.#ctor(System.Net.Http.Headers.HttpContentHeaders,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartFileData" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="headers">다중 파트 파일 데이터의 헤더입니다.</param>
+      <param name="localFileName">다중 파트 파일 데이터에 대한 로컬 파일의 이름입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.MultipartFileData.Headers">
+      <summary>다중 파트 파일 데이터의 헤더를 가져오거나 설정합니다.</summary>
+      <returns>다중 파트 파일 데이터의 헤더입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.MultipartFileData.LocalFileName">
+      <summary>다중 파트 파일 데이터에 대한 로컬 파일의 이름을 가져오거나 설정합니다.</summary>
+      <returns>다중 파트 파일 데이터에 대한 로컬 파일의 이름입니다.</returns>
+    </member>
+    <member name="T:System.Net.Http.MultipartFileStreamProvider">
+      <summary>
+        <see cref="T:System.IO.FileStream" />을 사용하여 파일에 MIME 다중 파트 메시지의 각 MIME 본문을 쓰는 데 적합한 <see cref="T:System.Net.Http.IMultipartStreamProvider" />를 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFileStreamProvider.#ctor(System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartFileStreamProvider" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="rootPath">MIME 다중 파트 본문의 콘텐츠를 쓸 루트 경로입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.MultipartFileStreamProvider.#ctor(System.String,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartFileStreamProvider" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="rootPath">MIME 다중 파트 본문의 콘텐츠를 쓸 루트 경로입니다.</param>
+      <param name="bufferSize">파일에 쓸 버퍼링된 바이트 수입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.MultipartFileStreamProvider.BufferSize">
+      <summary>파일에 쓸 버퍼링된 바이트 수를 가져오거나 설정합니다.</summary>
+      <returns>파일에 쓸 버퍼링된 바이트 수입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.MultipartFileStreamProvider.FileData">
+      <summary>다중 파트 파일 데이터를 가져오거나 설정합니다.</summary>
+      <returns>다중 파트 파일 데이터입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartFileStreamProvider.GetLocalFileName(System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>절대 파일 이름을 만들기 위한 루트 경로와 결합할 로컬 파일을 가져옵니다. 현재 MIME 본문은 절대 파일 이름에 저장됩니다.</summary>
+      <returns>경로 구성 요소가 없는 상대 파일 이름입니다.</returns>
+      <param name="headers">현재 MIME 본문의 헤더입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.MultipartFileStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>메시지 본문을 쓸 스트림 인스턴스를 가져옵니다.</summary>
+      <returns>메시지 본문을 쓸 <see cref="T:System.IO.Stream" /> 인스턴스입니다.</returns>
+      <param name="parent">HTTP의 콘텐츠입니다.</param>
+      <param name="headers">본문을 설명하는 헤더 필드입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.MultipartFileStreamProvider.RootPath">
+      <summary>MIME 다중 파트 본문의 콘텐츠를 쓸 루트 경로를 가져오거나 설정합니다.</summary>
+      <returns>MIME 다중 파트 본문의 콘텐츠를 쓸 루트 경로입니다.</returns>
+    </member>
+    <member name="T:System.Net.Http.MultipartFormDataRemoteStreamProvider">
+      <summary>원격 저장소 <see cref="T:System.IO.Stream" />에 파일 콘텐츠를 쓰는 데 HTML 파일 업로드와 함께 사용하기에 적합한 <see cref="T:System.Net.Http.MultipartStreamProvider" /> 구현입니다.스트림 공급자는 Content-Disposition 헤더 필드를 확인하고 filename 매개 변수의 유무에 따라 출력 원격 <see cref="T:System.IO.Stream" />을 결정합니다.filename 매개 변수가 Content-Disposition 헤더 필드에 있으면 본문이 <see cref="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.GetRemoteStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)" />에서 제공한 원격 <see cref="T:System.IO.Stream" />에 기록됩니다.그렇지 않으면 본문이 <see cref="T:System.IO.MemoryStream" />에 기록됩니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartFormDataRemoteStreamProvider" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.ExecutePostProcessingAsync">
+      <summary>비파일 콘텐츠를 폼 데이터로 읽습니다.</summary>
+      <returns>후처리를 나타내는 <see cref="T:System.Threading.Tasks.Task" />입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.ExecutePostProcessingAsync(System.Threading.CancellationToken)">
+      <summary>비파일 콘텐츠를 폼 데이터로 읽습니다.</summary>
+      <returns>후처리를 나타내는 <see cref="T:System.Threading.Tasks.Task" />입니다.</returns>
+      <param name="cancellationToken">취소 요청을 모니터링하기 위한 토큰입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.MultipartFormDataRemoteStreamProvider.FileData">
+      <summary>다중 파트 양식 데이터의 일부로 전달되는 파일 데이터의 컬렉션을 가져옵니다.</summary>
+    </member>
+    <member name="P:System.Net.Http.MultipartFormDataRemoteStreamProvider.FormData">
+      <summary>다중 파트 양식 데이터의 일부로 전달되는 양식 데이터의 <see cref="T:System.Collections.Specialized.NameValueCollection" />을 가져옵니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.GetRemoteStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>
+        <see cref="T:System.Net.Http.RemoteStreamInfo" />를 <see cref="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)" />에 제공합니다.이 메서드를 재정의하여 데이터를 쓸 원격 스트림을 제공합니다.</summary>
+      <returns>파일을 쓸 원격 스트림 및 파일에 액세스할 수 있는 위치를 지정하는 결과입니다.null이 될 수 없으며, 스트림은 쓰기 가능해야 합니다.</returns>
+      <param name="parent">부모 <see cref="T:System.Net.Http.HttpContent" /> MIME 다중 파트 인스턴스입니다.</param>
+      <param name="headers">본문의 내용을 설명하는 헤더 필드입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)"></member>
+    <member name="T:System.Net.Http.MultipartFormDataStreamProvider">
+      <summary>
+        <see cref="T:System.IO.FileStream" />에 파일 콘텐츠를 쓰는 데 HTML 파일 업로드와 함께 사용하기 적합한 <see cref="T:System.Net.Http.IMultipartStreamProvider" />입니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataStreamProvider.#ctor(System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartFormDataStreamProvider" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+      <param name="rootPath">MIME 다중 파트 본문의 콘텐츠를 쓸 루트 경로입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataStreamProvider.#ctor(System.String,System.Int32)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartFormDataStreamProvider" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="rootPath">MIME 다중 파트 본문의 콘텐츠를 쓸 루트 경로입니다.</param>
+      <param name="bufferSize">파일에 쓸 버퍼링된 바이트 수입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataStreamProvider.ExecutePostProcessingAsync">
+      <summary>비파일 콘텐츠를 양식 데이터로 읽습니다.</summary>
+      <returns>비동기 작업을 나타내는 작업입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataStreamProvider.ExecutePostProcessingAsync(System.Threading.CancellationToken)"></member>
+    <member name="P:System.Net.Http.MultipartFormDataStreamProvider.FormData">
+      <summary>다중 파트 양식 데이터의 일부로 전달되는 양식 데이터의 <see cref="T:System.Collections.Specialized.NameValueCollection" />을 가져옵니다.</summary>
+      <returns>양식 데이터의 <see cref="T:System.Collections.Specialized.NameValueCollection" />입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartFormDataStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>메시지 본문을 쓸 스트리밍 인스턴스를 가져옵니다.</summary>
+      <returns>메시지 본문을 쓸 <see cref="T:System.IO.Stream" /> 인스턴스입니다.</returns>
+      <param name="parent">이 본문이 포함된 HTTP 콘텐츠입니다.</param>
+      <param name="headers">본문을 설명하는 헤더 필드</param>
+    </member>
+    <member name="T:System.Net.Http.MultipartMemoryStreamProvider">
+      <summary>다중 파트 메모리 스트림 공급자를 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartMemoryStreamProvider.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartMemoryStreamProvider" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartMemoryStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartMemoryStreamProvider" />의 <see cref="T:System.IO.Stream" />을 반환합니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.MultipartMemoryStreamProvider" />의 <see cref="T:System.IO.Stream" />입니다.</returns>
+      <param name="parent">
+        <see cref="T:System.Net.Http.HttpContent" /> 개체입니다.</param>
+      <param name="headers">HTTP 콘텐츠 헤더입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.MultipartRelatedStreamProvider">
+      <summary>다중 파트 관련 멀티스트림에 대한 공급자를 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartRelatedStreamProvider.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartRelatedStreamProvider" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartRelatedStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>공급자에 대한 관련 스트림을 가져옵니다.</summary>
+      <returns>콘텐츠 헤더입니다.</returns>
+      <param name="parent">부모 콘텐츠입니다.</param>
+      <param name="headers">http 콘텐츠 헤더입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.MultipartRelatedStreamProvider.RootContent">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartRelatedStreamProvider" />의 루트 콘텐츠를 가져옵니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.MultipartRelatedStreamProvider" />의 루트 콘텐츠입니다.</returns>
+    </member>
+    <member name="T:System.Net.Http.MultipartRemoteFileData">
+      <summary>원격 저장소의 다중 파트 파일 데이터를 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartRemoteFileData.#ctor(System.Net.Http.Headers.HttpContentHeaders,System.String,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartRemoteFileData" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="headers">다중 파트 파일 데이터의 헤더입니다.</param>
+      <param name="location">원격 파일의 위치입니다.</param>
+      <param name="fileName">원격 파일의 이름입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.MultipartRemoteFileData.FileName">
+      <summary>원격 파일의 이름을 가져옵니다.</summary>
+    </member>
+    <member name="P:System.Net.Http.MultipartRemoteFileData.Headers">
+      <summary>다중 파트 파일 데이터의 헤더를 가져옵니다.</summary>
+    </member>
+    <member name="P:System.Net.Http.MultipartRemoteFileData.Location">
+      <summary>원격 파일의 위치를 가져옵니다.</summary>
+    </member>
+    <member name="T:System.Net.Http.MultipartStreamProvider">
+      <summary>MIME 다중 파트 파서에서 MIME 다중 파트 확장 메서드(<see cref="T:System.Net.Http.HttpContentMultipartExtensions" /> 참조)의 일부로 제공한 헤더를 검토하고 본문을 쓸 수 있도록 반환할 스트림 유형을 결정하는 스트림 공급자를 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.MultipartStreamProvider.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.MultipartStreamProvider" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="P:System.Net.Http.MultipartStreamProvider.Contents">
+      <summary>이 <see cref="T:System.Net.Http.MultipartStreamProvider" />의 콘텐츠를 가져오거나 설정합니다.</summary>
+      <returns>이 <see cref="T:System.Net.Http.MultipartStreamProvider" />의 콘텐츠입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartStreamProvider.ExecutePostProcessingAsync">
+      <summary>이 <see cref="T:System.Net.Http.MultipartStreamProvider" />에 대한 후처리 작업을 실행합니다.</summary>
+      <returns>이 작업에 대한 비동기 작업입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.MultipartStreamProvider.ExecutePostProcessingAsync(System.Threading.CancellationToken)">
+      <summary>이 <see cref="T:System.Net.Http.MultipartStreamProvider" />에 대한 후처리 작업을 실행합니다.</summary>
+      <returns>이 작업에 대한 비동기 작업입니다.</returns>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.MultipartStreamProvider.GetStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>본문을 쓸 스트림을 가져옵니다.이 메서드는 MIME 다중 파트 본문이 구문 분석될 때 호출됩니다.</summary>
+      <returns>메시지 본문을 쓸 <see cref="T:System.IO.Stream" /> 인스턴스입니다.</returns>
+      <param name="parent">HTTP의 콘텐츠입니다.</param>
+      <param name="headers">본문을 설명하는 헤더 필드입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.ObjectContent">
+      <summary> 이 콘텐츠를 쓸 때 값을 serialize하는 데 사용할 값 및 연관된 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />를 포함합니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent.#ctor(System.Type,System.Object,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.ObjectContent" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="type">이 인스턴스가 포함할 개체의 형식입니다.</param>
+      <param name="value">이 인스턴스에 포함할 개체의 값입니다.</param>
+      <param name="formatter">값을 serialize할 때 사용할 포맷터입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent.#ctor(System.Type,System.Object,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.ObjectContent" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+      <param name="type">이 인스턴스가 포함할 개체의 형식입니다.</param>
+      <param name="value">이 인스턴스에 포함할 개체의 값입니다.</param>
+      <param name="formatter">값을 serialize할 때 사용할 포맷터입니다.</param>
+      <param name="mediaType">Content-Type 헤더의 신뢰할 수 있는 값입니다.null일 수 있으며, 이 경우 포맷터의 기본 콘텐츠 형식이 사용됩니다.</param>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent.#ctor(System.Type,System.Object,System.Net.Http.Formatting.MediaTypeFormatter,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.ObjectContent" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="type">이 인스턴스가 포함할 개체의 형식입니다.</param>
+      <param name="value">이 인스턴스에 포함할 개체의 값입니다.</param>
+      <param name="formatter">값을 serialize할 때 사용할 포맷터입니다.</param>
+      <param name="mediaType">Content-Type 헤더의 신뢰할 수 있는 값입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.ObjectContent.Formatter">
+      <summary>이 콘텐츠 인스턴스와 연관된 미디어 유형 포맷터를 가져옵니다.</summary>
+      <returns>이 콘텐츠 인스턴스와 연관된 미디어 유형 포맷터입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.ObjectContent.ObjectType">
+      <summary>이 <see cref="T:System.Net.Http.ObjectContent" /> 인스턴스가 관리하는 개체 형식을 가져옵니다.</summary>
+      <returns>개체 형식입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent.SerializeToStreamAsync(System.IO.Stream,System.Net.TransportContext)">
+      <summary>개체의 콘텐츠를 지정된 스트림으로 비동기적으로 serialize합니다.</summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="stream">이 스트림에 씁니다.</param>
+      <param name="context">연관된 <see cref="T:System.Net.TransportContext" />입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent.TryComputeLength(System.Int64@)">
+      <summary>가능한 경우 스트림의 길이를 계산합니다.</summary>
+      <returns>길이가 계산되었으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="length">계산된 스트림 길이를 수신합니다.</param>
+    </member>
+    <member name="P:System.Net.Http.ObjectContent.Value">
+      <summary>콘텐츠의 값을 가져오거나 설정합니다.</summary>
+      <returns>콘텐츠 값입니다.</returns>
+    </member>
+    <member name="T:System.Net.Http.ObjectContent`1">
+      <summary>
+        <see cref="T:System.Net.Http.ObjectContent" />의 일반적인 양식입니다. </summary>
+      <typeparam name="T">이 클래스에 포함할 개체의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent`1.#ctor(`0,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.ObjectContent`1" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="value">이 인스턴스에 포함할 개체의 값입니다.</param>
+      <param name="formatter">값을 serialize할 때 사용할 포맷터입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent`1.#ctor(`0,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary> &lt;see cref="T:System.Net.Http.ObjectContent`1" /&gt; 클래스의 새 인스턴스를 초기화합니다. </summary>
+      <param name="value">이 인스턴스에 포함할 개체의 값입니다.</param>
+      <param name="formatter">값을 serialize할 때 사용할 포맷터입니다.</param>
+      <param name="mediaType">Content-Type 헤더의 신뢰할 수 있는 값입니다.null일 수 있으며, 이 경우 포맷터의 기본 콘텐츠 형식이 사용됩니다.</param>
+    </member>
+    <member name="M:System.Net.Http.ObjectContent`1.#ctor(`0,System.Net.Http.Formatting.MediaTypeFormatter,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.ObjectContent`1" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="value">이 인스턴스에 포함할 개체의 값입니다.</param>
+      <param name="formatter">값을 serialize할 때 사용할 포맷터입니다.</param>
+      <param name="mediaType">Content-Type 헤더의 신뢰할 수 있는 값입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.PushStreamContent">
+      <summary>데이터 공급자가 스트림을 사용하여 직접(동기적으로 또는 비동기적으로) 쓰기를 원하는 경우의 시나리오가 가능합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.#ctor(System.Action{System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext})">
+      <summary>
+        <see cref="T:System.Net.Http.PushStreamContent" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="onStreamAvailable">작업에서 직접 출력 스트림에 쓸 수 있도록 허용하는 출력 스트림을 사용할 수 있는 경우 호출되는 작업입니다. </param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.#ctor(System.Action{System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext},System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.PushStreamContent" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="onStreamAvailable">작업에서 직접 출력 스트림에 쓸 수 있도록 허용하는 출력 스트림을 사용할 수 있는 경우 호출되는 작업입니다.</param>
+      <param name="mediaType">미디어 유형입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.#ctor(System.Action{System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext},System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.PushStreamContent" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="onStreamAvailable">작업에서 직접 출력 스트림에 쓸 수 있도록 허용하는 출력 스트림을 사용할 수 있는 경우 호출되는 작업입니다.</param>
+      <param name="mediaType">미디어 유형입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.#ctor(System.Func{System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.Tasks.Task})">
+      <summary>
+        <see cref="T:System.Net.Http.PushStreamContent" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="onStreamAvailable">작업에서 직접 출력 스트림에 쓸 수 있도록 허용하는 출력 스트림을 사용할 수 있는 경우 호출되는 작업입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.#ctor(System.Func{System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.Tasks.Task},System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.PushStreamContent" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="onStreamAvailable">작업에서 직접 출력 스트림에 쓸 수 있도록 허용하는 출력 스트림을 사용할 수 있는 경우 호출되는 작업입니다.</param>
+      <param name="mediaType">미디어 유형입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.#ctor(System.Func{System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.Tasks.Task},System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.PushStreamContent" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="onStreamAvailable">작업에서 직접 출력 스트림에 쓸 수 있도록 허용하는 출력 스트림을 사용할 수 있는 경우 호출되는 작업입니다.</param>
+      <param name="mediaType">미디어 유형입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.SerializeToStreamAsync(System.IO.Stream,System.Net.TransportContext)">
+      <summary>밀어넣기 콘텐츠를 스트림으로 비동기적으로 직렬화합니다.</summary>
+      <returns>직렬화된 밀어넣기 콘텐츠입니다.</returns>
+      <param name="stream">밀어넣기 콘텐츠를 직렬화할 스트림입니다.</param>
+      <param name="context">컨텍스트입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.PushStreamContent.TryComputeLength(System.Int64@)">
+      <summary>스트림 콘텐츠의 길이(바이트)가 올바른지 여부를 확인합니다.</summary>
+      <returns>길이가 올바르면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="length">스트림 콘텐츠의 길이(바이트)입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.RemoteStreamInfo">
+      <summary>
+        <see cref="M:System.Net.Http.MultipartFormDataRemoteStreamProvider.GetRemoteStream(System.Net.Http.HttpContent,System.Net.Http.Headers.HttpContentHeaders)" />의 결과를 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.RemoteStreamInfo.#ctor(System.IO.Stream,System.String,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.RemoteStreamInfo" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="remoteStream">파일을 쓸 원격 스트림 인스턴스입니다.</param>
+      <param name="location">원격 파일의 위치입니다.</param>
+      <param name="fileName">원격 파일의 이름입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.RemoteStreamInfo.FileName">
+      <summary>원격 파일의 위치를 가져옵니다.</summary>
+    </member>
+    <member name="P:System.Net.Http.RemoteStreamInfo.Location">
+      <summary>원격 파일의 위치를 가져옵니다.</summary>
+    </member>
+    <member name="P:System.Net.Http.RemoteStreamInfo.RemoteStream">
+      <summary>파일을 쓸 원격 스트림 인스턴스를 가져옵니다.</summary>
+    </member>
+    <member name="T:System.Net.Http.UnsupportedMediaTypeException">
+      <summary> 요청의 미디어 유형이 지원되지 않는 신호에 대한 예외 유형을 정의합니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.UnsupportedMediaTypeException.#ctor(System.String,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.UnsupportedMediaTypeException" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+      <param name="message">오류를 설명하는 메시지입니다.</param>
+      <param name="mediaType">지원되지 않는 미디어 유형입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.UnsupportedMediaTypeException.MediaType">
+      <summary>미디어 유형을 가져오거나 설정합니다.</summary>
+      <returns>미디어 유형입니다.</returns>
+    </member>
+    <member name="T:System.Net.Http.UriExtensions">
+      <summary>
+        <see cref="T:System.Uri" /> 인스턴스의 쿼리 구성 요소에서 강력한 형식의 개체를 읽을 수 있는 확장 메서드가 포함되어 있습니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.UriExtensions.ParseQueryString(System.Uri)">
+      <summary>지정된 URI의 쿼리 부분을 구문 분석합니다.</summary>
+      <returns>쿼리 매개 변수가 포함된 <see cref="T:System.Collections.Specialized.NameValueCollection" />입니다.</returns>
+      <param name="address">구문 분석할 URI입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.UriExtensions.TryReadQueryAs(System.Uri,System.Type,System.Object@)">
+      <summary>URI 쿼리 문자열에서 지정된 형식의 개체로 제공한 HTML 양식 URL로 인코딩된 데이터를 읽습니다.</summary>
+      <returns>URI의 쿼리 구성 요소를 지정된 형식으로 읽을 수 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="address">읽을 URI입니다.</param>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="value">이 메서드가 반환되면 URI의 쿼리 구성 요소에서 초기화된 개체가 포함되어 있습니다. 이 매개 변수는 초기화되지 않은 상태로 처리됩니다.</param>
+    </member>
+    <member name="M:System.Net.Http.UriExtensions.TryReadQueryAs``1(System.Uri,``0@)">
+      <summary>URI 쿼리 문자열에서 지정된 형식의 개체로 제공한 HTML 양식 URL로 인코딩된 데이터를 읽습니다.</summary>
+      <returns>URI의 쿼리 구성 요소를 지정된 형식으로 읽을 수 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="address">읽을 URI입니다.</param>
+      <param name="value">이 메서드가 반환되면 URI의 쿼리 구성 요소에서 초기화된 개체가 포함되어 있습니다. 이 매개 변수는 초기화되지 않은 상태로 처리됩니다.</param>
+      <typeparam name="T">읽을 개체의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.UriExtensions.TryReadQueryAsJson(System.Uri,Newtonsoft.Json.Linq.JObject@)">
+      <summary>
+        <see cref="T:System.Uri" /> 쿼리 구성 요소에서 <see cref="T:Newtonsoft.Json.Linq.JObject" /> 개체로 제공한 HTML 폼 URL로 인코딩된 데이터를 읽습니다.</summary>
+      <returns>  쿼리 구성 요소를 <see cref="T:Newtonsoft.Json.Linq.JObject" />로 읽을 수 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="address">개체를 읽을 <see cref="T:System.Uri" /> 인스턴스입니다.</param>
+      <param name="value">이 인스턴스로 초기화할 개체입니다. 변환을 수행할 수 없는 경우에는 null입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter">
+      <summary>Bson 및 Json을 지원하는 추상 미디어 유형 포맷터입니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.#ctor(System.Net.Http.Formatting.BaseJsonMediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="formatter">설정을 복사해올 <see cref="T:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter" /> 인스턴스입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.CanReadType(System.Type)">
+      <summary>이 포맷터가 지정된 형식의 개체를 읽을 수 있는지 여부를 확인합니다.</summary>
+      <returns>이 형식의 개체를 읽을 수 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="type">읽을 개체의 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.CanWriteType(System.Type)">
+      <summary>이 포맷터가 지정된 형식의 개체를 쓸 수 있는지 여부를 확인합니다.</summary>
+      <returns>이 형식의 개체를 쓸 수 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="type">쓸 개체의 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.CreateDefaultSerializerSettings">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter" />에서 사용된 기본 a <see cref="T:Newtonsoft.Json.JsonSerializerSettings" /> 인스턴스를 만듭니다.</summary>
+      <returns>
+        <see cref="T:Newtonsoft.Json.JsonSerializerSettings" />을 반환합니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.CreateJsonReader(System.Type,System.IO.Stream,System.Text.Encoding)">
+      <summary>역직렬화하는 동안 호출되어 <see cref="T:Newtonsoft.Json.JsonReader" />를 가져옵니다.</summary>
+      <returns>역직렬화하는 동안 사용하는 판독기입니다.</returns>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="readStream">읽을 스트림입니다.</param>
+      <param name="effectiveEncoding">읽을 때 사용할 인코딩입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.CreateJsonSerializer">
+      <summary>직렬화 및 역직렬화하는 동안 호출되어 <see cref="T:Newtonsoft.Json.JsonSerializer" />를 가져옵니다.</summary>
+      <returns>직렬화 및 역직렬화하는 동안 사용되는 JsonSerializer입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.CreateJsonWriter(System.Type,System.IO.Stream,System.Text.Encoding)">
+      <summary>역직렬화하는 동안 호출되어 <see cref="T:Newtonsoft.Json.JsonWriter" />를 가져옵니다.</summary>
+      <returns>역직렬화하는 동안 사용하는 기록기입니다.</returns>
+      <param name="type">쓸 개체의 형식입니다.</param>
+      <param name="writeStream">이 스트림에 씁니다.</param>
+      <param name="effectiveEncoding">쓸 때 사용할 인코딩입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.MaxDepth">
+      <summary>이 포맷터에서 허용하는 최대 깊이를 가져오거나 설정합니다.</summary>
+      <returns>이 포맷터에서 허용하는 최대 깊이입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.ReadFromStream(System.Type,System.IO.Stream,System.Text.Encoding,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>역직렬화하는 동안 호출되어 지정된 스트림에서 지정된 형식의 개체를 읽습니다.</summary>
+      <returns>읽은 개체입니다.</returns>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="readStream">읽을 스트림입니다.</param>
+      <param name="effectiveEncoding">읽을 때 사용할 인코딩입니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 로거입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>역직렬화하는 동안 호출되어 지정된 스트림에서 지정된 형식의 개체를 읽습니다.</summary>
+      <returns>결과가 읽은 개체 인스턴스가 되는 작업입니다.</returns>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="readStream">읽을 스트림입니다.</param>
+      <param name="content">콘텐츠를 읽을 <see cref="T:System.Net.Http.HttpContent" />입니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 로거입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.SerializerSettings">
+      <summary>JsonSerializer를 구성하는 데 사용되는 JsonSerializerSettings를 가져오거나 설정합니다.</summary>
+      <returns>JsonSerializer를 구성하는 데 사용되는 JsonSerializerSettings입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.WriteToStream(System.Type,System.Object,System.IO.Stream,System.Text.Encoding)">
+      <summary>직렬화하는 동안 호출되어 지정된 형식의 개체를 지정된 스트림에 씁니다.</summary>
+      <param name="type">쓸 개체의 형식입니다.</param>
+      <param name="value">쓸 개체입니다.</param>
+      <param name="writeStream">이 스트림에 씁니다.</param>
+      <param name="effectiveEncoding">쓸 때 사용할 인코딩입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BaseJsonMediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.CancellationToken)">
+      <summary>직렬화하는 동안 호출되어 지정된 형식의 개체를 지정된 스트림에 씁니다.</summary>
+      <returns>
+        <see cref="T:System.Threading.Tasks.Task" />을 반환합니다.</returns>
+      <param name="type">쓸 개체의 형식입니다.</param>
+      <param name="value">쓸 개체입니다.</param>
+      <param name="writeStream">이 스트림에 씁니다.</param>
+      <param name="content">콘텐츠를 쓸 <see cref="T:System.Net.Http.HttpContent" />입니다.</param>
+      <param name="transportContext">전송 컨텍스트입니다.</param>
+      <param name="cancellationToken">취소를 모니터링하기 위한 토큰입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.BsonMediaTypeFormatter">
+      <summary>Bson을 처리하는 미디어 유형 포맷터를 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BsonMediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.#ctor(System.Net.Http.Formatting.BsonMediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BsonMediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="formatter">설정을 복사해올 포맷터입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.CreateJsonReader(System.Type,System.IO.Stream,System.Text.Encoding)">
+      <summary>역직렬화하는 동안 호출되어 <see cref="T:Newtonsoft.Json.JsonReader" />를 가져옵니다.</summary>
+      <returns>역직렬화하는 동안 사용하는 판독기입니다.</returns>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="readStream">읽을 스트림입니다.</param>
+      <param name="effectiveEncoding">읽을 때 사용할 인코딩입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.CreateJsonWriter(System.Type,System.IO.Stream,System.Text.Encoding)">
+      <summary>역직렬화하는 동안 호출되어 <see cref="T:Newtonsoft.Json.JsonWriter" />를 가져옵니다.</summary>
+      <returns>역직렬화하는 동안 사용하는 기록기입니다.</returns>
+      <param name="type">쓸 개체의 형식입니다.</param>
+      <param name="writeStream">이 스트림에 씁니다.</param>
+      <param name="effectiveEncoding">쓸 때 사용할 인코딩입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.BsonMediaTypeFormatter.DefaultMediaType">
+      <summary>Json의 기본 미디어 유형, 즉 "application/bson"을 가져옵니다.</summary>
+      <returns>Json의 기본 미디어 유형, 즉 "application/bson"입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.BsonMediaTypeFormatter.MaxDepth">
+      <summary>이 포맷터에서 허용하는 최대 깊이를 가져오거나 설정합니다.</summary>
+      <returns>이 포맷터에서 허용하는 최대 깊이입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.ReadFromStream(System.Type,System.IO.Stream,System.Text.Encoding,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>역직렬화하는 동안 호출되어 지정된 스트림에서 지정된 형식의 개체를 읽습니다.</summary>
+      <returns>읽은 개체입니다.</returns>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="readStream">읽을 스트림입니다.</param>
+      <param name="effectiveEncoding">읽을 때 사용할 인코딩입니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 로거입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>역직렬화하는 동안 호출되어 지정된 스트림에서 지정된 형식의 개체를 읽습니다.</summary>
+      <returns>결과가 읽은 개체 인스턴스가 되는 작업입니다.</returns>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="readStream">읽을 스트림입니다.</param>
+      <param name="content">콘텐츠를 읽을 <see cref="T:System.Net.Http.HttpContent" />입니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 로거입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BsonMediaTypeFormatter.WriteToStream(System.Type,System.Object,System.IO.Stream,System.Text.Encoding)">
+      <summary>직렬화하는 동안 호출되어 지정된 형식의 개체를 지정된 스트림에 씁니다.</summary>
+      <param name="type">쓸 개체의 형식입니다.</param>
+      <param name="value">쓸 개체입니다.</param>
+      <param name="writeStream">이 스트림에 씁니다.</param>
+      <param name="effectiveEncoding">쓸 때 사용할 인코딩입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.BufferedMediaTypeFormatter">
+      <summary>비동기 포맷터 인프라에서 동기 포맷터를 허용하는 도우미 클래스를 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BufferedMediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.#ctor(System.Net.Http.Formatting.BufferedMediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.BufferedMediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="formatter">설정을 복사해올 <see cref="T:System.Net.Http.Formatting.BufferedMediaTypeFormatter" /> 인스턴스입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.BufferedMediaTypeFormatter.BufferSize">
+      <summary>스트림에 사용하도록 권장되는 버퍼 크기(바이트)를 가져오거나 설정합니다.</summary>
+      <returns>스트림에 사용하도록 권장되는 버퍼 크기(바이트)입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.ReadFromStream(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>버퍼링된 스트림에서 비동기적으로 읽습니다.</summary>
+      <returns>지정된 <paramref name="type" />의 개체입니다.</returns>
+      <param name="type">역직렬화할 개체의 형식입니다.</param>
+      <param name="readStream">읽을 스트림입니다.</param>
+      <param name="content">사용 가능한 경우 <see cref="T:System.Net.Http.HttpContent" />입니다.Null일 수 있습니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.ReadFromStream(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger,System.Threading.CancellationToken)">
+      <summary>버퍼링된 스트림에서 비동기적으로 읽습니다.</summary>
+      <returns>지정된 <paramref name="type" />의 개체입니다.</returns>
+      <param name="type">역직렬화할 개체의 형식입니다.</param>
+      <param name="readStream">읽을 스트림입니다.</param>
+      <param name="content">사용 가능한 경우 <see cref="T:System.Net.Http.HttpContent" />입니다.Null일 수 있습니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>버퍼링된 스트림에서 비동기적으로 읽습니다.</summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="type">역직렬화할 개체의 형식입니다.</param>
+      <param name="readStream">읽을 스트림입니다.</param>
+      <param name="content">사용 가능한 경우 <see cref="T:System.Net.Http.HttpContent" />입니다.Null일 수 있습니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger,System.Threading.CancellationToken)">
+      <summary>버퍼링된 스트림에서 비동기적으로 읽습니다.</summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="type">역직렬화할 개체의 형식입니다.</param>
+      <param name="readStream">읽을 스트림입니다.</param>
+      <param name="content">사용 가능한 경우 <see cref="T:System.Net.Http.HttpContent" />입니다.Null일 수 있습니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.WriteToStream(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent)">
+      <summary>버퍼링된 스트림에 비동기적으로 씁니다.</summary>
+      <param name="type">직렬화할 개체의 형식입니다.</param>
+      <param name="value">쓸 개체 값입니다.Null일 수 있습니다.</param>
+      <param name="writeStream">이 스트림에 씁니다.</param>
+      <param name="content">사용 가능한 경우 <see cref="T:System.Net.Http.HttpContent" />입니다.Null일 수 있습니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.WriteToStream(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Threading.CancellationToken)">
+      <summary>버퍼링된 스트림에 비동기적으로 씁니다.</summary>
+      <param name="type">직렬화할 개체의 형식입니다.</param>
+      <param name="value">쓸 개체 값입니다.Null일 수 있습니다.</param>
+      <param name="writeStream">이 스트림에 씁니다.</param>
+      <param name="content">사용 가능한 경우 <see cref="T:System.Net.Http.HttpContent" />입니다.Null일 수 있습니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext)">
+      <summary>버퍼링된 스트림에 비동기적으로 씁니다.</summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="type">직렬화할 개체의 형식입니다.</param>
+      <param name="value">쓸 개체 값입니다.null일 수 있습니다.</param>
+      <param name="writeStream">이 스트림에 씁니다.</param>
+      <param name="content">사용 가능한 경우 <see cref="T:System.Net.Http.HttpContent" />입니다.Null일 수 있습니다.</param>
+      <param name="transportContext">전송 컨텍스트입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.BufferedMediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.CancellationToken)">
+      <summary>버퍼링된 스트림에 비동기적으로 씁니다.</summary>
+      <returns>비동기 작업을 나타내는 작업 개체입니다.</returns>
+      <param name="type">직렬화할 개체의 형식입니다.</param>
+      <param name="value">쓸 개체 값입니다.null일 수 있습니다.</param>
+      <param name="writeStream">이 스트림에 씁니다.</param>
+      <param name="content">사용 가능한 경우 <see cref="T:System.Net.Http.HttpContent" />입니다.Null일 수 있습니다.</param>
+      <param name="transportContext">전송 컨텍스트입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.ContentNegotiationResult">
+      <summary> &lt;see cref="M:System.Net.Http.Formatting.IContentNegotiator.Negotiate(System.Type,System.Net.Http.HttpRequestMessage,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})" /&gt;를 사용하여 수행된 콘텐츠 협상 결과를 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.ContentNegotiationResult.#ctor(System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary> 콘텐츠 협상 결과 개체를 만듭니다. </summary>
+      <param name="formatter">포맷터입니다.</param>
+      <param name="mediaType">기본 미디어 유형입니다.null일 수 있습니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.ContentNegotiationResult.Formatter">
+      <summary> 직렬화를 위해 선택한 포맷터입니다. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.ContentNegotiationResult.MediaType">
+      <summary>직렬화를 위해 선택한 포맷터와 연관된 미디어 유형입니다.null일 수 있습니다.</summary>
+    </member>
+    <member name="T:System.Net.Http.Formatting.DefaultContentNegotiator">
+      <summary>
+        <see cref="T:System.Net.Http.HttpRequestMessage" /> 또는 <see cref="T:System.Net.Http.HttpResponseMessage" />에 대한 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />를 선택하는 데 사용되는 <see cref="T:System.Net.Http.Formatting.IContentNegotiator" />의 기본 구현입니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.DefaultContentNegotiator" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.#ctor(System.Boolean)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.DefaultContentNegotiator" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="excludeMatchOnTypeOnly">개체 형식만 일치하는 포맷터를 제외하려면 true이고, 그렇지 않으면 false입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.ComputeFormatterMatches(System.Type,System.Net.Http.HttpRequestMessage,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary>각 포맷터가 얼마나 잘 HTTP 요청과 일치하는지를 확인합니다.</summary>
+      <returns>모든 일치 항목을 나타내는 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> 개체의 컬렉션을 반환합니다.</returns>
+      <param name="type">직렬화할 형식입니다.</param>
+      <param name="request">요청입니다.</param>
+      <param name="formatters">선택할 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 개체의 집합입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.DefaultContentNegotiator.ExcludeMatchOnTypeOnly">
+      <summary>true이면 개체 형식만 일치하는 포맷터를 제외하고, 그렇지 않으면 false입니다.</summary>
+      <returns>
+        <see cref="T:System.Boolean" />을 반환합니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.MatchAcceptHeader(System.Collections.Generic.IEnumerable{System.Net.Http.Headers.MediaTypeWithQualityHeaderValue},System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>Accept 헤더 필드 집합을 포맷터에서 지원하는 미디어 유형에 대해 일치시킵니다.</summary>
+      <returns>일치 항목의 품질을 나타내는 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> 개체를 반환하거나, 일치 항목이 없는 경우 null을 반환합니다.</returns>
+      <param name="sortedAcceptValues">q 요소의 내림차순으로 정렬된 Accept 헤더 값의 목록입니다. <see cref="M:System.Net.Http.Formatting.DefaultContentNegotiator.SortStringWithQualityHeaderValuesByQFactor(System.Collections.Generic.ICollection{System.Net.Http.Headers.StringWithQualityHeaderValue})" /> 메서드를 호출하여 이 목록을 만들 수 있습니다.</param>
+      <param name="formatter">일치 대상 포맷터입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.MatchMediaTypeMapping(System.Net.Http.HttpRequestMessage,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>요청을 미디어 유형 포맷터의 <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" /> 개체에 대해 일치시킵니다.</summary>
+      <returns>일치 항목의 품질을 나타내는 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> 개체를 반환하거나, 일치 항목이 없는 경우 null을 반환합니다.</returns>
+      <param name="request">일치시킬 요청입니다.</param>
+      <param name="formatter">미디어 유형 포맷터입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.MatchRequestMediaType(System.Net.Http.HttpRequestMessage,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>요청의 콘텐츠 유형을 포맷터에서 지원하는 미디어 유형에 대해 일치시킵니다.</summary>
+      <returns>일치 항목의 품질을 나타내는 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> 개체를 반환하거나, 일치 항목이 없는 경우 null을 반환합니다.</returns>
+      <param name="request">일치시킬 요청입니다.</param>
+      <param name="formatter">일치 대상 포맷터입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.MatchType(System.Type,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>포맷터의 지원되는 첫 번째 미디어 유형을 선택합니다.</summary>
+      <returns>
+        <see cref="P:System.Net.Http.Formatting.MediaTypeFormatterMatch.Ranking" />을 MatchOnCanWriteType으로 설정한 상태로 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" />를 반환하거나, 일치 항목이 없는 경우 null을 반환합니다. 일치 수준을 나타내는 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" />이며 null이면 일치 항목이 없습니다.</returns>
+      <param name="type">일치시킬 유형입니다.</param>
+      <param name="formatter">일치 대상 포맷터입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.Negotiate(System.Type,System.Net.Http.HttpRequestMessage,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary>지정된 <paramref name="type" />의 개체를 직렬화할 수 있는 지정된 <paramref name="request" />에 대해 전달된 <paramref name="formatters" /> 중에서 가장 적합한 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />를 선택하여 콘텐츠 협상을 수행합니다.</summary>
+      <returns>가장 적합한 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 인스턴스가 포함된 협상의 결과입니다. 적합한 포맷터가 없는 경우에는 null입니다.</returns>
+      <param name="type">직렬화할 형식입니다.</param>
+      <param name="request">요청입니다.</param>
+      <param name="formatters">선택할 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 개체의 집합입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.SelectResponseCharacterEncoding(System.Net.Http.HttpRequestMessage,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>응답을 쓰는 데 가장 적합한 문자 인코딩을 결정합니다.</summary>
+      <returns>가장 잘 일치하는 <see cref="T:System.Text.Encoding" />을 반환합니다.</returns>
+      <param name="request">요청입니다.</param>
+      <param name="formatter">선택된 미디어 포맷터입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.SelectResponseMediaTypeFormatter(System.Collections.Generic.ICollection{System.Net.Http.Formatting.MediaTypeFormatterMatch})">
+      <summary>찾은 후보 일치 항목 중 가장 잘 일치하는 항목을 선택합니다.</summary>
+      <returns>가장 잘 일치하는 항목을 나타내는 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> 개체를 반환합니다. </returns>
+      <param name="matches">일치 항목의 컬렉션입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.ShouldMatchOnType(System.Collections.Generic.IEnumerable{System.Net.Http.Headers.MediaTypeWithQualityHeaderValue})">
+      <summary> 유형과의 일치 여부를 확인할지를 결정합니다. 요청의 모든 항목에 대해 일치하는 항목이 없는 경우 406 응답을 생성할지, 기본 미디어 유형 포맷터를 사용할지 여부를 결정하는 데 사용됩니다. ExcludeMatchOnTypeOnly가 true인 경우 Accept 헤더가 있으면 유형과 일치하는지 확인하지 않습니다. </summary>
+      <returns>ExcludeMatchOnTypeOnly가 아니고 q 요소가 0.0보다 큰 Accept 헤더가 있는 경우 True입니다.</returns>
+      <param name="sortedAcceptValues">일치하는지 확인할 정렬된 Accept 헤더 값입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.SortMediaTypeWithQualityHeaderValuesByQFactor(System.Collections.Generic.ICollection{System.Net.Http.Headers.MediaTypeWithQualityHeaderValue})">
+      <summary>q 요소의 내림차순으로 Accept 헤더 값을 정렬합니다.</summary>
+      <returns>MediaTypeWithQualityHeaderValue 개체의 정렬된 목록을 반환합니다.</returns>
+      <param name="headerValues">헤더 필드를 나타내는 StringWithQualityHeaderValue 개체의 컬렉션입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.SortStringWithQualityHeaderValuesByQFactor(System.Collections.Generic.ICollection{System.Net.Http.Headers.StringWithQualityHeaderValue})">
+      <summary>q 요소의 내림차순으로 Accept-Charset, Accept-Encoding, Accept-Language 또는 관련 헤더 값의 목록을 정렬합니다.</summary>
+      <returns>StringWithQualityHeaderValue 개체의 정렬된 목록을 반환합니다.</returns>
+      <param name="headerValues">헤더 필드를 나타내는 StringWithQualityHeaderValue 개체의 컬렉션입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DefaultContentNegotiator.UpdateBestMatch(System.Net.Http.Formatting.MediaTypeFormatterMatch,System.Net.Http.Formatting.MediaTypeFormatterMatch)">
+      <summary>일치 항목이 현재 일치 항목보다 나은지 평가합니다.</summary>
+      <returns>어느 쪽이든 보다 나은 일치 항목인 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> 개체를 반환합니다.</returns>
+      <param name="current">현재 일치 항목입니다.</param>
+      <param name="potentialReplacement">현재 일치 항목에 대해 평가할 일치 항목입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.DelegatingEnumerable`1">
+      <summary> 구체적인 구현을 통해 위임하여 &lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt; 형식을 직렬화할 도우미 클래스입니다."/&amp;gt;. </summary>
+      <typeparam name="T">프록시에 구현되는 인터페이스입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DelegatingEnumerable`1.#ctor">
+      <summary>DelegatingEnumerable을 초기화합니다.<see cref="T:System.Runtime.Serialization.DataContractSerializer" />가 작동하려면 이 생성자가 필요합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DelegatingEnumerable`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+      <summary>DelegatingEnumerable을 &lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt;과 함께 초기화합니다.<see cref="T:System.Xml.Serialization.XmlSerializer" />의 &lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt; 인터페이스를 프록시할 도우미 클래스입니다.</summary>
+      <param name="source">열거자를 가져올 &lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt; 인스턴스입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DelegatingEnumerable`1.Add(System.Object)">
+      <summary>이 메서드는 구현되지 않지만 직렬화 작업에 필요한 메서드입니다.사용하지 마십시오.</summary>
+      <param name="item">추가할 항목입니다.사용되지 않습니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DelegatingEnumerable`1.GetEnumerator">
+      <summary> 연관된 &lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt;의 열거자를 가져옵니다. </summary>
+      <returns>&lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt; 소스의 열거자입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.DelegatingEnumerable`1.System#Collections#IEnumerable#GetEnumerator">
+      <summary> 연관된 &lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt;의 열거자를 가져옵니다. </summary>
+      <returns>&lt;see cref="T:System.Collections.Generic.IEnumerable`1" /&gt; 소스의 열거자입니다.</returns>
+    </member>
+    <member name="T:System.Net.Http.Formatting.FormDataCollection">
+      <summary>양식 데이터의 컬렉션을 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.#ctor(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.FormDataCollection" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="pairs">쌍입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.#ctor(System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.FormDataCollection" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="query">쿼리입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.#ctor(System.Uri)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.FormDataCollection" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="uri">URL입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.Get(System.String)">
+      <summary>양식 데이터의 컬렉션을 가져옵니다.</summary>
+      <returns>양식 데이터의 컬렉션입니다.</returns>
+      <param name="key">키입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.GetEnumerator">
+      <summary>컬렉션 전체를 반복하는 열거 가능 항목을 가져옵니다.</summary>
+      <returns>컬렉션 전체를 반복하는 열거 가능 항목입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.GetValues(System.String)">
+      <summary>양식 데이터 컬렉션의 값을 가져옵니다.</summary>
+      <returns>양식 데이터 컬렉션의 값입니다.</returns>
+      <param name="key">키입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.FormDataCollection.Item(System.String)">
+      <summary>지정된 키와 연결된 값을 가져옵니다.값이 여러 개 있으면 서로 연결됩니다.</summary>
+      <returns>지정된 키와 연결된 값입니다.값이 여러 개 있으면 서로 연결됩니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.ReadAsNameValueCollection">
+      <summary>양식 데이터 컬렉션을 이름 값의 컬렉션으로 읽습니다.</summary>
+      <returns>이름 값의 컬렉션으로서의 양식 데이터의 컬렉션입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormDataCollection.System#Collections#IEnumerable#GetEnumerator">
+      <summary>컬렉션 전체를 반복하는 열거 가능 항목을 가져옵니다.</summary>
+      <returns>컬렉션 전체를 반복하는 열거 가능 항목입니다.</returns>
+    </member>
+    <member name="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter">
+      <summary>HTML 양식 URL로 인코딩된 데이터(application/x-www-form-urlencoded라고도 함)를 처리하는 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 클래스입니다.  </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.#ctor(System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="formatter">설정을 복사해올 <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" /> 인스턴스입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.CanReadType(System.Type)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" />가 지정된 형식의 개체를 역직렬화할 수 있는지 여부를 쿼리합니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" />가 형식을 역직렬화할 수 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="type">역직렬화할 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.CanWriteType(System.Type)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" />가 지정된 형식의 개체를 직렬화할 수 있는지 여부를 쿼리합니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" />가 형식을 직렬화할 수 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="type">직렬화할 형식입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.DefaultMediaType">
+      <summary>HTML 양식 URL로 인코딩된 데이터의 기본 미디어 유형 즉, application/x-www-form-urlencoded를 가져옵니다.</summary>
+      <returns>HTML 양식 URL로 인코딩된 데이터의 기본 미디어 유형입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.MaxDepth">
+      <summary>이 포맷터에서 허용하는 최대 깊이를 가져오거나 설정합니다.</summary>
+      <returns>최대 깊이입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.ReadBufferSize">
+      <summary>들어오는 스트림을 읽을 때의 버퍼 크기를 가져오거나 설정합니다.</summary>
+      <returns>버퍼 크기입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary> 지정된 형식의 개체를 비동기적으로 역직렬화합니다.</summary>
+      <returns>결과가 읽은 개체 인스턴스가 되는 <see cref="T:System.Threading.Tasks.Task" />입니다.</returns>
+      <param name="type">역직렬화할 개체의 형식입니다.</param>
+      <param name="readStream">읽을 <see cref="T:System.IO.Stream" />입니다.</param>
+      <param name="content">콘텐츠를 읽을 <see cref="T:System.Net.Http.HttpContent" />입니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.IContentNegotiator">
+      <summary>콘텐츠 협상을 수행합니다.이 프로세스는 요청의 헤더 값과 일치하는 응답 기록기(포맷터)를 선택하는 프로세스입니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.IContentNegotiator.Negotiate(System.Type,System.Net.Http.HttpRequestMessage,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary> 지정된 형식의 개체를 직렬화할 수 있는 지정된 요청에 대해 전달된 포맷터 중에서 가장 적합한 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />를 선택하여 콘텐츠 협상을 수행합니다. </summary>
+      <returns>가장 적합한 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 인스턴스가 포함된 협상의 결과입니다. 적합한 포맷터가 없는 경우에는 null입니다.</returns>
+      <param name="type">직렬화할 형식입니다.</param>
+      <param name="request">협상을 수행하는 데 사용되는 헤더 값이 포함된 요청 메시지입니다.</param>
+      <param name="formatters">선택할 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 개체의 집합입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.IFormatterLogger">
+      <summary>포맷터가 읽는 동안 오류를 기록하는 데 사용할 수 있는 콜백 인터페이스를 지정합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.IFormatterLogger.LogError(System.String,System.Exception)">
+      <summary>오류를 기록합니다.</summary>
+      <param name="errorPath">오류를 기록할 대상 멤버에 대한 경로입니다.</param>
+      <param name="exception">오류 메시지입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.IFormatterLogger.LogError(System.String,System.String)">
+      <summary>오류를 기록합니다.</summary>
+      <param name="errorPath">오류를 기록할 대상 멤버에 대한 경로입니다.</param>
+      <param name="errorMessage">기록할 오류 메시지입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.IRequiredMemberSelector">
+      <summary>역직렬화할 때 지정된 구성원이 필요한지 여부를 확인하는 메서드를 정의합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.IRequiredMemberSelector.IsRequiredMember(System.Reflection.MemberInfo)">
+      <summary>역직렬화할 때 지정된 구성원이 필요한지 여부를 확인합니다.</summary>
+      <returns>
+        <paramref name="member" />를 필수 구성원으로 간주해야 하는 경우 true이고, 그렇지 않은 경우 false입니다.</returns>
+      <param name="member">역직렬화할 <see cref="T:System.Reflection.MemberInfo" />입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.JsonContractResolver">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" />에서 사용되는 기본 <see cref="T:Newtonsoft.Json.Serialization.IContractResolver" />를 나타냅니다.이 항목은 포맷터의 <see cref="T:System.Net.Http.Formatting.IRequiredMemberSelector" />를 사용하여 필요한 멤버를 선택하고 <see cref="T:System.SerializableAttribute" /> 유형 주석을 인식합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonContractResolver.#ctor(System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.JsonContractResolver" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="formatter">필요한 멤버를 확인하는 데 사용할 포맷터입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonContractResolver.CreateProperty(System.Reflection.MemberInfo,Newtonsoft.Json.MemberSerialization)">
+      <summary>지정한 매개 변수를 사용하여 지정한 클래스에서 속성을 만듭니다.</summary>
+      <returns>지정한 매개 변수를 사용하여 지정한 클래스에 만들 <see cref="T:Newtonsoft.Json.Serialization.JsonProperty" />입니다.</returns>
+      <param name="member">멤버 정보입니다.</param>
+      <param name="memberSerialization">멤버 직렬화입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.JsonMediaTypeFormatter">
+      <summary>JSON을 처리할 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 클래스를 나타냅니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.#ctor(System.Net.Http.Formatting.JsonMediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="formatter">설정을 복사해올 <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" /> 인스턴스입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.CanReadType(System.Type)">
+      <summary>이 <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" />가 지정된 <paramref name="type" />의 개체를 읽을 수 있는지 여부를 결정합니다.</summary>
+      <returns>이 <paramref name="type" />의 개체를 읽을 수 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="type">읽을 개체의 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.CanWriteType(System.Type)">
+      <summary>이 <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" />가 지정된 <paramref name="type" />의 개체를 쓸 수 있는지 여부를 결정합니다.</summary>
+      <returns>이 <paramref name="type" />의 개체를 쓸 수 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="type">쓸 개체의 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.CreateDataContractSerializer(System.Type)">
+      <summary>역직렬화하는 동안 호출되어 <see cref="T:System.Runtime.Serialization.Json.DataContractJsonSerializer" />를 가져옵니다.</summary>
+      <returns>직렬화에 사용되는 개체입니다.</returns>
+      <param name="type">직렬화 또는 역직렬화할 개체의 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.CreateJsonReader(System.Type,System.IO.Stream,System.Text.Encoding)">
+      <summary>역직렬화하는 동안 호출되어 <see cref="T:Newtonsoft.Json.JsonReader" />를 가져옵니다.</summary>
+      <returns>역직렬화하는 동안 사용하는 판독기입니다.</returns>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="readStream">읽을 스트림입니다.</param>
+      <param name="effectiveEncoding">읽을 때 사용할 인코딩입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.CreateJsonWriter(System.Type,System.IO.Stream,System.Text.Encoding)">
+      <summary>역직렬화하는 동안 호출되어 <see cref="T:Newtonsoft.Json.JsonWriter" />를 가져옵니다.</summary>
+      <returns>역직렬화하는 동안 사용하는 기록기입니다.</returns>
+      <param name="type">쓸 개체의 형식입니다.</param>
+      <param name="writeStream">이 스트림에 씁니다.</param>
+      <param name="effectiveEncoding">쓸 때 사용할 인코딩입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.JsonMediaTypeFormatter.DefaultMediaType">
+      <summary>JSON의 기본 미디어 유형, 즉 "application/json"을 가져옵니다.</summary>
+      <returns>JSON의 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.JsonMediaTypeFormatter.Indent">
+      <summary> 데이터를 쓸 때 요소를 들여쓸지 여부를 나타내는 값을 가져오거나 설정합니다.  </summary>
+      <returns>데이터를 쓸 때 요소를 들여쓰려면 true이고, 그렇지 않으면 false입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.JsonMediaTypeFormatter.MaxDepth">
+      <summary>이 포맷터에서 허용하는 최대 깊이를 가져오거나 설정합니다.</summary>
+      <returns>이 포맷터에서 허용하는 최대 깊이입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.ReadFromStream(System.Type,System.IO.Stream,System.Text.Encoding,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>역직렬화하는 동안 호출되어 지정된 스트림에서 지정된 형식의 개체를 읽습니다.</summary>
+      <returns>읽은 개체입니다.</returns>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="readStream">읽을 스트림입니다.</param>
+      <param name="effectiveEncoding">읽을 때 사용할 인코딩입니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 로거입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.JsonMediaTypeFormatter.UseDataContractJsonSerializer">
+      <summary>
+        <see cref="T:System.Runtime.Serialization.Json.DataContractJsonSerializer" />를 기본적으로 사용할지 여부를 나타내는 값을 가져오거나 설정합니다. </summary>
+      <returns>기본적으로 <see cref="T:System.Runtime.Serialization.Json.DataContractJsonSerializer" />인 경우 true이고, 그렇지 않으면 false입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.WriteToStream(System.Type,System.Object,System.IO.Stream,System.Text.Encoding)">
+      <summary>직렬화하는 동안 호출되어 지정된 형식의 개체를 지정된 스트림에 씁니다.</summary>
+      <param name="type">쓸 개체의 형식입니다.</param>
+      <param name="value">쓸 개체입니다.</param>
+      <param name="writeStream">이 스트림에 씁니다.</param>
+      <param name="effectiveEncoding">쓸 때 사용할 인코딩입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.JsonMediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.CancellationToken)">
+      <summary>직렬화하는 동안 호출되어 지정된 형식의 개체를 지정된 스트림에 씁니다.</summary>
+      <returns>
+        <see cref="T:System.Threading.Tasks.Task" />을 반환합니다.</returns>
+      <param name="type">쓸 개체의 형식입니다.</param>
+      <param name="value">쓸 개체입니다.</param>
+      <param name="writeStream">이 스트림에 씁니다.</param>
+      <param name="content">콘텐츠를 쓸 <see cref="T:System.Net.Http.HttpContent" />입니다.</param>
+      <param name="transportContext">전송 컨텍스트입니다.</param>
+      <param name="cancellationToken">취소를 모니터링하기 위한 토큰입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.MediaTypeFormatter">
+      <summary>
+        <see cref="T:System.Net.Http.ObjectContent" />를 사용하여 강력한 형식의 개체의 직렬화 및 역직렬화를 처리하는 기본 클래스입니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.#ctor(System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="formatter">설정을 복사해올 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 인스턴스입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.CanReadType(System.Type)">
+      <summary>이 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />가 지정된 형식의 개체를 역직렬화할 수 있는지 여부를 쿼리합니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />가 형식을 역직렬화할 수 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="type">역직렬화할 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.CanWriteType(System.Type)">
+      <summary>이 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />가 지정된 형식의 개체를 직렬화할 수 있는지 여부를 쿼리합니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />가 형식을 직렬화할 수 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="type">직렬화할 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.GetDefaultValueForType(System.Type)">
+      <summary>지정된 형식에 대한 기본값을 가져옵니다.</summary>
+      <returns>기본값입니다.</returns>
+      <param name="type">기본값을 가져올 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.GetPerRequestFormatterInstance(System.Type,System.Net.Http.HttpRequestMessage,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>지정된 매개 변수의 응답 형식을 지정할 수 있는 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />의 특수 인스턴스를 반환합니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />을 반환합니다.</returns>
+      <param name="type">형식을 지정할 형식입니다.</param>
+      <param name="request">요청입니다.</param>
+      <param name="mediaType">미디어 유형입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatter.MaxHttpCollectionKeys">
+      <summary>T:에 저장되는 최대 키 수를 가져오거나 설정합니다. <see cref="System.Collections.Specialized.NameValueCollection" />.</summary>
+      <returns>최대 키 수입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatter.MediaTypeMappings">
+      <summary>HTTP 요청을 미디어 유형에 일치시키는 <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" /> 개체의 변경할 수 있는 컬렉션을 가져옵니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" /> 컬렉션입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary>지정된 형식의 개체를 비동기적으로 역직렬화합니다.</summary>
+      <returns>결과가 지정된 형식의 개체인 <see cref="T:System.Threading.Tasks.Task" />입니다.</returns>
+      <param name="type">역직렬화할 개체의 형식입니다.</param>
+      <param name="readStream">읽을 <see cref="T:System.IO.Stream" />입니다.</param>
+      <param name="content">사용 가능한 경우 <see cref="T:System.Net.Http.HttpContent" />입니다.null일 수 있습니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />입니다.</param>
+      <exception cref="T:System.NotSupportedException">파생된 형식은 읽기를 지원해야 합니다.</exception>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger,System.Threading.CancellationToken)">
+      <summary>지정된 형식의 개체를 비동기적으로 역직렬화합니다.</summary>
+      <returns>결과가 지정된 형식의 개체인 <see cref="T:System.Threading.Tasks.Task" />입니다.</returns>
+      <param name="type">역직렬화할 개체의 형식입니다.</param>
+      <param name="readStream">읽을 <see cref="T:System.IO.Stream" />입니다.</param>
+      <param name="content">사용 가능한 경우 <see cref="T:System.Net.Http.HttpContent" />입니다.null일 수 있습니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />입니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatter.RequiredMemberSelector">
+      <summary>필수 멤버를 확인하는 데 사용되는 <see cref="T:System.Net.Http.Formatting.IRequiredMemberSelector" /> 인스턴스를 가져오거나 설정합니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.IRequiredMemberSelector" /> 인스턴스입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.SelectCharacterEncoding(System.Net.Http.Headers.HttpContentHeaders)">
+      <summary>지정된 콘텐츠 헤더 집합에서 HTTP 엔터티 본문을 읽거나 쓰는 데 가장 적합한 문자 인코딩을 결정합니다.</summary>
+      <returns>가장 잘 일치하는 인코딩입니다.</returns>
+      <param name="contentHeaders">콘텐츠 헤더입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.SetDefaultContentHeaders(System.Type,System.Net.Http.Headers.HttpContentHeaders,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>이 포맷터를 사용하여 형식을 지정할 콘텐츠의 기본 헤더를 설정합니다.이 메서드는 <see cref="T:System.Net.Http.ObjectContent" /> 생성자에서 호출됩니다.이 구현은 Content-Type 헤더를 mediaType의 값(null이 아닌 경우)으로 설정합니다.null인 경우에는 Content-Type을 이 포맷터의 기본 미디어 유형으로 설정합니다.Content-Type에서 문자 집합을 지정하지 않은 경우에는 이 포맷터를 사용하여 구성된 <see cref="T:System.Text.Encoding" />으로 설정합니다.</summary>
+      <param name="type">직렬화되는 개체의 형식입니다.<see cref="T:System.Net.Http.ObjectContent" />를 참조하십시오.</param>
+      <param name="headers">구성해야 할 콘텐츠 헤더입니다.</param>
+      <param name="mediaType">신뢰할 수 있는 미디어 유형입니다.Null일 수 있습니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatter.SupportedEncodings">
+      <summary>이 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />가 지원하는 문자 인코딩의 변경할 수 있는 컬렉션을 가져옵니다.</summary>
+      <returns>
+        <see cref="T:System.Text.Encoding" /> 개체의 컬렉션입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatter.SupportedMediaTypes">
+      <summary>이 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />가 지원하는 미디어 유형의 변경할 수 있는 컬렉션을 가져옵니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" /> 개체의 컬렉션입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext)">
+      <summary>지정된 형식의 개체를 비동기적으로 씁니다.</summary>
+      <returns>쓰기를 수행할 <see cref="T:System.Threading.Tasks.Task" />입니다.</returns>
+      <param name="type">쓸 개체의 형식입니다.</param>
+      <param name="value">쓸 개체 값입니다.null일 수 있습니다.</param>
+      <param name="writeStream">쓸 <see cref="T:System.IO.Stream" />입니다.</param>
+      <param name="content">사용 가능한 경우 <see cref="T:System.Net.Http.HttpContent" />입니다.null일 수 있습니다.</param>
+      <param name="transportContext">사용 가능한 경우 <see cref="T:System.Net.TransportContext" />입니다.null일 수 있습니다.</param>
+      <exception cref="T:System.NotSupportedException">파생된 형식은 쓰기를 지원해야 합니다.</exception>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.CancellationToken)">
+      <summary>지정된 형식의 개체를 비동기적으로 씁니다.</summary>
+      <returns>쓰기를 수행할 <see cref="T:System.Threading.Tasks.Task" />입니다.</returns>
+      <param name="type">쓸 개체의 형식입니다.</param>
+      <param name="value">쓸 개체 값입니다.null일 수 있습니다.</param>
+      <param name="writeStream">쓸 <see cref="T:System.IO.Stream" />입니다.</param>
+      <param name="content">사용 가능한 경우 <see cref="T:System.Net.Http.HttpContent" />입니다.null일 수 있습니다.</param>
+      <param name="transportContext">사용 가능한 경우 <see cref="T:System.Net.TransportContext" />입니다.null일 수 있습니다.</param>
+      <param name="cancellationToken">작업을 취소할 토큰입니다.</param>
+      <exception cref="T:System.NotSupportedException">파생된 형식은 쓰기를 지원해야 합니다.</exception>
+    </member>
+    <member name="T:System.Net.Http.Formatting.MediaTypeFormatterCollection">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 인스턴스가 포함된 컬렉션 클래스입니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterCollection" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.#ctor(System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterCollection" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="formatters">컬렉션에 배치할 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 인스턴스의 컬렉션입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.AddRange(System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary>지정된 컬렉션의 요소를 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterCollection" /> 끝에 추가합니다.</summary>
+      <param name="items">
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterCollection" /> 끝에 추가될 항목입니다. 항목 컬렉션 자체는 <see cref="null" />일 수 없으나 <see cref="null" />인 요소를 포함할 수는 있습니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.ClearItems">
+      <summary>컬렉션에서 모든 항목을 제거합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.FindReader(System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>지정된 mediaType에서 .NET 형식을 읽을 수 있는 포맷터의 컬렉션을 검색하는 도우미입니다.</summary>
+      <returns>형식을 읽을 수 있는 포맷터입니다. 포맷터를 찾을 수 없으면 Null입니다.</returns>
+      <param name="type">읽을 .NET 형식입니다.</param>
+      <param name="mediaType">일치시킬 미디어 유형입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.FindWriter(System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>지정된 mediaType에서 .NET 형식을 쓸 수 있는 포맷터의 컬렉션을 검색하는 도우미입니다.</summary>
+      <returns>형식을 쓸 수 있는 포맷터입니다. 포맷터를 찾을 수 없으면 Null입니다.</returns>
+      <param name="type">읽을 .NET 형식입니다.</param>
+      <param name="mediaType">일치시킬 미디어 유형입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterCollection.FormUrlEncodedFormatter">
+      <summary>application/x-www-form-urlencoded 데이터에 사용할 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />를 가져옵니다.</summary>
+      <returns>application/x-www-form-urlencoded 데이터에 사용할 <see cref="T:System.Net.Http.Formatting.FormUrlEncodedMediaTypeFormatter" />입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.InsertItem(System.Int32,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>컬렉션의 지정된 인덱스에 지정된 항목을 삽입합니다.</summary>
+      <param name="index">삽입할 인덱스입니다.</param>
+      <param name="item">삽입할 항목입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{System.Net.Http.Formatting.MediaTypeFormatter})">
+      <summary>컬렉션 요소를 지정된 인덱스의 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterCollection" />에 삽입합니다.</summary>
+      <param name="index">새 요소가 삽입되어야 하는 인덱스(0부터 시작)입니다.</param>
+      <param name="items">
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterCollection" />에 삽입되어야 하는 항목입니다. 항목 컬렉션 자체는 <see cref="null" />일 수 없으나 <see cref="null" />인 요소를 포함할 수는 있습니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.IsTypeExcludedFromValidation(System.Type)">
+      <summary>형식이 유효성 검사에서 제외해야 할, 느슨하게 정의된 형식 중 하나인 경우 true를 반환합니다.</summary>
+      <returns>형식을 제외해야 하면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="type">유효성을 검사할 .NET <see cref="T:System.Type" />입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterCollection.JsonFormatter">
+      <summary>JSON에 사용할 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />를 가져옵니다.</summary>
+      <returns>JSON에 사용할 <see cref="T:System.Net.Http.Formatting.JsonMediaTypeFormatter" />입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.RemoveItem(System.Int32)">
+      <summary>지정된 인덱스에서 항목을 제거합니다.</summary>
+      <param name="index">제거할 항목의 인덱스입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterCollection.SetItem(System.Int32,System.Net.Http.Formatting.MediaTypeFormatter)">
+      <summary>컬렉션의 지정된 인덱스에 항목을 할당합니다.</summary>
+      <param name="index">삽입할 인덱스입니다.</param>
+      <param name="item">할당할 항목입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterCollection.XmlFormatter">
+      <summary>XML에 사용할 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />를 가져옵니다.</summary>
+      <returns>XML에 사용할 <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" />입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterExtensions.AddQueryStringMapping(System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.String,System.Net.Http.Headers.MediaTypeHeaderValue)"></member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterExtensions.AddQueryStringMapping(System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.String,System.String)"></member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterExtensions.AddRequestHeaderMapping(System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.String,System.StringComparison,System.Boolean,System.Net.Http.Headers.MediaTypeHeaderValue)"></member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterExtensions.AddRequestHeaderMapping(System.Net.Http.Formatting.MediaTypeFormatter,System.String,System.String,System.StringComparison,System.Boolean,System.String)"></member>
+    <member name="T:System.Net.Http.Formatting.MediaTypeFormatterMatch">
+      <summary> 이 클래스에서는 특정 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />가 요청과 얼마나 잘 일치하는지에 대해 설명합니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeFormatterMatch.#ctor(System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,System.Nullable{System.Double},System.Net.Http.Formatting.MediaTypeFormatterMatchRanking)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatterMatch" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+      <param name="formatter">일치하는 포맷터입니다.</param>
+      <param name="mediaType">미디어 유형입니다.미디어 유형 응용 프로그램/8진수 스트림이 사용되는 경우 Null일 수 있습니다.</param>
+      <param name="quality">일치 수준입니다.값이 1.0이면 완전히 일치하는 것으로 간주되는 경우 Null일 수 있습니다.</param>
+      <param name="ranking">일치 종류입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterMatch.Formatter">
+      <summary> 미디어 유형 포맷터를 가져옵니다. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterMatch.MediaType">
+      <summary> 일치하는 미디어 유형을 가져옵니다. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterMatch.Quality">
+      <summary> 일치 수준을 가져옵니다. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeFormatterMatch.Ranking">
+      <summary> 발생한 일치 종류를 가져옵니다. </summary>
+    </member>
+    <member name="T:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" />에서 들어오는 요청에서 찾은 명시적 또는 암묵적 기본 설정과 일치하는 정도에 대한 정보를 포함합니다. </summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.MatchOnCanWriteType">
+      <summary> 형식에서 일치한다는 것은 포맷터가 형식을 직렬화할 수 있다는 의미입니다.</summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.MatchOnRequestAcceptHeaderAllMediaRange">
+      <summary>Accept 헤더의 명시적 “*/*” 범위에서 일치했습니다.</summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.MatchOnRequestAcceptHeaderLiteral">
+      <summary>명시적 리터럴 Accept 헤더(예: “application/json”)에서 일치했습니다.</summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.MatchOnRequestAcceptHeaderSubtypeMediaRange">
+      <summary>Accept 헤더의 명시적 하위 형식 범위(예: “application/*”)에서 일치했습니다.</summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.MatchOnRequestMediaType">
+      <summary> HTTP 요청 메시지의 엔터티 본문 중 미디어 유형에서 일치했습니다.</summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.MatchOnRequestWithMediaTypeMapping">
+      <summary> 다양한 <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" />을 적용한 후에 <see cref="T:System.Net.Http.HttpRequestMessage" />에서 일치했습니다. </summary>
+    </member>
+    <member name="F:System.Net.Http.Formatting.MediaTypeFormatterMatchRanking.None">
+      <summary> 일치하는 항목이 없습니다. </summary>
+    </member>
+    <member name="T:System.Net.Http.Formatting.MediaTypeMapping">
+      <summary> 특정 특성 및 특정 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />가 있는 <see cref="T:System.Net.Http.HttpRequestMessage" /> 또는 <see cref="T:System.Net.Http.HttpResponseMessage" /> 인스턴스 간에 연관을 만드는 데 사용되는 추상 기본 클래스입니다.  </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeMapping.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary> 지정된 mediaType 값이 있는 <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" />의 새 인스턴스를 초기화합니다. </summary>
+      <param name="mediaType">
+        <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" />의 지정된 특성이 있는 <see cref="T:System.Net.Http.HttpRequestMessage" /> 또는 <see cref="T:System.Net.Http.HttpResponseMessage" /> 인스턴스와 연관된 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />입니다. </param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeMapping.#ctor(System.String)">
+      <summary> 지정된 mediaType 값이 있는 <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" />의 새 인스턴스를 초기화합니다. </summary>
+      <param name="mediaType">
+        <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" />의 지정된 특성이 있는 <see cref="T:System.Net.Http.HttpRequestMessage" /> 또는 <see cref="T:System.Net.Http.HttpResponseMessage" /> 인스턴스와 연관된 <see cref="T:System.String" />입니다. </param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.MediaTypeMapping.MediaType">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" />의 지정된 특성이 있는 <see cref="T:System.Net.Http.HttpRequestMessage" /> 또는 <see cref="T:System.Net.Http.HttpResponseMessage" /> 인스턴스와 연관된 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />를 가져옵니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.MediaTypeMapping.TryMatchMediaType(System.Net.Http.HttpRequestMessage)">
+      <summary>요청과 연관된 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />의 일치 수준을 반환합니다. </summary>
+      <returns>일치 수준입니다.0.0부터 1.0 사이여야 합니다.값이 0.0이면 일치하지 않음을 의미합니다.값이 1.0이면 완전히 일치함을 의미합니다.</returns>
+      <param name="request">
+        <see cref="T:System.Net.Http.Formatting.MediaTypeMapping" />의 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />와 연관된 특성에 대해 평가할 <see cref="T:System.Net.Http.HttpRequestMessage" />입니다. </param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.QueryStringMapping">
+      <summary> 쿼리 문자열에서 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />를 제공하는 클래스입니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.QueryStringMapping.#ctor(System.String,System.String,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.QueryStringMapping" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+      <param name="queryStringParameterName">쿼리 문자열 매개 변수가 있는 경우 이 매개 변수의 이름입니다.</param>
+      <param name="queryStringParameterValue">queryStringParameterName으로 지정한 쿼리 문자열 매개 변수의 값입니다.</param>
+      <param name="mediaType">queryStringParameterName으로 지정한 쿼리 매개 변수가 있고 queryStringParameterValue로 지정한 값이 할당된 경우에 사용할 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.QueryStringMapping.#ctor(System.String,System.String,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.QueryStringMapping" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+      <param name="queryStringParameterName">쿼리 문자열 매개 변수가 있는 경우 이 매개 변수의 이름입니다.</param>
+      <param name="queryStringParameterValue">queryStringParameterName으로 지정한 쿼리 문자열 매개 변수의 값입니다.</param>
+      <param name="mediaType">queryStringParameterName으로 지정한 쿼리 매개 변수가 있고 queryStringParameterValue로 지정한 값이 할당된 경우에 사용할 미디어 유형입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.QueryStringMapping.QueryStringParameterName">
+      <summary> 쿼리 문자열 매개 변수 이름을 가져옵니다. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.QueryStringMapping.QueryStringParameterValue">
+      <summary> 쿼리 문자열 매개 변수 값을 가져옵니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.QueryStringMapping.TryMatchMediaType(System.Net.Http.HttpRequestMessage)">
+      <summary> 현재 <see cref="T:System.Net.Http.Formatting.QueryStringMapping" /> 인스턴스가 요청에서 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />를 반환할 수 있는지를 나타내는 값을 반환합니다. </summary>
+      <returns>이 인스턴스가 요청에서 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />을 생성하면 1.0을 반환하고, 그렇지 않으면 0.0을 반환합니다.</returns>
+      <param name="request">확인할 <see cref="T:System.Net.Http.HttpRequestMessage" />입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.RequestHeaderMapping">
+      <summary>이 클래스는 임의 HTTP 요청 헤더 필드에서 <see cref="T:System.Net.Http.HttpRequestMessage" /> 또는 <see cref="T:System.Net.Http.HttpResponseMessage" />의 엔터티 본문을 처리하기 위해 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 인스턴스를 선택하는 데 사용되는 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />로의 매핑을 제공합니다.&lt;remarks&gt;이 클래스는 <see cref="M:HttpRequestMessage.Headers" />와 연관된 헤더 필드의 일치 여부만 확인합니다.<see cref="M:HttpResponseMessage.Headers" /> 또는 <see cref="M:HttpContent.Headers" /> 인스턴스와 연관된 헤더 필드는 확인하지 않습니다.&lt;/remarks&gt;</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.RequestHeaderMapping.#ctor(System.String,System.String,System.StringComparison,System.Boolean,System.Net.Http.Headers.MediaTypeHeaderValue)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.RequestHeaderMapping" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+      <param name="headerName">일치하는지 비교할 헤더의 이름입니다.</param>
+      <param name="headerValue">일치하는지 비교할 헤더 값입니다.</param>
+      <param name="valueComparison">headerValue가 일치하는지 비교할 때 사용할 <see cref="T:System.StringComparison" />입니다.</param>
+      <param name="isValueSubstring">true로 설정된 경우 실제 헤더 값의 하위 문자열과 일치하면 headerValue가 일치하는 것으로 간주됩니다.</param>
+      <param name="mediaType">headerName 및 headerValue가 일치하는 것으로 간주되는 경우에 사용할 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.RequestHeaderMapping.#ctor(System.String,System.String,System.StringComparison,System.Boolean,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.RequestHeaderMapping" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+      <param name="headerName">일치하는지 비교할 헤더의 이름입니다.</param>
+      <param name="headerValue">일치하는지 비교할 헤더 값입니다.</param>
+      <param name="valueComparison">headerValue가 일치하는지 비교할 때 사용할 값 비교입니다.</param>
+      <param name="isValueSubstring">true로 설정된 경우 실제 헤더 값의 하위 문자열과 일치하면 headerValue가 일치하는 것으로 간주됩니다.</param>
+      <param name="mediaType">headerName 및 headerValue가 일치하는 것으로 간주되는 경우에 사용할 미디어 유형입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.RequestHeaderMapping.HeaderName">
+      <summary> 일치하는지 비교할 헤더의 이름을 가져옵니다. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.RequestHeaderMapping.HeaderValue">
+      <summary> 일치하는지 비교할 헤더 값을 가져옵니다. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.RequestHeaderMapping.HeaderValueComparison">
+      <summary>
+        <see cref="M:HeaderValue" />가 일치하는지 비교할 때 사용할 <see cref="T:System.StringComparison" />을 가져옵니다. </summary>
+    </member>
+    <member name="P:System.Net.Http.Formatting.RequestHeaderMapping.IsValueSubstring">
+      <summary>
+        <see cref="M:HeaderValue" />가 실제 헤더 값의 하위 문자열과 일치하는지 여부를 나타내는 값을 가져옵니다.이 인스턴스는 값 하위 문자열입니다.</summary>
+      <returns>true<see cref="P:System.Net.Http.Formatting.RequestHeaderMapping.HeaderValue" />false</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.RequestHeaderMapping.TryMatchMediaType(System.Net.Http.HttpRequestMessage)">
+      <summary> 현재 <see cref="T:System.Net.Http.Formatting.RequestHeaderMapping" /> 인스턴스가 요청에서 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />를 반환할 수 있는지를 나타내는 값을 반환합니다. </summary>
+      <returns>일치 수준입니다.0.0부터 1.0 사이여야 합니다.값이 0.0이면 일치하지 않음을 의미합니다.값이 1.0이면 완전히 일치함을 의미합니다.</returns>
+      <param name="request">확인할 <see cref="T:System.Net.Http.HttpRequestMessage" />입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.XmlHttpRequestHeaderMapping">
+      <summary> 명시적 Accept 필드가 요청에 있는 경우, 미디어 유형 application/json에 AJAX XHR(XmlHttpRequest)에서 설정한 X-Requested-With http 헤더 필드를 매핑하는 <see cref="T:System.Net.Http.Formatting.RequestHeaderMapping" />입니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlHttpRequestHeaderMapping.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.XmlHttpRequestHeaderMapping" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlHttpRequestHeaderMapping.TryMatchMediaType(System.Net.Http.HttpRequestMessage)">
+      <summary> 현재 <see cref="T:System.Net.Http.Formatting.RequestHeaderMapping" /> 인스턴스가 요청에서 <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />를 반환할 수 있는지를 나타내는 값을 반환합니다. </summary>
+      <returns>일치 수준입니다.값이 0.0이면 일치하지 않음을 의미합니다.값이 1.0이면 완전히 일치하며, Accept 헤더가 없는 XmlHttpRequest를 사용하여 요청했음을 의미합니다.</returns>
+      <param name="request">확인할 <see cref="T:System.Net.Http.HttpRequestMessage" />입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Formatting.XmlMediaTypeFormatter">
+      <summary>Xml을 처리할 <see cref="T:System.Net.Http.Formatting.MediaTypeFormatter" /> 클래스입니다. </summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.#ctor(System.Net.Http.Formatting.XmlMediaTypeFormatter)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="formatter">설정을 복사해올 <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" /> 인스턴스입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.CanReadType(System.Type)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" />가 지정된 형식의 개체를 역직렬화할 수 있는지 여부를 쿼리합니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" />가 형식을 역직렬화할 수 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="type">역직렬화할 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.CanWriteType(System.Type)">
+      <summary>
+        <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" />가 지정된 형식의 개체를 직렬화할 수 있는지 여부를 쿼리합니다.</summary>
+      <returns>
+        <see cref="T:System.Net.Http.Formatting.XmlMediaTypeFormatter" />가 형식을 직렬화할 수 있으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="type">직렬화할 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.CreateDataContractSerializer(System.Type)">
+      <summary>역직렬화하는 동안 호출되어 DataContractSerializer 직렬 변환기를 가져옵니다.</summary>
+      <returns>직렬화에 사용되는 개체입니다.</returns>
+      <param name="type">직렬화 또는 역직렬화할 개체의 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.CreateXmlReader(System.IO.Stream,System.Net.Http.HttpContent)">
+      <summary>역직렬화하는 동안 호출되어 스트림에서 개체를 읽는 데 사용할 XML 판독기를 가져옵니다.</summary>
+      <returns>개체를 읽는 데 사용할 <see cref="T:System.Xml.XmlReader" />입니다.</returns>
+      <param name="readStream">읽을 <see cref="T:System.IO.Stream" />입니다.</param>
+      <param name="content">콘텐츠를 읽을 <see cref="T:System.Net.Http.HttpContent" />입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.CreateXmlSerializer(System.Type)">
+      <summary>역직렬화하는 동안 호출되어 XML 직렬 변환기를 가져옵니다.</summary>
+      <returns>직렬화에 사용되는 개체입니다.</returns>
+      <param name="type">직렬화 또는 역직렬화할 개체의 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.CreateXmlWriter(System.IO.Stream,System.Net.Http.HttpContent)">
+      <summary>직렬화하는 동안 호출되어 스트림에 개체를 쓰는 데 사용할 XML 기록기를 가져옵니다.</summary>
+      <returns>개체를 쓰는 데 사용할 <see cref="T:System.Xml.XmlWriter" />입니다.</returns>
+      <param name="writeStream">쓸 <see cref="T:System.IO.Stream" />입니다.</param>
+      <param name="content">콘텐츠를 쓸 <see cref="T:System.Net.Http.HttpContent" />입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.XmlMediaTypeFormatter.DefaultMediaType">
+      <summary>XML 포맷터의 기본 미디어 유형을 가져옵니다.</summary>
+      <returns>기본 미디어 유형인 “application/xml”입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.GetDeserializer(System.Type,System.Net.Http.HttpContent)">
+      <summary>역직렬화하는 동안 호출되어 개체를 역직렬화하는 데 사용할 XML 직렬 변환기를 가져옵니다.</summary>
+      <returns>개체를 역직렬화하는 데 사용할 <see cref="T:System.Runtime.Serialization.XmlObjectSerializer" /> 또는 <see cref="T:System.Xml.Serialization.XmlSerializer" /> 인스턴스입니다.</returns>
+      <param name="type">역직렬화할 개체의 형식입니다.</param>
+      <param name="content">콘텐츠를 읽을 <see cref="T:System.Net.Http.HttpContent" />입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.GetSerializer(System.Type,System.Object,System.Net.Http.HttpContent)">
+      <summary>직렬화하는 동안 호출되어 개체를 직렬화하는 데 사용할 XML 직렬 변환기를 가져옵니다.</summary>
+      <returns>개체를 직렬화하는 데 사용할 <see cref="T:System.Runtime.Serialization.XmlObjectSerializer" /> 또는 <see cref="T:System.Xml.Serialization.XmlSerializer" /> 인스턴스입니다.</returns>
+      <param name="type">직렬화할 개체의 형식입니다.</param>
+      <param name="value">직렬화할 개체입니다.</param>
+      <param name="content">콘텐츠를 쓸 <see cref="T:System.Net.Http.HttpContent" />입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Formatting.XmlMediaTypeFormatter.Indent">
+      <summary>데이터를 쓸 때 요소를 들여쓸지 여부를 나타내는 값을 가져오거나 설정합니다.</summary>
+      <returns>indent 요소이면 true이고, 그렇지 않으면 false입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.InvokeCreateXmlReader(System.IO.Stream,System.Net.Http.HttpContent)">
+      <summary>이 메서드는 인프라를 지원하며 사용자 코드에서 직접 사용할 수 없습니다.</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlReader" />을 반환합니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.InvokeCreateXmlWriter(System.IO.Stream,System.Net.Http.HttpContent)">
+      <summary>이 메서드는 인프라를 지원하며 사용자 코드에서 직접 사용할 수 없습니다.</summary>
+      <returns>
+        <see cref="T:System.Xml.XmlWriter" />을 반환합니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.InvokeGetDeserializer(System.Type,System.Net.Http.HttpContent)">
+      <summary>이 메서드는 인프라를 지원하며 사용자 코드에서 직접 사용할 수 없습니다.</summary>
+      <returns>
+        <see cref="T:System.Object" />을 반환합니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.InvokeGetSerializer(System.Type,System.Object,System.Net.Http.HttpContent)">
+      <summary>이 메서드는 인프라를 지원하며 사용자 코드에서 직접 사용할 수 없습니다.</summary>
+      <returns>
+        <see cref="T:System.Object" />을 반환합니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.XmlMediaTypeFormatter.MaxDepth">
+      <summary>최대 중첩 노드 깊이를 가져오거나 설정합니다.</summary>
+      <returns>최대 중첩 노드 깊이입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.ReadFromStreamAsync(System.Type,System.IO.Stream,System.Net.Http.HttpContent,System.Net.Http.Formatting.IFormatterLogger)">
+      <summary> 역직렬화하는 동안 호출되어 지정된 readStream에서 지정된 형식의 개체를 읽습니다. </summary>
+      <returns>결과가 읽은 개체 인스턴스가 되는 <see cref="T:System.Threading.Tasks.Task" />입니다.</returns>
+      <param name="type">읽을 개체의 형식입니다.</param>
+      <param name="readStream">개체를 읽을 <see cref="T:System.IO.Stream" />입니다.</param>
+      <param name="content">콘텐츠를 읽을 <see cref="T:System.Net.Http.HttpContent" />입니다.</param>
+      <param name="formatterLogger">이벤트를 기록할 <see cref="T:System.Net.Http.Formatting.IFormatterLogger" />입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.RemoveSerializer(System.Type)">
+      <summary>현재 지정된 형식과 연관된 직렬 변환기의 등록을 취소합니다.</summary>
+      <returns>이전에 형식에 대해 직렬 변환기를 등록했으면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="type">직렬 변환기를 제거할 개체의 형식입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.SetSerializer``1(System.Runtime.Serialization.XmlObjectSerializer)">
+      <summary>지정된 형식의 개체를 읽거나 쓰기 위한 <see cref="T:System.Runtime.Serialization.XmlObjectSerializer" />를 등록합니다.</summary>
+      <param name="serializer">
+        <see cref="T:System.Runtime.Serialization.XmlObjectSerializer" /> 인스턴스입니다.</param>
+      <typeparam name="T">
+        <paramref name="serializer" />로 직렬화 또는 역직렬화할 개체의 형식입니다.</typeparam>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.SetSerializer(System.Type,System.Runtime.Serialization.XmlObjectSerializer)">
+      <summary>지정된 형식의 개체를 읽거나 쓰기 위한 <see cref="T:System.Runtime.Serialization.XmlObjectSerializer" />를 등록합니다.</summary>
+      <param name="type">
+        <paramref name="serializer" />로 직렬화 또는 역직렬화할 개체의 형식입니다.</param>
+      <param name="serializer">
+        <see cref="T:System.Runtime.Serialization.XmlObjectSerializer" /> 인스턴스입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.SetSerializer(System.Type,System.Xml.Serialization.XmlSerializer)">
+      <summary>지정된 형식의 개체를 읽거나 쓰기 위한 <see cref="T:System.Xml.Serialization.XmlSerializer" />를 등록합니다.</summary>
+      <param name="type">
+        <paramref name="serializer" />로 직렬화 또는 역직렬화할 개체의 형식입니다.</param>
+      <param name="serializer">
+        <see cref="T:System.Xml.Serialization.XmlSerializer" /> 인스턴스입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.SetSerializer``1(System.Xml.Serialization.XmlSerializer)">
+      <summary>지정된 형식의 개체를 읽거나 쓰기 위한 <see cref="T:System.Xml.Serialization.XmlSerializer" />를 등록합니다.</summary>
+      <param name="serializer">
+        <see cref="T:System.Xml.Serialization.XmlSerializer" /> 인스턴스입니다.</param>
+      <typeparam name="T">
+        <paramref name="serializer" />로 직렬화 또는 역직렬화할 개체의 형식입니다.</typeparam>
+    </member>
+    <member name="P:System.Net.Http.Formatting.XmlMediaTypeFormatter.UseXmlSerializer">
+      <summary>XML 포맷터가 <see cref="T:System.Runtime.Serialization.DataContractSerializer" />를 사용하는 대신, 기본 직렬 변환기로 <see cref="T:System.Xml.Serialization.XmlSerializer" />를 사용하는지 여부를 나타내는 값을 가져오거나 설정합니다.</summary>
+      <returns>포맷터가 기본적으로 <see cref="T:System.Xml.Serialization.XmlSerializer" />를 사용하면 true이고, 그렇지 않으면 기본적으로 <see cref="T:System.Runtime.Serialization.DataContractSerializer" />를 사용합니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Formatting.XmlMediaTypeFormatter.WriterSettings">
+      <summary>쓰는 동안 사용할 설정을 가져옵니다.</summary>
+      <returns>쓰는 동안 사용할 설정입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Formatting.XmlMediaTypeFormatter.WriteToStreamAsync(System.Type,System.Object,System.IO.Stream,System.Net.Http.HttpContent,System.Net.TransportContext,System.Threading.CancellationToken)">
+      <summary>직렬화하는 동안 호출되어 지정된 형식의 개체를 지정된 writeStream에 씁니다.</summary>
+      <returns>값을 스트림에 쓸 <see cref="T:System.Threading.Tasks.Task" />입니다.</returns>
+      <param name="type">쓸 개체의 형식입니다.</param>
+      <param name="value">쓸 개체입니다.</param>
+      <param name="writeStream">쓸 <see cref="T:System.IO.Stream" />입니다.</param>
+      <param name="content">콘텐츠를 쓸 <see cref="T:System.Net.Http.HttpContent" />입니다.</param>
+      <param name="transportContext">
+        <see cref="T:System.Net.TransportContext" />입니다.</param>
+      <param name="cancellationToken">취소를 모니터링하는 토큰입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Handlers.HttpProgressEventArgs">
+      <summary>HTTP 진행률에 대한 이벤트 인수를 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Handlers.HttpProgressEventArgs.#ctor(System.Int32,System.Object,System.Int64,System.Nullable{System.Int64})">
+      <summary>
+        <see cref="T:System.Net.Http.Handlers.HttpProgressEventArgs" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+      <param name="progressPercentage">진행률입니다.</param>
+      <param name="userToken">사용자 토큰입니다.</param>
+      <param name="bytesTransferred">전송된 바이트 수입니다.</param>
+      <param name="totalBytes">전송된 총 바이트 수입니다.</param>
+    </member>
+    <member name="P:System.Net.Http.Handlers.HttpProgressEventArgs.BytesTransferred"></member>
+    <member name="P:System.Net.Http.Handlers.HttpProgressEventArgs.TotalBytes"></member>
+    <member name="T:System.Net.Http.Handlers.ProgressMessageHandler">
+      <summary>업로드할 요청 엔터티와 다운로드할 응답 엔터티 둘 다에 대한 진행률 알림을 생성합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Handlers.ProgressMessageHandler.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Handlers.ProgressMessageHandler" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Handlers.ProgressMessageHandler.#ctor(System.Net.Http.HttpMessageHandler)">
+      <summary>
+        <see cref="T:System.Net.Http.Handlers.ProgressMessageHandler" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="innerHandler">내부 메시지 처리기입니다.</param>
+    </member>
+    <member name="E:System.Net.Http.Handlers.ProgressMessageHandler.HttpReceiveProgress">
+      <summary>이벤트 엔터티가 다운로드될 때 발생합니다.</summary>
+    </member>
+    <member name="E:System.Net.Http.Handlers.ProgressMessageHandler.HttpSendProgress">
+      <summary>이벤트 엔터티가 업로드될 때 발생합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Handlers.ProgressMessageHandler.OnHttpRequestProgress(System.Net.Http.HttpRequestMessage,System.Net.Http.Handlers.HttpProgressEventArgs)">
+      <summary>진행률 요청을 처리하는 이벤트를 발생시킵니다.</summary>
+      <param name="request">요청입니다.</param>
+      <param name="e">요청에 대한 이벤트 처리기입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Handlers.ProgressMessageHandler.OnHttpResponseProgress(System.Net.Http.HttpRequestMessage,System.Net.Http.Handlers.HttpProgressEventArgs)">
+      <summary>진행률 응답을 처리하는 이벤트를 발생시킵니다.</summary>
+      <param name="request">요청입니다.</param>
+      <param name="e">요청에 대한 이벤트 처리기입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Handlers.ProgressMessageHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+      <summary>배달용 HTTP 서버로 지정된 진행률 메시지를 보냅니다.</summary>
+      <returns>보낸 진행률 메시지입니다.</returns>
+      <param name="request">요청입니다.</param>
+      <param name="cancellationToken">취소 토큰입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Headers.CookieHeaderValue">
+      <summary>쿠키 헤더의 값을 제공합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieHeaderValue.#ctor">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.CookieHeaderValue" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieHeaderValue.#ctor(System.String,System.Collections.Specialized.NameValueCollection)">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.CookieHeaderValue" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="name">이름의 값입니다.</param>
+      <param name="values">값입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieHeaderValue.#ctor(System.String,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.CookieHeaderValue" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="name">이름의 값입니다.</param>
+      <param name="value">값입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieHeaderValue.Clone">
+      <summary>쿠키 값의 단순 복사본을 만듭니다.</summary>
+      <returns>쿠키 값의 단순 복사본입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.Cookies">
+      <summary>클라이언트에서 전송한 쿠키의 컬렉션을 가져옵니다.</summary>
+      <returns>클라이언트의 쿠키 변수를 나타내는 컬렉션 개체입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.Domain">
+      <summary>쿠키와 연결할 도메인을 가져오거나 설정합니다.</summary>
+      <returns>쿠키와 연결할 도메인의 이름입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.Expires">
+      <summary>쿠키의 만료 날짜 및 시간을 가져오거나 설정합니다.</summary>
+      <returns>클라이언트에서 쿠키가 만료되는 시간입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.HttpOnly">
+      <summary>클라이언트 쪽 스크립트에서 쿠키에 액세스할 수 있는지를 지정하는 값을 가져오거나 설정합니다.</summary>
+      <returns>쿠키에 HttpOnly 특성이 있고 클라이언트 쪽 스크립트를 통해 쿠키에 액세스할 수 없으면 true이고, 그렇지 않으면 false입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.Item(System.String)">
+      <summary>쿠키 속성에 대한 바로 가기를 가져옵니다.</summary>
+      <returns>쿠키 값입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.MaxAge">
+      <summary>리소스에 허용되는 최대 기간을 가져오거나 설정합니다.</summary>
+      <returns>리소스에 허용되는 최대 기간입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.Path">
+      <summary>현재 쿠키를 사용하여 전송할 가상 경로를 가져오거나 설정합니다.</summary>
+      <returns>쿠키를 사용하여 전송할 가상 경로입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieHeaderValue.Secure">
+      <summary>SSL(Secure Sockets Layer)을 사용하여(즉, HTTPS를 통해서만) 쿠키를 전송할지를 나타내는 값을 가져오거나 설정합니다.</summary>
+      <returns>SSL 연결(HTTPS)을 통해 쿠키를 전송하려면 true이고, 그렇지 않으면 false입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieHeaderValue.ToString">
+      <summary>현재 개체를 나타내는 문자열을 반환합니다.</summary>
+      <returns>현재 개체를 나타내는 문자열입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieHeaderValue.TryParse(System.String,System.Net.Http.Headers.CookieHeaderValue@)">
+      <summary>문자열 표현이 변환되는지 여부를 나타내는 값입니다.</summary>
+      <returns>문자열 표현이 변환되면 true이고, 그렇지 않으면 false입니다.</returns>
+      <param name="input">입력 값입니다.</param>
+      <param name="parsedValue">변환할 구문 분석된 값입니다.</param>
+    </member>
+    <member name="T:System.Net.Http.Headers.CookieState">
+      <summary>쿠키 이름과 관련 쿠키 상태를 포함합니다.</summary>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieState.#ctor(System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.CookieState" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="name">쿠키의 이름입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieState.#ctor(System.String,System.Collections.Specialized.NameValueCollection)">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.CookieState" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="name">쿠키의 이름입니다.</param>
+      <param name="values">쿠키에 대한 이름-값 쌍의 컬렉션입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieState.#ctor(System.String,System.String)">
+      <summary>
+        <see cref="T:System.Net.Http.Headers.CookieState" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="name">쿠키의 이름입니다.</param>
+      <param name="value">쿠키의 값입니다.</param>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieState.Clone">
+      <summary>현재 인스턴스의 복사본인 새 개체를 반환합니다.</summary>
+      <returns>현재 인스턴스의 복사본인 새 개체입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieState.Item(System.String)">
+      <summary>쿠키 데이터가 구성된 경우 지정된 쿠키 이름으로 쿠키 값을 가져오거나 설정합니다.</summary>
+      <returns>쿠키 이름이 지정된 쿠키 값입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieState.Name">
+      <summary>쿠키 이름을 가져오거나 설정합니다.</summary>
+      <returns>쿠키의 이름입니다.</returns>
+    </member>
+    <member name="M:System.Net.Http.Headers.CookieState.ToString">
+      <summary>현재 개체의 문자열 표시를 반환합니다.</summary>
+      <returns>현재 개체의 문자열 표시입니다.</returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieState.Value">
+      <summary>쿠키 데이터가 간단한 문자열 값인 경우 쿠키 값을 가져오거나 설정합니다.</summary>
+      <returns>쿠키의 값입니다. </returns>
+    </member>
+    <member name="P:System.Net.Http.Headers.CookieState.Values">
+      <summary>쿠키 데이터가 구성된 경우 이름-값 쌍의 컬렉션을 가져오거나 설정합니다.</summary>
+      <returns>쿠키에 대한 이름-값 쌍의 컬렉션입니다.</returns>
+    </member>
+  </members>
+</doc>

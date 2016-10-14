@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.AspNet.FriendlyUrls</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.AspNet.FriendlyUrls.FriendlyUrl"></member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.FriendlyUrl.Href(System.String,System.Object[])"></member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.FriendlyUrl.Resolve(System.String)">
+      <summary> 등록된 확인자를 사용하여 친화적 URL에 대한 파일 처리기 가상 경로를 확인합니다. </summary>
+      <returns>친화적 URL입니다.</returns>
+      <param name="virtualPath">처리기 가상 경로입니다.</param>
+    </member>
+    <member name="P:Microsoft.AspNet.FriendlyUrls.FriendlyUrl.Segments">
+      <summary> 친화적 URL에서 이 요청을 파일로 매핑한 후 남은 URL 세그먼트입니다. </summary>
+    </member>
+    <member name="T:Microsoft.AspNet.FriendlyUrls.FriendlyUrlSettings">
+      <summary>친화적 URL을 활성화할 때 사용되는 설정을 나타냅니다.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.FriendlyUrlSettings.#ctor">
+      <summary>기본값을 사용하여 FriendlyUrlSettings 클래스의 새 인스턴스를 만듭니다.</summary>
+    </member>
+    <member name="P:Microsoft.AspNet.FriendlyUrls.FriendlyUrlSettings.AutoRedirectMode">
+      <summary>친화적이지 않은 URL에서 친화적 URL로 수행할 리디렉션 형식입니다. 기본값은 해제입니다.</summary>
+    </member>
+    <member name="P:Microsoft.AspNet.FriendlyUrls.FriendlyUrlSettings.ResolverCachingMode"></member>
+    <member name="P:Microsoft.AspNet.FriendlyUrls.FriendlyUrlSettings.SwitchViewRouteName">
+      <summary>뷰를 전환하기 위한 사용자 요청을 처리하는 경로 이름입니다. 기본값은 "AspNet.FriendlyUrls.SwitchView"입니다.</summary>
+    </member>
+    <member name="P:Microsoft.AspNet.FriendlyUrls.FriendlyUrlSettings.SwitchViewUrl">
+      <summary>뷰 전환 요청이 전송되는 URL입니다. 기본값은 "__FriendlyUrls_SwitchView/{view}"입니다.</summary>
+    </member>
+    <member name="T:Microsoft.AspNet.FriendlyUrls.HttpRequestExtensions">
+      <summary>친화적 URL로 작업하기 위한 확장 메서드를 제공합니다.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.HttpRequestExtensions.GetFriendlyUrlFileExtension(System.Web.HttpRequest)">
+      <summary> 친화적 URL에서 이 요청을 매핑한 파일의 확장명을 반환합니다. </summary>
+      <returns>파일 확장명(예: .aspx)입니다.</returns>
+      <param name="httpRequest">HttpRequest 개체입니다.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.HttpRequestExtensions.GetFriendlyUrlFileExtension(System.Web.HttpRequestBase)">
+      <summary> 친화적 URL에서 이 요청을 매핑한 파일의 확장명을 반환합니다. </summary>
+      <returns>파일 확장명(예: .aspx)입니다.</returns>
+      <param name="httpRequest">HttpRequestBase 개체입니다.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.HttpRequestExtensions.GetFriendlyUrlFileVirtualPath(System.Web.HttpRequest)">
+      <summary> 친화적 URL에서 이 요청을 매핑한 파일의 가상 경로를 반환합니다. </summary>
+      <returns>파일 가상 경로입니다.</returns>
+      <param name="httpRequest">HttpRequest 개체입니다.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.HttpRequestExtensions.GetFriendlyUrlFileVirtualPath(System.Web.HttpRequestBase)">
+      <summary> 친화적 URL에서 이 요청을 매핑한 파일의 가상 경로를 반환합니다. </summary>
+      <returns>파일 가상 경로입니다.</returns>
+      <param name="httpRequest">HttpRequestBase 개체입니다.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.HttpRequestExtensions.GetFriendlyUrlSegments(System.Web.HttpRequest)">
+      <summary> 친화적 URL에서 이 요청을 파일로 매핑한 후 남은 URL 세그먼트를 반환합니다. </summary>
+      <returns>URL 세그먼트입니다.</returns>
+      <param name="httpRequest">HttpRequest 개체입니다.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.HttpRequestExtensions.GetFriendlyUrlSegments(System.Web.HttpRequestBase)">
+      <summary> 친화적 URL에서 이 요청을 파일로 매핑한 후 남은 URL 세그먼트를 반환합니다. </summary>
+      <returns>URL 세그먼트입니다.</returns>
+      <param name="httpRequest">HttpRequestBase 개체입니다.</param>
+    </member>
+    <member name="T:Microsoft.AspNet.FriendlyUrls.PreApplicationStartCode"></member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.PreApplicationStartCode.Start"></member>
+    <member name="T:Microsoft.AspNet.FriendlyUrls.RedirectMode">
+      <summary>친화적 URL로 자동 리디렉션할 때 사용할 리디렉션 모드를 나타냅니다.</summary>
+    </member>
+    <member name="F:Microsoft.AspNet.FriendlyUrls.RedirectMode.Permanent">
+      <summary>영구 리디렉션을 수행합니다(301 응답 코드).</summary>
+    </member>
+    <member name="F:Microsoft.AspNet.FriendlyUrls.RedirectMode.Temporary">
+      <summary>임시 리디렉션을 수행합니다(302 응답 코드).</summary>
+    </member>
+    <member name="F:Microsoft.AspNet.FriendlyUrls.RedirectMode.Off">
+      <summary>자동 리디렉션을 수행하지 않습니다(사용 안 함).</summary>
+    </member>
+    <member name="T:Microsoft.AspNet.FriendlyUrls.ResolverCachingMode"></member>
+    <member name="F:Microsoft.AspNet.FriendlyUrls.ResolverCachingMode.Static">
+      <summary />
+    </member>
+    <member name="F:Microsoft.AspNet.FriendlyUrls.ResolverCachingMode.Dynamic">
+      <summary />
+    </member>
+    <member name="F:Microsoft.AspNet.FriendlyUrls.ResolverCachingMode.Disabled">
+      <summary />
+    </member>
+    <member name="T:Microsoft.AspNet.FriendlyUrls.RouteCollectionExtensions"></member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.RouteCollectionExtensions.EnableFriendlyUrls(System.Web.Routing.RouteCollection)">
+      <summary> Web Forms 페이지에 친화적 URL을 사용합니다. </summary>
+      <param name="routes">경로 컬렉션입니다.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.RouteCollectionExtensions.EnableFriendlyUrls(System.Web.Routing.RouteCollection,Microsoft.AspNet.FriendlyUrls.FriendlyUrlSettings)">
+      <summary>Web Forms 페이지에 친화적 URL을 사용합니다.</summary>
+      <param name="routes">경로 컬렉션입니다.</param>
+      <param name="settings">친화적 URL을 사용하도록 설정할 때 사용할 설정입니다.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.RouteCollectionExtensions.EnableFriendlyUrls(System.Web.Routing.RouteCollection,Microsoft.AspNet.FriendlyUrls.FriendlyUrlSettings,Microsoft.AspNet.FriendlyUrls.Resolvers.IFriendlyUrlResolver[])">
+      <summary> 전달된 확인자를 사용하여 친화적 URL을 사용합니다. </summary>
+      <param name="routes">경로 컬렉션입니다.</param>
+      <param name="settings">친화적 URL을 사용하도록 설정할 때 사용할 설정입니다.</param>
+      <param name="resolvers">사용할 친화적 URL 확인자입니다.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.RouteCollectionExtensions.EnableFriendlyUrls(System.Web.Routing.RouteCollection,Microsoft.AspNet.FriendlyUrls.Resolvers.IFriendlyUrlResolver[])">
+      <summary> 지정된 확인자를 사용하여 친화적 URL을 사용합니다. </summary>
+      <param name="routes">경로 컬렉션입니다.</param>
+      <param name="resolvers">사용할 친화적 URL 확인자입니다.</param>
+    </member>
+    <member name="T:Microsoft.AspNet.FriendlyUrls.Resolvers.FriendlyUrlResolver">
+      <summary>HTTP 처리기에 대해 친화적 URL을 확인합니다.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.FriendlyUrlResolver.#ctor(System.String)">
+      <summary>제공된 확장명에 대한 FriendlyUrlResolver를 만듭니다.</summary>
+      <param name="fileExtension">이 확인자가 인식하는 실제 파일 확장명입니다. 앞에 마침표를 포함해야 합니다(예: ".aspx").</param>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.FriendlyUrlResolver.ConvertToFriendlyUrl(System.String)">
+      <summary>일반적인 확장명 있는 URL을 친숙한 확장명 없는 URL로 변환합니다.</summary>
+      <returns>이 확인자가 확장명 없는 URL을 제공된 확장명이 있는 실제 파일로 자동으로 매핑할 수 있는 경우 친화적 URL(확장명 건너뜀)입니다. 그렇지 않은 경우 null입니다.</returns>
+      <param name="path">파일 확장명을 포함한 원래 경로입니다.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.FriendlyUrlResolver.GetExtensions(System.Web.HttpContextBase)">
+      <summary>친화적 URL에서 HTTP 처리기를 확인하려고 하는 동안 사용할 확장명을 가져옵니다(예: .aspx, .ashx, .mobile.aspx).</summary>
+      <returns>확장명 목록입니다.</returns>
+      <param name="httpContext">현재 HttpContext입니다.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.FriendlyUrlResolver.PreprocessRequest(System.Web.HttpContextBase,System.Web.IHttpHandler)"></member>
+    <member name="T:Microsoft.AspNet.FriendlyUrls.Resolvers.GenericHandlerFriendlyUrlResolver">
+      <summary>제네릭 처리기(*.ashx)에 대해 친화적 URL을 확인합니다.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.GenericHandlerFriendlyUrlResolver.#ctor"></member>
+    <member name="T:Microsoft.AspNet.FriendlyUrls.Resolvers.IFriendlyUrlResolver"></member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.IFriendlyUrlResolver.ConvertToFriendlyUrl(System.String)"></member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.IFriendlyUrlResolver.GetExtensions(System.Web.HttpContextBase)"></member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.IFriendlyUrlResolver.PreprocessRequest(System.Web.HttpContextBase,System.Web.IHttpHandler)"></member>
+    <member name="T:Microsoft.AspNet.FriendlyUrls.Resolvers.WebFormsFriendlyUrlResolver">
+      <summary>Web Forms 페이지에 대한 친화적 URL을 확인합니다.</summary>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.WebFormsFriendlyUrlResolver.#ctor"></member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.WebFormsFriendlyUrlResolver.GetExtensions(System.Web.HttpContextBase)">
+      <returns>
+        <see cref="T:System.Collections.Generic.IList`1" />을 반환합니다.</returns>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.WebFormsFriendlyUrlResolver.IsMobileExtension(System.Web.HttpContextBase,System.String)">
+      <returns>
+        <see cref="T:System.Boolean" />을 반환합니다.</returns>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.WebFormsFriendlyUrlResolver.IsMobileView(System.Web.HttpContextBase)">
+      <summary>현재 친화적 URL이 클라이언트 브라우저 및/또는 재정의 기준 모바일 뷰에 대해 확인되었는지 확인합니다.</summary>
+      <returns>현재 뷰가 모바일 뷰인지를 나타냅니다.</returns>
+      <param name="httpContext">페이지입니다.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.WebFormsFriendlyUrlResolver.PreprocessRequest(System.Web.HttpContextBase,System.Web.IHttpHandler)"></member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.WebFormsFriendlyUrlResolver.TrySetMasterPageFile(System.Web.UI.Page,System.String)">
+      <summary>마스터 페이지가 존재하는지 여부에 따라 지정된 페이지에 대한 MasterPageFile 속성을 설정하려고 시도합니다.</summary>
+      <returns>마스터 페이지가 설정되었는지 여부를 나타내는 부울 값입니다.</returns>
+      <param name="page">페이지입니다.</param>
+      <param name="masterPageFile">마스터 페이지 파일 가상 경로입니다.</param>
+    </member>
+    <member name="M:Microsoft.AspNet.FriendlyUrls.Resolvers.WebFormsFriendlyUrlResolver.TrySetMobileMasterPage(System.Web.HttpContextBase,System.Web.UI.Page,System.String)">
+      <summary>지정된 페이지에 대한 MasterPageFile 속성을 모바일별 마스터 페이지로 설정하려고 시도합니다.</summary>
+      <returns>마스터 페이지가 설정되었는지 여부를 나타내는 부울 값입니다.</returns>
+      <param name="httpContext">HTTP 컨텍스트입니다.</param>
+      <param name="page">페이지입니다.</param>
+    </member>
+    <member name="F:Microsoft.AspNet.FriendlyUrls.Resolvers.WebFormsFriendlyUrlResolver.ViewSwitcherCookieName"></member>
+  </members>
+</doc>

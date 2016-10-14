@@ -1,0 +1,48 @@
+﻿@model List<DevMvcTaskList.Models.TaskModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>할 일 리스트</h2>
+
+<table class="table table-bordered table-condensed table-striped table-hover">
+    <tr>
+        <th>Id</th>
+        <th>제목</th>
+        <th>생성일</th>
+        <th>완료</th>
+    </tr>
+    @foreach (var task in Model)
+    {
+        <tr>
+            <td>@task.Id</td>
+            <td>
+                @if (@task.IsCompleted)
+                {
+                    <s>@task.Title</s>
+                }
+                else
+                {
+                    <text>@task.Title</text>
+                }
+            </td>
+            <td>@task.CreationDate.ToShortDateString()</td>
+            <td>
+                <a href="/Task/Complete/@task.Id.ToString()">
+                    @if (task.IsCompleted)
+                    {
+                        <text>되돌리기</text>
+                    }
+                    else
+                    {
+                        @:완료하기
+                    }
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+<a href="/Task/Create">등록</a>

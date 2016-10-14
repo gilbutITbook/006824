@@ -1,0 +1,5 @@
+C:\ASP.NET\Dul\Dul\bin\Debug\Dul.dll
+C:\ASP.NET\Dul\Dul\bin\Debug\Dul.pdb
+C:\ASP.NET\Dul\Dul\obj\Debug\Dul.dll
+C:\ASP.NET\Dul\Dul\obj\Debug\Dul.pdb
+C:\ASP.NET\Dul\Dul\obj\Debug\Dul.csprojResolveAssemblyReference.cache

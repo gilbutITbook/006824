@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Interests>
+	<Interest>
+		<title>Windows Server</title>
+		<description>Best Operation System</description>
+	</Interest>
+	<Interest>
+		<title>SQL Server</title>
+		<description>Nice DataBase Management System</description>
+	</Interest>
+	<Interest>
+		<title>C#</title>
+		<description>Cool Programming Language</description>
+	</Interest>
+	<Interest>
+		<title>ASP.NET</title>
+		<description>Perfect Web Application Framework</description>
+	</Interest>
+</Interests>

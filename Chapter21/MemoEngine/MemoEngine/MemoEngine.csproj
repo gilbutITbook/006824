@@ -1,0 +1,698 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AD807D88-7C27-4F0A-98E8-F1E619035B5E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MemoEngine</RootNamespace>
+    <AssemblyName>MemoEngine</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.0.0\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.1.10.2\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Contact.aspx" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="DotNetNote\BoardCommentDelete.aspx" />
+    <Content Include="DotNetNote\BoardDelete.aspx" />
+    <Content Include="DotNetNote\BoardDown.aspx" />
+    <Content Include="DotNetNote\BoardList.aspx" />
+    <Content Include="DotNetNote\BoardModify.aspx" />
+    <Content Include="DotNetNote\BoardReply.aspx" />
+    <Content Include="DotNetNote\BoardView.aspx" />
+    <Content Include="DotNetNote\BoardWrite.aspx" />
+    <Content Include="DotNetNote\Controls\AdvancedPagingSingleWithBootstrap.ascx" />
+    <Content Include="DotNetNote\Controls\BoardCommentControl.ascx" />
+    <Content Include="DotNetNote\Controls\BoardEditorFormControl.ascx" />
+    <Content Include="DotNetNote\Controls\BoardSearchFormSingleControl.ascx" />
+    <Content Include="DotNetNote\Default.aspx" />
+    <Content Include="DotNetNote\Documents\DNN_DeleteNote.sql" />
+    <Content Include="DotNetNote\Documents\DNN_GetCountNotes.sql" />
+    <Content Include="DotNetNote\Documents\DNN_ListNotes.sql" />
+    <Content Include="DotNetNote\Documents\DNN_ModifyNote.sql" />
+    <Content Include="DotNetNote\Documents\DNN_ReplyNote.sql" />
+    <Content Include="DotNetNote\Documents\DNN_SearchNoteCount.sql" />
+    <Content Include="DotNetNote\Documents\DNN_SearchNotes.sql" />
+    <Content Include="DotNetNote\Documents\DNN_ViewNote.sql" />
+    <Content Include="DotNetNote\Documents\DNN_WriteNote.sql" />
+    <Content Include="DotNetNote\Documents\NoteComments.sql" />
+    <Content Include="DotNetNote\Documents\Notes.sql" />
+    <Content Include="DotNetNote\ImageDown.aspx" />
+    <Content Include="DotNetNote\images\dnn\blank.gif" />
+    <Content Include="DotNetNote\images\dnn\commentcount.gif" />
+    <Content Include="DotNetNote\images\dnn\icon_delete_red.gif" />
+    <Content Include="DotNetNote\images\dnn\img.jpg" />
+    <Content Include="DotNetNote\images\dnn\key_login.gif" />
+    <Content Include="DotNetNote\images\dnn\new.gif" />
+    <Content Include="DotNetNote\images\dnn\re.gif" />
+    <Content Include="DotNetNote\images\ext\ext_ace.gif" />
+    <Content Include="DotNetNote\images\ext\ext_ai.gif" />
+    <Content Include="DotNetNote\images\ext\ext_alz.gif" />
+    <Content Include="DotNetNote\images\ext\ext_arj.gif" />
+    <Content Include="DotNetNote\images\ext\ext_asa.gif" />
+    <Content Include="DotNetNote\images\ext\ext_asax.gif" />
+    <Content Include="DotNetNote\images\ext\ext_ascx.gif" />
+    <Content Include="DotNetNote\images\ext\ext_asf.gif" />
+    <Content Include="DotNetNote\images\ext\ext_asmx.gif" />
+    <Content Include="DotNetNote\images\ext\ext_asp.gif" />
+    <Content Include="DotNetNote\images\ext\ext_aspx.gif" />
+    <Content Include="DotNetNote\images\ext\ext_asx.gif" />
+    <Content Include="DotNetNote\images\ext\ext_au.gif" />
+    <Content Include="DotNetNote\images\ext\ext_avi.gif" />
+    <Content Include="DotNetNote\images\ext\ext_bat.gif" />
+    <Content Include="DotNetNote\images\ext\ext_bmp.gif" />
+    <Content Include="DotNetNote\images\ext\ext_c.gif" />
+    <Content Include="DotNetNote\images\ext\ext_cab.gif" />
+    <Content Include="DotNetNote\images\ext\ext_chm.gif" />
+    <Content Include="DotNetNote\images\ext\ext_com.gif" />
+    <Content Include="DotNetNote\images\ext\ext_config.gif" />
+    <Content Include="DotNetNote\images\ext\ext_cpp.gif" />
+    <Content Include="DotNetNote\images\ext\ext_cs.gif" />
+    <Content Include="DotNetNote\images\ext\ext_csproj.gif" />
+    <Content Include="DotNetNote\images\ext\ext_css.gif" />
+    <Content Include="DotNetNote\images\ext\ext_css_old.gif" />
+    <Content Include="DotNetNote\images\ext\ext_csv.gif" />
+    <Content Include="DotNetNote\images\ext\ext_disco.gif" />
+    <Content Include="DotNetNote\images\ext\ext_dll.gif" />
+    <Content Include="DotNetNote\images\ext\ext_doc.gif" />
+    <Content Include="DotNetNote\images\ext\ext_doc_.gif" />
+    <Content Include="DotNetNote\images\ext\ext_eml.gif" />
+    <Content Include="DotNetNote\images\ext\ext_exe.gif" />
+    <Content Include="DotNetNote\images\ext\ext_exe_.gif" />
+    <Content Include="DotNetNote\images\ext\ext_gif.gif" />
+    <Content Include="DotNetNote\images\ext\ext_gz.gif" />
+    <Content Include="DotNetNote\images\ext\ext_h.gif" />
+    <Content Include="DotNetNote\images\ext\ext_hlp.gif" />
+    <Content Include="DotNetNote\images\ext\ext_htm.gif" />
+    <Content Include="DotNetNote\images\ext\ext_html.gif" />
+    <Content Include="DotNetNote\images\ext\ext_hwp.gif" />
+    <Content Include="DotNetNote\images\ext\ext_hwp_.gif" />
+    <Content Include="DotNetNote\images\ext\ext_hwt.gif" />
+    <Content Include="DotNetNote\images\ext\ext_inc.gif" />
+    <Content Include="DotNetNote\images\ext\ext_ini.gif" />
+    <Content Include="DotNetNote\images\ext\ext_jpeg.gif" />
+    <Content Include="DotNetNote\images\ext\ext_jpg.gif" />
+    <Content Include="DotNetNote\images\ext\ext_js.gif" />
+    <Content Include="DotNetNote\images\ext\ext_lzh.gif" />
+    <Content Include="DotNetNote\images\ext\ext_m3u.gif" />
+    <Content Include="DotNetNote\images\ext\ext_max.gif" />
+    <Content Include="DotNetNote\images\ext\ext_mdb.gif" />
+    <Content Include="DotNetNote\images\ext\ext_mid.gif" />
+    <Content Include="DotNetNote\images\ext\ext_mov.gif" />
+    <Content Include="DotNetNote\images\ext\ext_mp2.gif" />
+    <Content Include="DotNetNote\images\ext\ext_mp3.gif" />
+    <Content Include="DotNetNote\images\ext\ext_mpe.gif" />
+    <Content Include="DotNetNote\images\ext\ext_mpeg.gif" />
+    <Content Include="DotNetNote\images\ext\ext_mpg.gif" />
+    <Content Include="DotNetNote\images\ext\ext_none.gif" />
+    <Content Include="DotNetNote\images\ext\ext_pcx.gif" />
+    <Content Include="DotNetNote\images\ext\ext_pdb.gif" />
+    <Content Include="DotNetNote\images\ext\ext_pdf.gif" />
+    <Content Include="DotNetNote\images\ext\ext_pdf_.gif" />
+    <Content Include="DotNetNote\images\ext\ext_pdf__.gif" />
+    <Content Include="DotNetNote\images\ext\ext_pls.gif" />
+    <Content Include="DotNetNote\images\ext\ext_png.gif" />
+    <Content Include="DotNetNote\images\ext\ext_ppt.gif" />
+    <Content Include="DotNetNote\images\ext\ext_ppt_.gif" />
+    <Content Include="DotNetNote\images\ext\ext_psd.gif" />
+    <Content Include="DotNetNote\images\ext\ext_ra.gif" />
+    <Content Include="DotNetNote\images\ext\ext_ram.gif" />
+    <Content Include="DotNetNote\images\ext\ext_rar.gif" />
+    <Content Include="DotNetNote\images\ext\ext_rar_.gif" />
+    <Content Include="DotNetNote\images\ext\ext_ra_.gif" />
+    <Content Include="DotNetNote\images\ext\ext_reg.gif" />
+    <Content Include="DotNetNote\images\ext\ext_resx.gif" />
+    <Content Include="DotNetNote\images\ext\ext_rm.gif" />
+    <Content Include="DotNetNote\images\ext\ext_rmi.gif" />
+    <Content Include="DotNetNote\images\ext\ext_rtf.gif" />
+    <Content Include="DotNetNote\images\ext\ext_sql.gif" />
+    <Content Include="DotNetNote\images\ext\ext_sql_old.gif" />
+    <Content Include="DotNetNote\images\ext\ext_swf.gif" />
+    <Content Include="DotNetNote\images\ext\ext_swf_.gif" />
+    <Content Include="DotNetNote\images\ext\ext_sys.gif" />
+    <Content Include="DotNetNote\images\ext\ext_tar.gif" />
+    <Content Include="DotNetNote\images\ext\ext_tga.gif" />
+    <Content Include="DotNetNote\images\ext\ext_tif.gif" />
+    <Content Include="DotNetNote\images\ext\ext_ttf.gif" />
+    <Content Include="DotNetNote\images\ext\ext_txt.gif" />
+    <Content Include="DotNetNote\images\ext\ext_txt_old.gif" />
+    <Content Include="DotNetNote\images\ext\ext_unknown.gif" />
+    <Content Include="DotNetNote\images\ext\ext_unknown_.gif" />
+    <Content Include="DotNetNote\images\ext\ext_vb.gif" />
+    <Content Include="DotNetNote\images\ext\ext_vbs.gif" />
+    <Content Include="DotNetNote\images\ext\ext_vb_old.gif" />
+    <Content Include="DotNetNote\images\ext\ext_vsdisco.gif" />
+    <Content Include="DotNetNote\images\ext\ext_wav.gif" />
+    <Content Include="DotNetNote\images\ext\ext_wax.gif" />
+    <Content Include="DotNetNote\images\ext\ext_webinfo.gif" />
+    <Content Include="DotNetNote\images\ext\ext_wma.gif" />
+    <Content Include="DotNetNote\images\ext\ext_wmv.gif" />
+    <Content Include="DotNetNote\images\ext\ext_wmx.gif" />
+    <Content Include="DotNetNote\images\ext\ext_wri.gif" />
+    <Content Include="DotNetNote\images\ext\ext_wvx.gif" />
+    <Content Include="DotNetNote\images\ext\ext_xaml.gif" />
+    <Content Include="DotNetNote\images\ext\ext_xls.gif" />
+    <Content Include="DotNetNote\images\ext\ext_xls_.gif" />
+    <Content Include="DotNetNote\images\ext\ext_xml.gif" />
+    <Content Include="DotNetNote\images\ext\ext_xml_.gif" />
+    <Content Include="DotNetNote\images\ext\ext_zip.gif" />
+    <Content Include="DotNetNote\ImageText.aspx" />
+    <Content Include="DotNetNote\ThumbNail.aspx" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Maxim\Default.html" />
+    <Content Include="Maxim\MaximCrudWithAngular.html" />
+    <Content Include="Maxim\MaximCrudWithJavaScriptQuery.html" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="images\dnn\blank.gif" />
+    <Content Include="images\dnn\commentcount.gif" />
+    <Content Include="images\dnn\icon_delete_red.gif" />
+    <Content Include="images\dnn\img.jpg" />
+    <Content Include="images\dnn\key_login.gif" />
+    <Content Include="images\dnn\new.gif" />
+    <Content Include="images\dnn\re.gif" />
+    <Content Include="images\ext\ext_ace.gif" />
+    <Content Include="images\ext\ext_ai.gif" />
+    <Content Include="images\ext\ext_alz.gif" />
+    <Content Include="images\ext\ext_arj.gif" />
+    <Content Include="images\ext\ext_asa.gif" />
+    <Content Include="images\ext\ext_asax.gif" />
+    <Content Include="images\ext\ext_ascx.gif" />
+    <Content Include="images\ext\ext_asf.gif" />
+    <Content Include="images\ext\ext_asmx.gif" />
+    <Content Include="images\ext\ext_asp.gif" />
+    <Content Include="images\ext\ext_aspx.gif" />
+    <Content Include="images\ext\ext_asx.gif" />
+    <Content Include="images\ext\ext_au.gif" />
+    <Content Include="images\ext\ext_avi.gif" />
+    <Content Include="images\ext\ext_bat.gif" />
+    <Content Include="images\ext\ext_bmp.gif" />
+    <Content Include="images\ext\ext_c.gif" />
+    <Content Include="images\ext\ext_cab.gif" />
+    <Content Include="images\ext\ext_chm.gif" />
+    <Content Include="images\ext\ext_com.gif" />
+    <Content Include="images\ext\ext_config.gif" />
+    <Content Include="images\ext\ext_cpp.gif" />
+    <Content Include="images\ext\ext_cs.gif" />
+    <Content Include="images\ext\ext_csproj.gif" />
+    <Content Include="images\ext\ext_css.gif" />
+    <Content Include="images\ext\ext_css_old.gif" />
+    <Content Include="images\ext\ext_csv.gif" />
+    <Content Include="images\ext\ext_disco.gif" />
+    <Content Include="images\ext\ext_dll.gif" />
+    <Content Include="images\ext\ext_doc.gif" />
+    <Content Include="images\ext\ext_doc_.gif" />
+    <Content Include="images\ext\ext_eml.gif" />
+    <Content Include="images\ext\ext_exe.gif" />
+    <Content Include="images\ext\ext_exe_.gif" />
+    <Content Include="images\ext\ext_gif.gif" />
+    <Content Include="images\ext\ext_gz.gif" />
+    <Content Include="images\ext\ext_h.gif" />
+    <Content Include="images\ext\ext_hlp.gif" />
+    <Content Include="images\ext\ext_htm.gif" />
+    <Content Include="images\ext\ext_html.gif" />
+    <Content Include="images\ext\ext_hwp.gif" />
+    <Content Include="images\ext\ext_hwp_.gif" />
+    <Content Include="images\ext\ext_hwt.gif" />
+    <Content Include="images\ext\ext_inc.gif" />
+    <Content Include="images\ext\ext_ini.gif" />
+    <Content Include="images\ext\ext_jpeg.gif" />
+    <Content Include="images\ext\ext_jpg.gif" />
+    <Content Include="images\ext\ext_js.gif" />
+    <Content Include="images\ext\ext_lzh.gif" />
+    <Content Include="images\ext\ext_m3u.gif" />
+    <Content Include="images\ext\ext_max.gif" />
+    <Content Include="images\ext\ext_mdb.gif" />
+    <Content Include="images\ext\ext_mid.gif" />
+    <Content Include="images\ext\ext_mov.gif" />
+    <Content Include="images\ext\ext_mp2.gif" />
+    <Content Include="images\ext\ext_mp3.gif" />
+    <Content Include="images\ext\ext_mpe.gif" />
+    <Content Include="images\ext\ext_mpeg.gif" />
+    <Content Include="images\ext\ext_mpg.gif" />
+    <Content Include="images\ext\ext_none.gif" />
+    <Content Include="images\ext\ext_pcx.gif" />
+    <Content Include="images\ext\ext_pdb.gif" />
+    <Content Include="images\ext\ext_pdf.gif" />
+    <Content Include="images\ext\ext_pdf_.gif" />
+    <Content Include="images\ext\ext_pdf__.gif" />
+    <Content Include="images\ext\ext_pls.gif" />
+    <Content Include="images\ext\ext_png.gif" />
+    <Content Include="images\ext\ext_ppt.gif" />
+    <Content Include="images\ext\ext_ppt_.gif" />
+    <Content Include="images\ext\ext_psd.gif" />
+    <Content Include="images\ext\ext_ra.gif" />
+    <Content Include="images\ext\ext_ram.gif" />
+    <Content Include="images\ext\ext_rar.gif" />
+    <Content Include="images\ext\ext_rar_.gif" />
+    <Content Include="images\ext\ext_ra_.gif" />
+    <Content Include="images\ext\ext_reg.gif" />
+    <Content Include="images\ext\ext_resx.gif" />
+    <Content Include="images\ext\ext_rm.gif" />
+    <Content Include="images\ext\ext_rmi.gif" />
+    <Content Include="images\ext\ext_rtf.gif" />
+    <Content Include="images\ext\ext_sql.gif" />
+    <Content Include="images\ext\ext_sql_old.gif" />
+    <Content Include="images\ext\ext_swf.gif" />
+    <Content Include="images\ext\ext_swf_.gif" />
+    <Content Include="images\ext\ext_sys.gif" />
+    <Content Include="images\ext\ext_tar.gif" />
+    <Content Include="images\ext\ext_tga.gif" />
+    <Content Include="images\ext\ext_tif.gif" />
+    <Content Include="images\ext\ext_ttf.gif" />
+    <Content Include="images\ext\ext_txt.gif" />
+    <Content Include="images\ext\ext_txt_old.gif" />
+    <Content Include="images\ext\ext_unknown.gif" />
+    <Content Include="images\ext\ext_unknown_.gif" />
+    <Content Include="images\ext\ext_vb.gif" />
+    <Content Include="images\ext\ext_vbs.gif" />
+    <Content Include="images\ext\ext_vb_old.gif" />
+    <Content Include="images\ext\ext_vsdisco.gif" />
+    <Content Include="images\ext\ext_wav.gif" />
+    <Content Include="images\ext\ext_wax.gif" />
+    <Content Include="images\ext\ext_webinfo.gif" />
+    <Content Include="images\ext\ext_wma.gif" />
+    <Content Include="images\ext\ext_wmv.gif" />
+    <Content Include="images\ext\ext_wmx.gif" />
+    <Content Include="images\ext\ext_wri.gif" />
+    <Content Include="images\ext\ext_wvx.gif" />
+    <Content Include="images\ext\ext_xaml.gif" />
+    <Content Include="images\ext\ext_xls.gif" />
+    <Content Include="images\ext\ext_xls_.gif" />
+    <Content Include="images\ext\ext_xml.gif" />
+    <Content Include="images\ext\ext_xml_.gif" />
+    <Content Include="images\ext\ext_zip.gif" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Site.Master" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Bundle.config" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Site.Mobile.Master" />
+    <Content Include="Views\web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\MaximServiceController.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\BoardCommentDelete.aspx.cs">
+      <DependentUpon>BoardCommentDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\BoardCommentDelete.aspx.designer.cs">
+      <DependentUpon>BoardCommentDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\BoardDelete.aspx.cs">
+      <DependentUpon>BoardDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\BoardDelete.aspx.designer.cs">
+      <DependentUpon>BoardDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\BoardDown.aspx.cs">
+      <DependentUpon>BoardDown.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\BoardDown.aspx.designer.cs">
+      <DependentUpon>BoardDown.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\BoardList.aspx.cs">
+      <DependentUpon>BoardList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\BoardList.aspx.designer.cs">
+      <DependentUpon>BoardList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\BoardModify.aspx.cs">
+      <DependentUpon>BoardModify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\BoardModify.aspx.designer.cs">
+      <DependentUpon>BoardModify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\BoardReply.aspx.cs">
+      <DependentUpon>BoardReply.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\BoardReply.aspx.designer.cs">
+      <DependentUpon>BoardReply.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\BoardView.aspx.cs">
+      <DependentUpon>BoardView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\BoardView.aspx.designer.cs">
+      <DependentUpon>BoardView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\BoardWrite.aspx.cs">
+      <DependentUpon>BoardWrite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\BoardWrite.aspx.designer.cs">
+      <DependentUpon>BoardWrite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\Controls\AdvancedPagingSingleWithBootstrap.ascx.cs">
+      <DependentUpon>AdvancedPagingSingleWithBootstrap.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\Controls\AdvancedPagingSingleWithBootstrap.ascx.designer.cs">
+      <DependentUpon>AdvancedPagingSingleWithBootstrap.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\Controls\BoardCommentControl.ascx.cs">
+      <DependentUpon>BoardCommentControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\Controls\BoardCommentControl.ascx.designer.cs">
+      <DependentUpon>BoardCommentControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\Controls\BoardEditorFormControl.ascx.cs">
+      <DependentUpon>BoardEditorFormControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\Controls\BoardEditorFormControl.ascx.designer.cs">
+      <DependentUpon>BoardEditorFormControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\Controls\BoardSearchFormSingleControl.ascx.cs">
+      <DependentUpon>BoardSearchFormSingleControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\Controls\BoardSearchFormSingleControl.ascx.designer.cs">
+      <DependentUpon>BoardSearchFormSingleControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\ImageDown.aspx.cs">
+      <DependentUpon>ImageDown.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\ImageDown.aspx.designer.cs">
+      <DependentUpon>ImageDown.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\ImageText.aspx.cs">
+      <DependentUpon>ImageText.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\ImageText.aspx.designer.cs">
+      <DependentUpon>ImageText.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DotNetNote\Models\BoardWriteFormType.cs" />
+    <Compile Include="DotNetNote\Models\ContentEncodingType.cs" />
+    <Compile Include="DotNetNote\Models\Note.cs" />
+    <Compile Include="DotNetNote\Models\NoteComment.cs" />
+    <Compile Include="DotNetNote\Models\NoteCommentRepository.cs" />
+    <Compile Include="DotNetNote\Models\NoteRepository.cs" />
+    <Compile Include="DotNetNote\ThumbNail.aspx.cs">
+      <DependentUpon>ThumbNail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DotNetNote\ThumbNail.aspx.designer.cs">
+      <DependentUpon>ThumbNail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Maxim.cs" />
+    <Compile Include="Models\MaximServiceRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="DotNetNote\MyFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Dul\Dul\Dul.csproj">
+      <Project>{42de8d76-87c1-4833-ade0-4df4b6fb4c78}</Project>
+      <Name>Dul</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53790</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53790/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

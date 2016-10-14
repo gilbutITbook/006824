@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Chatting</title>
+</head>
+<body>
+    <h1>Simple Chatting</h1>
+    <input type="text" id="msg" />
+    <input type="button" id="send" value="전송" />
+    <hr />
+    <ul id="msgs"></ul>
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script>
+        $(function () {
+            //[1] 채팅 서버 연결
+            var chat = $.connection.chat;
+            //[2] 서버 -> 클라이언트
+            chat.client.serverToClient = function (msg) {
+                $("#msgs").append("<li>" + msg + "</li>"); // 받기
+            };
+            //[3] 클라이언트 -> 서버
+            $.connection.hub.start().done(function () {
+                $("#send").click(function () {
+                    // 전송
+                    chat.server.clientToServer($("#msg").val());
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode url="FrmNavigationControl.aspx" title="홈(Home)"
+	  description="처음으로">
+		<siteMapNode url="FrmSiteMapPath.aspx" title="사이트맵패스 컨트롤" 
+					 description="사이트맵패스 컨트롤"></siteMapNode>
+		<siteMapNode url="Introduce.aspx" title="사이트 소개(Introduce)"
+					 description="사이트 소개(Introduct)" />
+		<siteMapNode url="Lecture.aspx" title="강의실(Lecture)" 
+					 description="강의실(Lecture)">
+			<siteMapNode url="Week.aspx" title="이번 주 강의 내용" 
+						 description="이번 주 강의 내용" />
+			<siteMapNode url="Report.aspx" title="과제물 및 시험 제출" 
+						 description="과제물 및 시험 제출" />
+		</siteMapNode>
+		<siteMapNode url="Blog.aspx" title="블로그(Blog)" 
+					 description="블로그(Blog)" />
+		<siteMapNode url="Forum.aspx" title="포럼(Forum)" 
+					 description="포럼(Forum)" />
+		<siteMapNode url="Board.aspx" title="게시판(Board)" 
+					 description="게시판(Board)">
+			<siteMapNode url="FreeBoard.aspx" title="자유게시판" 
+						 description="자유게시판" />
+			<siteMapNode url="GuestBook.aspx" title="방명록" 
+						 description="방명록" />
+		</siteMapNode>
+	</siteMapNode>
+</siteMap>

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Web.Http.WebHost</name>
+  </assembly>
+  <members>
+    <member name="T:System.Web.Http.GlobalConfiguration">
+      <summary> ASP.NET 응용 프로그램에 대해 전역 <see cref="T:System.Web.Http.HttpConfiguration" />을 제공합니다. </summary>
+    </member>
+    <member name="P:System.Web.Http.GlobalConfiguration.Configuration"></member>
+    <member name="M:System.Web.Http.GlobalConfiguration.Configure(System.Action{System.Web.Http.HttpConfiguration})"></member>
+    <member name="P:System.Web.Http.GlobalConfiguration.DefaultHandler"></member>
+    <member name="P:System.Web.Http.GlobalConfiguration.DefaultServer">
+      <summary> 전역 <see cref="T:System.Web.Http.HttpServer" />을 가져옵니다. </summary>
+      <returns>전역 <see cref="T:System.Web.Http.HttpServer" />입니다.</returns>
+    </member>
+    <member name="T:System.Web.Http.RouteCollectionExtensions">
+      <summary>
+        <see cref="T:System.Web.Routing.RouteCollection" />에 대한 확장 메서드입니다.</summary>
+    </member>
+    <member name="M:System.Web.Http.RouteCollectionExtensions.MapHttpRoute(System.Web.Routing.RouteCollection,System.String,System.String)">
+      <summary>지정된 경로 템플릿을 매핑합니다.</summary>
+      <returns>매핑된 경로에 대한 참조입니다.</returns>
+      <param name="routes">응용 프로그램에 대한 경로의 컬렉션입니다.</param>
+      <param name="name">매핑할 경로의 이름입니다.</param>
+      <param name="routeTemplate">경로의 경로 템플릿입니다.</param>
+    </member>
+    <member name="M:System.Web.Http.RouteCollectionExtensions.MapHttpRoute(System.Web.Routing.RouteCollection,System.String,System.String,System.Object)">
+      <summary>지정된 경로 템플릿을 매핑하고 기본 경로를 설정합니다.</summary>
+      <returns>매핑된 경로에 대한 참조입니다.</returns>
+      <param name="routes">응용 프로그램에 대한 경로의 컬렉션입니다.</param>
+      <param name="name">매핑할 경로의 이름입니다.</param>
+      <param name="routeTemplate">경로의 경로 템플릿입니다.</param>
+      <param name="defaults">기본 경로 값을 포함하는 개체입니다.</param>
+    </member>
+    <member name="M:System.Web.Http.RouteCollectionExtensions.MapHttpRoute(System.Web.Routing.RouteCollection,System.String,System.String,System.Object,System.Object)">
+      <summary>지정된 경로 템플릿을 매핑하고 기본 경로 값과 제약 조건을 설정합니다.</summary>
+      <returns>매핑된 경로에 대한 참조입니다.</returns>
+      <param name="routes">응용 프로그램에 대한 경로의 컬렉션입니다.</param>
+      <param name="name">매핑할 경로의 이름입니다.</param>
+      <param name="routeTemplate">경로의 경로 템플릿입니다.</param>
+      <param name="defaults">기본 경로 값을 포함하는 개체입니다.</param>
+      <param name="constraints">routeTemplate에 대한 값을 지정하는 식의 집합입니다.</param>
+    </member>
+    <member name="M:System.Web.Http.RouteCollectionExtensions.MapHttpRoute(System.Web.Routing.RouteCollection,System.String,System.String,System.Object,System.Object,System.Net.Http.HttpMessageHandler)">
+      <summary>지정된 경로 템플릿을 매핑하고 기본 경로 값, 제약 조건 및 끝점 메시지 처리기를 설정합니다.</summary>
+      <returns>매핑된 경로에 대한 참조입니다.</returns>
+      <param name="routes">응용 프로그램에 대한 경로의 컬렉션입니다.</param>
+      <param name="name">매핑할 경로의 이름입니다.</param>
+      <param name="routeTemplate">경로의 경로 템플릿입니다.</param>
+      <param name="defaults">기본 경로 값을 포함하는 개체입니다.</param>
+      <param name="constraints">routeTemplate에 대한 값을 지정하는 식의 집합입니다.</param>
+      <param name="handler">요청이 발송될 처리기입니다.</param>
+    </member>
+    <member name="T:System.Web.Http.WebHost.HttpControllerHandler">
+      <summary>
+        <see cref="T:System.Web.Http.HttpServer" /> 파이프라인에 ASP.NET 요청을 전달하고 다시 그 결과를 쓰는 <see cref="T:System.Web.IHttpTaskAsyncHandler" />입니다.</summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.HttpControllerHandler.#ctor(System.Web.Routing.RouteData)">
+      <summary>
+        <see cref="T:System.Web.Http.WebHost.HttpControllerHandler" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="routeData">경로 데이터입니다.</param>
+    </member>
+    <member name="M:System.Web.Http.WebHost.HttpControllerHandler.#ctor(System.Web.Routing.RouteData,System.Net.Http.HttpMessageHandler)">
+      <summary>
+        <see cref="T:System.Web.Http.WebHost.HttpControllerHandler" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+      <param name="routeData">경로 데이터입니다.</param>
+      <param name="handler">요청을 발송할 메시지 처리기입니다.</param>
+    </member>
+    <member name="M:System.Web.Http.WebHost.HttpControllerHandler.ProcessRequestAsync(System.Web.HttpContext)">
+      <summary>비동기 작업을 처리하는 코드를 제공합니다.</summary>
+      <returns>비동기 작업입니다.</returns>
+      <param name="context">HTTP 컨텍스트입니다.</param>
+    </member>
+    <member name="T:System.Web.Http.WebHost.HttpControllerRouteHandler">
+      <summary> 지정된 <see cref="T:System.Web.Http.HttpServer" /> 인스턴스에 요청을 전달할 수 있는 <see cref="T:System.Web.Http.WebHost.HttpControllerHandler" />의 인스턴스를 반환하는 <see cref="T:System.Web.Routing.IRouteHandler" />입니다. </summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.HttpControllerRouteHandler.#ctor">
+      <summary>
+        <see cref="T:System.Web.Http.WebHost.HttpControllerRouteHandler" /> 클래스의 새 인스턴스를 초기화합니다. </summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.HttpControllerRouteHandler.GetHttpHandler(System.Web.Routing.RequestContext)">
+      <summary> 요청을 처리하는 개체를 제공합니다. </summary>
+      <returns> 요청을 처리하는 개체입니다. </returns>
+      <param name="requestContext">요청에 대한 정보를 캡슐화하는 개체입니다.</param>
+    </member>
+    <member name="P:System.Web.Http.WebHost.HttpControllerRouteHandler.Instance">
+      <summary> singleton <see cref="T:System.Web.Http.WebHost.HttpControllerRouteHandler" /> 인스턴스를 가져옵니다. </summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.HttpControllerRouteHandler.System#Web#Routing#IRouteHandler#GetHttpHandler(System.Web.Routing.RequestContext)">
+      <summary> 요청을 처리하는 개체를 제공합니다. </summary>
+      <returns> 요청을 처리하는 개체입니다. </returns>
+      <param name="requestContext">요청에 대한 정보를 캡슐화하는 개체입니다.</param>
+    </member>
+    <member name="T:System.Web.Http.WebHost.PreApplicationStartCode">
+      <summary>단순 멤버 자격 응용 프로그램 시작 전 코드에 대한 등록 지점을 제공합니다.</summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.PreApplicationStartCode.Start">
+      <summary>단순 멤버 자격 응용 프로그램 시작 전 코드를 등록합니다.</summary>
+    </member>
+    <member name="T:System.Web.Http.WebHost.WebHostBufferPolicySelector">
+      <summary>웹 호스트 버퍼 정책 선택기를 나타냅니다.</summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.WebHostBufferPolicySelector.#ctor">
+      <summary>
+        <see cref="T:System.Web.Http.WebHost.WebHostBufferPolicySelector" /> 클래스의 새 인스턴스를 초기화합니다.</summary>
+    </member>
+    <member name="M:System.Web.Http.WebHost.WebHostBufferPolicySelector.UseBufferedInputStream(System.Object)">
+      <summary>호스트가 HTTP 요청의 엔터티 본문을 버퍼링해야 하는지를 나타내는 값을 가져옵니다.</summary>
+      <returns>버퍼링을 사용해야 하면 true이고, 그렇지 않으면 스트리밍된 요청을 사용해야 합니다.</returns>
+      <param name="hostContext">호스트 컨텍스트입니다.</param>
+    </member>
+    <member name="M:System.Web.Http.WebHost.WebHostBufferPolicySelector.UseBufferedOutputStream(System.Net.Http.HttpResponseMessage)">
+      <summary>웹 호스트에 버퍼링된 출력 스트림을 사용합니다.</summary>
+      <returns>버퍼링된 출력 스트림입니다.</returns>
+      <param name="response">응답입니다.</param>
+    </member>
+    <member name="T:System.Web.Http.WebHost.WebHostExceptionCatchBlocks">
+      <summary>이 어셈블리에서 사용되는 catch 블록을 제공합니다.</summary>
+    </member>
+    <member name="P:System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpControllerHandlerBufferContent">
+      <summary>System.Web.Http.WebHost.HttpControllerHandler.WriteBufferedResponseContentAsync의 catch 블록 레이블을 가져옵니다.</summary>
+      <returns>System.Web.Http.WebHost.HttpControllerHandler.WriteBufferedResponseContentAsync의 catch 블록 레이블입니다.</returns>
+    </member>
+    <member name="P:System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpControllerHandlerBufferError">
+      <summary>System.Web.Http.WebHost.HttpControllerHandler.WriteErrorResponseContentAsync의 catch 블록 레이블을 가져옵니다.</summary>
+      <returns>System.Web.Http.WebHost.HttpControllerHandler.WriteErrorResponseContentAsync의 catch 블록 레이블입니다.</returns>
+    </member>
+    <member name="P:System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpControllerHandlerComputeContentLength">
+      <summary>System.Web.Http.WebHost.HttpControllerHandler.ComputeContentLength의 catch 블록 레이블을 가져옵니다.</summary>
+      <returns>System.Web.Http.WebHost.HttpControllerHandler.ComputeContentLength의 catch 블록 레이블입니다.</returns>
+    </member>
+    <member name="P:System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpControllerHandlerStreamContent">
+      <summary>System.Web.Http.WebHost.HttpControllerHandler.WriteStreamedResponseContentAsync의 catch 블록 레이블을 가져옵니다.</summary>
+      <returns>System.Web.Http.WebHost.HttpControllerHandler.WriteStreamedResponseContentAsync의 catch 블록 레이블입니다.</returns>
+    </member>
+    <member name="P:System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpWebRoute">
+      <summary>System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpWebRoute.GetRouteData의 catch 블록 레이블을 가져옵니다.</summary>
+      <returns>System.Web.Http.WebHost.WebHostExceptionCatchBlocks.HttpWebRoute.GetRouteData의 catch 블록입니다.</returns>
+    </member>
+  </members>
+</doc>

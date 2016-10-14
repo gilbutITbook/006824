@@ -1,0 +1,36 @@
+﻿** 강조
+     다시 빌드될 테이블
+       없음
+     삭제될 클러스터형 인덱스
+       없음
+     생성될 클러스터형 인덱스
+       없음
+     데이터 문제가 있는 것 같습니다.
+       없음
+
+** 사용자 작업
+     만들기
+       [dbo].[NoteComments] (테이블)
+       [dbo].[Notes] (테이블)
+       DEFAULT 제약 조건: [dbo].[NoteComments]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       DEFAULT 제약 조건: [dbo].[Notes]에 대한 명명되지 않은 제약 조건 (DEFAULT 제약 조건)
+       [dbo].[DeleteNote] (프로시저)
+       [dbo].[GetCountNotes] (프로시저)
+       [dbo].[ListNotes] (프로시저)
+       [dbo].[ModifyNote] (프로시저)
+       [dbo].[ReplyNote] (프로시저)
+       [dbo].[SearchNoteCount] (프로시저)
+       [dbo].[SearchNotes] (프로시저)
+       [dbo].[ViewNote] (프로시저)
+       [dbo].[WriteNote] (프로시저)
+
+** 지원 동작
